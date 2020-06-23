@@ -11,7 +11,7 @@
 					<div class="single-footer about">
 						<div class="logo">
 							<a href="index.html"><img
-								src="eshop-template/images/logo2.png" alt="#"></a>
+								src="/shop/eshop-template/images/logo2.png" alt="#"></a>
 						</div>
 						<p class="text">Praesent dapibus, neque id cursus ucibus,
 							tortor neque egestas augue, magna eros eu erat. Aliquam erat
@@ -93,7 +93,7 @@
 					</div>
 					<div class="col-lg-6 col-12">
 						<div class="right">
-							<img src="eshop-template/images/payments.png" alt="#">
+							<img src="/shop/eshop-template/images/payments.png" alt="#">
 						</div>
 					</div>
 				</div>
@@ -104,36 +104,36 @@
 <!-- /End Footer Area -->
 
 <!-- Jquery -->
-<script src="eshop-template/js/jquery.min.js"></script>
-<script src="eshop-template/js/jquery-migrate-3.0.0.js"></script>
-<script src="eshop-template/js/jquery-ui.min.js"></script>
+<script src="/shop/eshop-template/js/jquery.min.js"></script>
+<script src="/shop/eshop-template/js/jquery-migrate-3.0.0.js"></script>
+<script src="/shop/eshop-template/js/jquery-ui.min.js"></script>
 <!-- Popper JS -->
-<script src="eshop-template/js/popper.min.js"></script>
+<script src="/shop/eshop-template/js/popper.min.js"></script>
 <!-- Bootstrap JS -->
-<script src="eshop-template/js/bootstrap.min.js"></script>
+<script src="/shop/eshop-template/js/bootstrap.min.js"></script>
 <!-- Color JS -->
-<script src="eshop-template/js/colors.js"></script>
+<script src="/shop/eshop-template/js/colors.js"></script>
 <!-- Slicknav JS -->
-<script src="eshop-template/js/slicknav.min.js"></script>
+<script src="/shop/eshop-template/js/slicknav.min.js"></script>
 <!-- Owl Carousel JS -->
-<script src="eshop-template/js/owl-carousel.js"></script>
+<script src="/shop/eshop-template/js/owl-carousel.js"></script>
 <!-- Magnific Popup JS -->
-<script src="eshop-template/js/magnific-popup.js"></script>
+<script src="/shop/eshop-template/js/magnific-popup.js"></script>
 <!-- Waypoints JS -->
-<script src="eshop-template/js/waypoints.min.js"></script>
+<script src="/shop/eshop-template/js/waypoints.min.js"></script>
 <!-- Countdown JS -->
-<script src="eshop-template/js/finalcountdown.min.js"></script>
+<script src="/shop/eshop-template/js/finalcountdown.min.js"></script>
 <!-- Nice Select JS -->
-<script src="eshop-template/js/nicesellect.js"></script>
+<script src="/shop/eshop-template/js/nicesellect.js"></script>
 <!-- Flex Slider JS -->
-<script src="eshop-template/js/flex-slider.js"></script>
+<script src="/shop/eshop-template/js/flex-slider.js"></script>
 <!-- ScrollUp JS -->
-<script src="eshop-template/js/scrollup.js"></script>
+<script src="/shop/eshop-template/js/scrollup.js"></script>
 <!-- Onepage Nav JS -->
-<script src="eshop-template/js/onepage-nav.min.js"></script>
+<script src="/shop/eshop-template/js/onepage-nav.min.js"></script>
 <!-- Easing JS -->
-<script src="eshop-template/js/easing.js"></script>
+<script src="/shop/eshop-template/js/easing.js"></script>
 <!-- Active JS -->
-<script src="eshop-template/js/active.js"></script>
+<script src="/shop/eshop-template/js/active.js"></script>
 </body>
 </html>
