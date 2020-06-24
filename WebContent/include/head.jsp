@@ -42,5 +42,6 @@
     <link rel="stylesheet" href="/shop//eshop-template/css/responsive.css">
     <!-- myStyle -->
     <link rel="stylesheet" href="/shop//myStyle.css">
+        
 </head>
 <body class="js">
