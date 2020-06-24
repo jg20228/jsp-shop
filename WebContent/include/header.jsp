@@ -15,7 +15,7 @@
 							<li><i class="ti-location-pin"></i><a href="/shop/user/join.jsp">JOIN</a></li>
 							<li><i class="ti-location-pin"></i><a href="/shop/user/cart.jsp">CART</a></li>
 							<li><i class="ti-user"></i> <a href="/shop/user/myPage.jsp">MYPAGE</a></li>
-							<li><i class="ti-alarm-clock"></i> <a href="#">ORDER</a></li>
+							<li><i class="ti-alarm-clock"></i> <a href="/shop/user/order.jsp">ORDER</a></li>
 							<li><i class="ti-alarm-clock"></i> <a href="#">ATTENDANCE</a></li>
 							<li><i class="ti-alarm-clock"></i> <a href="#">BOOKMARK</a></li>
 
@@ -78,8 +78,9 @@
 				<div class="col-lg-2 col-md-2 col-12">
 					<!-- Logo -->
 					<div class="logo">
-						<a href="index.html"><img src="/shop/image/apparellogo.png"
-							alt="logo"></a>
+						<a href="/shop/index.jsp">
+							<img src="/shop/image/apparellogo.png"alt="logo">
+						</a>
 					</div>
 					<!--/ End Logo -->
 					<!-- Search Form -->

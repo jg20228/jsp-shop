@@ -48,3 +48,18 @@ Carousel--> /* Make the image fully responsive */ .carousel-inner img {
 	font-size: 30px;
 	text-align: center;
 }
+
+.content__box .tit-page {
+    font-family: 'open sans';
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    color: #252525;
+    font-weight: 600;
+    text-align: center;
+    width: 125px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #e1e1e1;
+    margin: 0 auto 50px;
+    text-transform: uppercase;
+}
