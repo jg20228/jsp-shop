@@ -5,8 +5,11 @@
 <%@ include file="../include/nav.jsp"%>
 
 <link rel="stylesheet" href="/shop/css/user/login.css">
+<!-- user에만 쓰이는 css -->
+<link rel="stylesheet" href="/shop/css/user/user.css">
 
 <div class="content__box">
+<h2 class="tit-page">LOGIN</h2>	
 	<div id="loginWrap">
 		<dl class="loc-navi">
 <!-- 			<dt class="blind">현재 위치</dt> -->
