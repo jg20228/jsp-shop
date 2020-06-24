@@ -38,9 +38,9 @@
     <link rel="stylesheet" href="/shop//eshop-template/css/slicknav.min.css">
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="/shop//eshop-template/css/reset.css">
-	<link rel="stylesheet" href="/shop//style.css">
+	<link rel="stylesheet" href="/shop//css/style.css">
     <link rel="stylesheet" href="/shop//eshop-template/css/responsive.css">
     <!-- myStyle -->
-    <link rel="stylesheet" href="/shop//myStyle.css">
+    <link rel="stylesheet" href="/shop//css/myStyle.css">
 </head>
 <body class="js">
