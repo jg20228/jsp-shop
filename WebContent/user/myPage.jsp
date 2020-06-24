@@ -5,8 +5,8 @@
 <%@ include file="/include/header.jsp"%>
 <%@ include file="/include/nav.jsp"%>
 
-<!-- join에만 쓰이는 css -->
-<link rel="stylesheet" href="/shop/css/user/join.css">
+<!-- user에만 쓰이는 css -->
+<link rel="stylesheet" href="/shop/css/user/user.css">
 
 
 <div class="content__box">	
