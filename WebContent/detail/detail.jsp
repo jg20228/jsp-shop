@@ -5,16 +5,10 @@
 <%@ include file="../include/nav.jsp"%>
 
 <div class="content__box">
-
-
-
-
-
-
-
 	<div id="productDetail">
 		<div class="loc-navi2">
-			<a href="/">home</a> &gt; <a href="/shop/shopbrand.html?xcode=033&amp;type=X&amp;sort=">top</a> &gt; <a href="/shop/shopbrand.html?xcode=033&amp;type=X&amp;sort=&amp;mcode=001">top</a>
+			<a href="/">home</a> &gt; <a href="/shop/shopbrand.html?xcode=033&amp;type=X&amp;sort=">top</a> &gt; 
+			<a href="/shop/shopbrand.html?xcode=033&amp;type=X&amp;sort=&amp;mcode=001">top</a>
 			<!--&gt; 와이드-t-->
 		</div>
 		<h2 class="tit-page">top</h2>
@@ -25,7 +19,7 @@
 						<!--<a id="zoom_image" href="javascript:imageview('', '');" rel="/shopimages/pighip/">
 <img class="detail_image" id="lens_img" src="/shopimages/pighip/0330010012722.jpg?1592890404" border="0" width="300" />
 </a>-->
-						<img src="/shop/image/detail/thumb.jpg">
+						<img src="${product.imgSrc}">
 					</div>
 					<div class="thumb-ctrl">
 						<a href="javascript:alert('상세 이미지가 없습니다.');"><img src="/shop/image/detail/view_image.gif" alt="큰 이미지 보기" title="큰 이미지 보기"></a>
@@ -68,7 +62,7 @@
 								<tr valign="top">
 									<td style="position: relative; border-right: 1px solid #d1d1d1; width: 470px; padding-bottom: 100px;">
 										<h3 class="tit-prd">
-											<span class="line">와이드-t</span>
+											<span class="line">${product.name}</span>
 										</h3>
 										<div>큼지막한 지구 프린팅이 돋보이는 티셔츠 ♡ 배색 포인트가 매력이예요 !</div>
 										<div class="prd-btns">
