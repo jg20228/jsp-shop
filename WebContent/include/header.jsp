@@ -11,11 +11,11 @@
 					<!-- Top Right -->
 					<div class="right-content">
 						<ul class="list-main">
-							<li><i class="ti-power-off"></i><a href="/shop/user/login.jsp">Login</a></li>
-							<li><i class="ti-location-pin"></i><a href="/shop/user/join.jsp">JOIN</a></li>
-							<li><i class="ti-location-pin"></i><a href="/shop/user/cart.jsp">CART</a></li>
-							<li><i class="ti-user"></i> <a href="/shop/user/myPage.jsp">MYPAGE</a></li>
-							<li><i class="ti-alarm-clock"></i> <a href="/shop/user/order.jsp">ORDER</a></li>
+							<li><i class="ti-power-off"></i><a href="/shop/user?cmd=login">Login</a></li>
+							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=join">JOIN</a></li>
+							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">CART</a></li>
+							<li><i class="ti-user"></i> <a href="/shop/user?cmd=update">MYPAGE</a></li>
+							<li><i class="ti-alarm-clock"></i> <a href="/shop/user?cmd=order">ORDER</a></li>
 							<li><i class="ti-alarm-clock"></i> <a href="#">ATTENDANCE</a></li>
 							<li><i class="ti-alarm-clock"></i> <a href="#">BOOKMARK</a></li>
 

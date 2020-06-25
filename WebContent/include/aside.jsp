@@ -10,9 +10,9 @@
 					<li><a class="menuLink" href="#">Community</a></li>
 					<br />
 					<hr />
-					<li><a class="menuLink" href="/shop/user/join.jsp">JOIN BENEFIT</a></li>
+					<li><a class="menuLink" href="/shop/user?cmd=join">JOIN BENEFIT</a></li>
 					<hr />
-					<li><a class="menuLink" href="/shop/notice/noticeMember.jsp">MEMBER</a></li>
+					<li><a class="menuLink" href="/shop/board?cmd=noticeBoard">MEMBER</a></li>
 					<hr />
 					<li><a class="menuLink" href="#">BANK</a></li>
 					<hr />

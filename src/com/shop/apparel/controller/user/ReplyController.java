@@ -1,5 +1,7 @@
 package com.shop.apparel.controller.user;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.action.reply.ReplyDeleteProcAction;
+import com.shop.apparel.action.reply.ReplyWriteProcAction;
 import com.shop.apparel.action.user.UserJoinAction;
 import com.shop.apparel.action.user.UserJoinProcAction;
 import com.shop.apparel.action.user.UserLoginAction;
@@ -46,9 +50,9 @@ public class ReplyController extends HttpServlet {
 	
 	public Action router(String cmd) {
 		if(cmd.equals("writeProc")) {
-			return new ReplyWriteProcAction(); //´ñ±Û¾²±â
+			return new ReplyWriteProcAction(); //ï¿½ï¿½Û¾ï¿½ï¿½ï¿½
 		} else if(cmd.equals("deleteProc")) {
-			return new ReplyDeleteProcAction(); //´ñ±Û»èÁ¦
+			return new ReplyDeleteProcAction(); //ï¿½ï¿½Û»ï¿½ï¿½ï¿½
 		}
 		return null;
 	}

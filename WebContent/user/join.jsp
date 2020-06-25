@@ -10,7 +10,7 @@
 
 
 <div class="content__box">	
-<form name="form1" method="post" id="join_form" action="/shop/idinfo.html" enctype="multipart/form-data" autocomplete="off">
+<form name="form1" method="post" id="join_form" action="/shop/user?cmd=joinProc" enctype="multipart/form-data" autocomplete="off">
 <h2 class="tit-page">JOIN</h2>	
 	<!-- 일반회원 기본 노출 -->
 	<div id="personInfo">

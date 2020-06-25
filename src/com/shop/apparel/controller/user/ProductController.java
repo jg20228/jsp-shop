@@ -1,5 +1,7 @@
 package com.shop.apparel.controller.user;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.action.product.ProductDetailAction;
+import com.shop.apparel.action.product.ProductHomeAction;
+import com.shop.apparel.action.product.ProductOuterAction;
+import com.shop.apparel.action.product.ProductTopAction;
 import com.shop.apparel.action.user.UserJoinAction;
 import com.shop.apparel.action.user.UserJoinProcAction;
 import com.shop.apparel.action.user.UserLoginAction;
@@ -46,21 +52,15 @@ public class ProductController extends HttpServlet {
 	
 	public Action router(String cmd) {
 		if(cmd.equals("home")) {
-			return new ProductHomeAction(); //BoardÀÇ ¸ñ·Ï
+			return new ProductHomeAction(); //Boardï¿½ï¿½ ï¿½ï¿½ï¿½
 		} else if(cmd.equals("detail")) {
-			return new ProductDetailAction(); //»ó¼¼º¸±â
-		}else if(cmd.equals("write")) {
-			return new ProductWriteAction(); //±Û¾²±âÈ­¸é
-		}else if(cmd.equals("writeProc")) {
-			return new ProductWriteProcAction(); //±Û¾²±â
-		}else if(cmd.equals("update")) {
-			return new ProductUpdateAction(); //¼öÁ¤ÆäÀÌÁö
-		}else if(cmd.equals("updateProc")) {
-			return new ProductUpdateProcAction(); // ¼öÁ¤ÇÏ±â
-		}else if(cmd.equals("delete")) {
-			return new ProductDeleteAction(); // »èÁ¦
+			return new ProductDetailAction(); //ï¿½ó¼¼ºï¿½ï¿½ï¿½
+		}else if(cmd.equals("outer")) {
+			return new ProductOuterAction(); //ï¿½ó¼¼ºï¿½ï¿½ï¿½
+		}else if(cmd.equals("top")) {
+			return new ProductTopAction(); //ï¿½ó¼¼ºï¿½ï¿½ï¿½
 		}else if(cmd.equals("search")) {
-			return new ProductSearchAction(); // »èÁ¦
+		//	return new ProductSearchAction(); // ï¿½ï¿½ï¿½ï¿½
 		}
 		return null;
 	}

@@ -1,5 +1,7 @@
 package com.shop.apparel.controller.user;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.action.user.UserCartAction;
 import com.shop.apparel.action.user.UserJoinAction;
 import com.shop.apparel.action.user.UserJoinProcAction;
 import com.shop.apparel.action.user.UserLoginAction;
 import com.shop.apparel.action.user.UserLoginProcAction;
 import com.shop.apparel.action.user.UserLogoutAction;
+import com.shop.apparel.action.user.UserOrderAction;
 import com.shop.apparel.action.user.UserUpdateAction;
 import com.shop.apparel.action.user.UserUpdateProcAction;
 import com.shop.apparel.action.user.UserUsernameCheckAction;
@@ -46,30 +50,34 @@ public class UserController extends HttpServlet {
 	
 	public Action router(String cmd) {
 		if(cmd.equals("join")) {
-			// È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 			return new UserJoinAction();
 		}else if(cmd.equals("joinProc")) {
-			// È¸¿ø°¡ÀÔÀ» ÁøÇà ÇÑ ÈÄ -> index.jsp·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ -> index.jspï¿½ï¿½ ï¿½Ìµï¿½
 			return new UserJoinProcAction();
 		}else if(cmd.equals("update")) {
-			// È¸¿ø ¼öÁ¤ ÆäÀÌÁö·Î ÀÌµ¿ (¼¼¼Ç¿¡ User ¿ÀºêÁ§Æ®¸¦ °¡Áö°í ÀÖÀ» ¿¹Á¤)
+			// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ (ï¿½ï¿½ï¿½Ç¿ï¿½ User ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 			return new UserUpdateAction();
 		}else if(cmd.equals("updateProc")) {
-			// È¸¿ø ¼öÁ¤À» ÁøÇà ÇÑ ÈÄ -> index.jsp·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ -> index.jspï¿½ï¿½ ï¿½Ìµï¿½
 			return new UserUpdateProcAction();
 		}else if(cmd.equals("delete")) {
-			// È¸¿ø »èÁ¦¸¦ ÁøÇà ÇÑ ÈÄ -> ·Î±×¾Æ¿ôÀ» ÇÏ°í -> index.jsp·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ -> ï¿½Î±×¾Æ¿ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ -> index.jspï¿½ï¿½ ï¿½Ìµï¿½
 		}else if(cmd.equals("login")) {
-			// È¸¿ø ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 			return new UserLoginAction();
 		}else if(cmd.equals("loginProc")) {
-			// È¸¿ø ·Î±×ÀÎÀ» ¼öÇàÇÑ ÈÄ -> ¼¼¼Ç¿¡ µî·ÏÀ» ÇÏ°í -> index.jsp·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ -> ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ -> index.jspï¿½ï¿½ ï¿½Ìµï¿½
 			return new UserLoginProcAction();
 		}else if(cmd.equals("logout")) {
-			// È¸¿ø ·Î±×ÀÎÀ» ¼öÇàÇÑ ÈÄ -> ¼¼¼Ç¿¡ µî·ÏÀ» ÇÏ°í -> index.jsp·Î ÀÌµ¿
+			// È¸ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ -> ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ -> index.jspï¿½ï¿½ ï¿½Ìµï¿½
 			return new UserLogoutAction();
 		}else if(cmd.equals("usernameCheck")) {
 			return new UserUsernameCheckAction();
+		}else if(cmd.equals("cart")) {
+			return new UserCartAction();
+		}else if(cmd.equals("order")) {
+			return new UserOrderAction();
 		}
 		return null;
 	}
