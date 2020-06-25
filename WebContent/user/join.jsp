@@ -99,7 +99,7 @@
 							<input type="text" name="birthmonth" value="" size="10" maxlength="4">월
 							<input type="text" name="birthdate" value="" size="10" maxlength="4">일
 							<input type="radio" name="gender" value="1" class="MS_radio"> 남 
-							<input type="radio" name="gender" value="2" class="MS_radio" checked="">여
+							<input type="radio" name="gender" value="2" class="MS_radio" checked>여
 						</div>
 					</td>
 				</tr>
@@ -116,7 +116,7 @@
 							<input type="text" name="post" form="join_form" id="post"
 								class="MS_input_txt" value="" size="3" maxlength="3"
 								onfocus="this.blur();"> 
-							<span><a style="font-size: 0;" href="javascript:post(1);">
+							<span><a style="font-size: 0;" href="javascript:post(1);" onClick="goPopup();" value="팝업_domainChk">
 							<img src="/shop/image/user/join/zipcode.gif" alt="우편번호검색">
 							</a></span>
 						</div>
@@ -130,7 +130,7 @@
 					</th>
 					<td>
 						<div class="tb-l pl-6">
-							<input type="text" name="haddress1" form="join_form"
+							<input type="text" name="haddress1" form="join_form"  
 								id="haddress1" class="MS_input_txt w415" value="" size="40"
 								maxlength="100" readonly="readonly">
 						</div>
@@ -201,7 +201,7 @@
 						<div class="tb-l pl-6">
 							SMS 문자메세지로 이벤트 및 유용한 쇼핑몰 정보를 받으시겠습니까?<br> 
 							<label style="margin-right: 20px;"> 
-								<input type="radio"	name="smsreceive" form="join_form" value="Y" checked=""> 받습니다.
+								<input type="radio"	name="smsreceive" form="join_form" value="Y" checked> 받습니다.
 							</label> 
 							<label> 
 								<input type="radio" name="smsreceive" form="join_form" value="N"> 받지 않습니다.
@@ -230,7 +230,23 @@
 	</div>
 </form>
 
+<script language="javascript">
+// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+//document.domain = "abc.go.kr";
 
+function goPopup(){
+	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+	var pop = window.open("/shop/user/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+}
+function jusoCallBack(haddress1, post){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		var tfhAddress1 = document.querySelector("#haddress1");
+		tfhAddress1.value = haddress1;
+		var tfPost = document.querySelector("#post");
+		tfPost.value = post;
+}
+</script>
 
 <%@ include file="/include/serviceArea.jsp"%>
 </div>

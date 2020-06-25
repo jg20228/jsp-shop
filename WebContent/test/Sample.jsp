@@ -13,11 +13,11 @@ function goPopup(){
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 	var pop = window.open("/shop/test/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
-function jusoCallBack(address,zipNo){
+function jusoCallBack(haddress1, post){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		var tfhAddress1 = document.querySelector("#haddress1");
 		tfhAddress1.value = haddress1;
-		var tfZipNo = document.querySelector("#post");
+		var tfPost = document.querySelector("#post");
 		tfPost.value = post;
 }
 </script>
