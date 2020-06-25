@@ -27,13 +27,26 @@ public class UserRepositroy {
 	
 	
 	//회원 가입
-	public int save(Member user) {
+	public int save(Member member) {
 		
-		final String SQL = "";
+		final String SQL = "INSERT INTO member(id, name, username, password, birthdate, gender, address, phone, email, userRole, agreement) "
+				+ "VALUES(member_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
+			
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, member.getUsername());
+			pstmt.setString(3, member.getPassword());
+			pstmt.setString(4, member.getBirthdate());
+			pstmt.setString(5, member.getGender());
+			pstmt.setString(6, member.getAddress());
+			pstmt.setString(7, member.getPhone());
+			pstmt.setString(8, member.getEmail());
+			pstmt.setString(9, member.getUserRole().toString());
+			pstmt.setString(10, member.getAgreement());
 			return pstmt.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(TAG + "save : " + e.getMessage());

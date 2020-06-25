@@ -9,22 +9,16 @@
 <link rel="stylesheet" href="/shop/css/user/user.css">
 
 <div class="content__box">
-<h2 class="tit-page">LOGIN</h2>	
+
 	<div id="loginWrap">
-		<dl class="loc-navi">
-<!-- 			<dt class="blind">현재 위치</dt> -->
-			<dd>
-				<a href="/">home</a> &gt; 회원서비스 &gt; login
-			</dd>
-		</dl>
 		<div class="page-body">
-<!--  			<h2 class="tit-page">LOGIN</h2> -->
+  			<h2 class="tit-page">LOGIN</h2>
 			<div style="text-align: center;">
 				<img src="/shop/image/login/welcomLogin.gif">
 			</div>
 			<div class="mlog-sign">
 				<div class="mlog">
-					<form action="/shop/member.html" method="post" name="form1" autocomplete="off">
+					<form action="/shop/user?cmd=loginProc" method="post" name="form1" autocomplete="off">
 						<input type="hidden" name="type" value="login"> 
 						<input type="hidden" name="code" value=""> 
 						<input type="hidden" name="mcode" value=""> 
@@ -45,8 +39,8 @@
 							<div class="id">
 								<label></label><input type="text" name="id" maxlength="20" onblur="document.form1.passwd.focus();" class="MS_login_id">
 							</div>
-							<div class="pwd">
-								<label></label><input type="password" name="passwd" maxlength="20" onkeydown="CheckKey(event);" value="" class="MS_login_pw">
+							<div class="password">
+								<label></label><input type="password" name="password" maxlength="20" onkeydown="CheckKey(event);" value="" class="MS_login_pw">
 							</div>
 							<div class="rollover">
 								<a href="javascript:check();"><img class="btn-mlog" src="/shop/image/login/login_btn.gif" alt="로그인"></a>
