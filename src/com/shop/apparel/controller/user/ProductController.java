@@ -54,6 +54,8 @@ public class ProductController extends HttpServlet {
 	public Action router(String cmd) {
 		if(cmd.equals("home")) {
 
+
+
 			return new ProductHomeAction(); //Board�� ���
 		} else if(cmd.equals("detail")) {
 			return new ProductDetailAction(); //�󼼺���
