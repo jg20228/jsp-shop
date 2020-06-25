@@ -20,25 +20,25 @@
 <ul id="noticemenu" class="rollover">
 
     <li>
-    	<a href="/shop/notice/noticeBoard.jsp">
+    	<a href="/shop/board?cmd=noticeBoard">
     	<img src="/shop/image/notice/noticemenu1_over.gif" onmouseover="this.src='/shop/image/notice/noticemenu1_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu1_over.gif'">
     	</a>
     </li>
     
     <li>
-    	<a href="/shop/notice/noticeMember.jsp">
+    	<a href="/shop/board?cmd=noticeMember">
     	    <img src="/shop/image/notice/noticemenu2.gif" onmouseover="this.src='/shop/image/notice/noticemenu2_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu2.gif'">
     	</a>
     </li>
     
     <li>
-    	<a href="/shop/notice/noticeOverseas.jsp">
+    	<a href="/shop/board?cmd=noticeOverseas">
     	    <img src="/shop/image/notice/noticemenu3.gif" onmouseover="this.src='/shop/image/notice/noticemenu3_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu3.gif'">
     	</a>
     </li>
     
     <li>
-    	<a href="/shop/notice/noticeSize.jsp">
+    	<a href="/shop/board?cmd=noticeSize">
     	    <img src="/shop/image/notice/noticemenu4.gif" onmouseover="this.src='/shop/image/notice/noticemenu4_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu4.gif'">
     	</a>
     </li>

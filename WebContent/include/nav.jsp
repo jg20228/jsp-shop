@@ -5,14 +5,14 @@
 		<div class="nav__box">
 			<ul>
 				<li><a class="menuLink" href="#">카테고리입니다</a></li>
-				<li><a class="menuLink" href="/shop/product/outer.jsp">OUTER</a></li>
-				<li><a class="menuLink" href="#">TOP</a></li>
-				<li><a class="menuLink" href="#">BLOUSE</a></li>
-				<li><a class="menuLink" href="#">ONE PIECE</a></li>
-				<li><a class="menuLink" href="#">PANT</a></li>
-				<li><a class="menuLink" href="#">SKIRT</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=outer">OUTER</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=top">TOP</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=blouse">BLOUSE</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=onePiece">ONE PIECE</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=pant">PANT</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=skirt">SKIRT</a></li>
 				<br />
-				<li><a class="menuLink" href="#">SALE</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=sale">SALE</a></li>
 				<li><a class="menuLink" href="#">SELF PAYMENT</a></li>
 				<br />
 				<li>

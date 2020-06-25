@@ -26,8 +26,10 @@
 							<!-- Start Single Service -->
 							<div class="single-service">
 								<!--<i class="ti-lock"></i>-->
+								<a href="/shop/board?cmd=notice">
 								<h4>NOTICE</h4>
 								<p>공지사항</p>
+								</a>
 							</div>
 							<!-- End Single Service -->
 						</div>

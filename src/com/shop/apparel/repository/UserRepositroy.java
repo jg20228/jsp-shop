@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.shop.apparel.db.DBConn;
-import com.shop.apparel.model.User;
+import com.shop.apparel.model.Member;
 
 public class UserRepositroy {
 	//TAG는 오류 발생시 쉽게 추적하기 위함
@@ -27,7 +27,7 @@ public class UserRepositroy {
 	
 	
 	//회원 가입
-	public int save(User user) {
+	public int save(Member user) {
 		
 		final String SQL = "";
 		try {

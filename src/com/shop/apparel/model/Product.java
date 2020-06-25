@@ -2,10 +2,6 @@ package com.shop.apparel.model;
 
 public class Product {
 	private int id;
-	private String nmae;
-	private String desc;
+	private String name;
 	private int price;
-	private String color;
-	private String size;
-	
 }

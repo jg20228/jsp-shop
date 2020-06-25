@@ -10,7 +10,7 @@
 
 
 <div class="content__box">	
-<form name="form1" method="post" id="join_form" action="/shop/idinfo.html" enctype="multipart/form-data" autocomplete="off">
+<form name="form1" method="post" id="join_form" action="/shop/user?cmd=joinProc" enctype="multipart/form-data" autocomplete="off">
 <h2 class="tit-page">JOIN</h2>	
 	<!-- 일반회원 기본 노출 -->
 	<div id="personInfo">
@@ -29,7 +29,7 @@
 					</th>
 					<td class="none">
 						<div class="tb-l pl-6">
-							<input type="text" name="hname" id="hname" value=""
+							<input type="text" name="name" id="name" value=""
 								class="MS_input_txt w137" size="15" maxlength="30">
 						</div>
 					</td>
@@ -43,7 +43,7 @@
 					</th>
 					<td>
 						<div class="tb-l pl-6">
-							<input type="text" name="id" id="id" value="" class="MS_input_txt w137" size="10" maxlength="12"> 
+							<input type="text" name="username" id="username" value="" class="MS_input_txt w137" size="10" maxlength="12"> 
 								<span>
 									<a style="font-size: 0;" href="javascript:check('id');">
 										<img src="/shop/image/user/join/idcheck.gif" alt="ID중복확인">
@@ -98,7 +98,7 @@
 							<input type="text" name="birthyear" value="" size="10" maxlength="4">년 
 							<input type="text" name="birthmonth" value="" size="10" maxlength="4">월
 							<input type="text" name="birthdate" value="" size="10" maxlength="4">일
-							<input type="radio" name="sex" value="1"
+							<input type="radio" name="gender" value="1"
 								class="MS_radio">남 <input type="radio" name="sex"
 								value="2" class="MS_radio" checked="">여
 						</div>
@@ -192,57 +192,7 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<th>
-						<div class="tb-l pl-30">&nbsp;&nbsp;휴대폰</div>
-					</th>
-					<td>
-						<div class="tb-l pl-6">
-							<input type="text" name="etcphone1" form="join_form"
-								id="etcphone1" class="MS_input_tel" value="" size="4"
-								maxlength="4"> - 
-							<input type="text" name="etcphone2" form="join_form"
-								id="etcphone2" class="MS_input_tel" value="" size="4"
-								maxlength="4"> - 
-							<input type="text" name="etcphone3"
-								form="join_form" id="etcphone3" class="MS_input_tel" value=""
-								size="4" maxlength="4" minlength="4">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th><div class="tb-l pl-30">&nbsp;&nbsp;회사전화</div></th>
-					<td>
-						<div class="tb-left pl-6">
-							<input type="text" name="ophone1" id="ophone1"
-								class="MS_input_tel" value="" size="4" maxlength="4"> -
-							<input type="text" name="ophone2" id="ophone2"
-								class="MS_input_tel" value="" size="4" maxlength="4"> -
-							<input type="text" name="ophone3" id="ophone3"
-								class="MS_input_tel" value="" size="4" maxlength="4">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th><div class="tb-l pl-30">&nbsp;&nbsp;회사주소</div></th>
-					<td>
-						<div class="tb-left pl-6">
-							<ul style="padding: 5px 0;">
-								<li style="margin-bottom: 5px;"><input type="text"
-									name="opost1" id="opost1" class="MS_input_txt" value=""
-									size="3" maxlength="3" onfocus="this.blur();"> - <input
-									type="text" name="opost2" id="opost2" class="MS_input_txt"
-									value="" size="3" maxlength="3" onfocus="this.blur();">
-									<a href="javascript:post(2);"><img
-										src="/shop/image/user/join/zipcode.gif" alt="우편번호검색"></a></li>
-								<li><input type="text" name="oaddress" id="oaddress"
-									class="MS_input_txt" value="" size="40" maxlength="100">
-								</li>
-							</ul>
-						</div>
-					</td>
-				</tr>
-
+				
 				<tr>
 					<th>
 						<div class="tb-l pl-30">이메일 수신여부</div>
