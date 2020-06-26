@@ -38,11 +38,12 @@ public class UserJoinProcAction implements Action {
 		birthdate += request.getParameter("birthmonth");
 		birthdate += request.getParameter("birthdate");		
 		String gender = request.getParameter("gender");		
-		String post = request.getParameter("post");		
-		String address = request.getParameter("haddress1");		
+		String post = request.getParameter("post") + "/";
+		String address = post;
+		address += request.getParameter("haddress1") + "/";		
 		address += request.getParameter("haddress2");		
-		String phone = request.getParameter("hphone1");		
-		phone += request.getParameter("hphone2");		
+		String phone = request.getParameter("hphone1") + "-";		
+		phone += request.getParameter("hphone2")+ "-";		
 		phone += request.getParameter("hphone3");		
 		String email = request.getParameter("email1");		
 		email += "@";		
@@ -72,7 +73,6 @@ public class UserJoinProcAction implements Action {
 				.phone(phone)
 				.email(email)
 				.userRole(userRole)
-				.address(address)
 				.agreement(agreement)
 				.build();
 		

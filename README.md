@@ -35,7 +35,7 @@ CREATE TABLE member(
 	birthdate timestamp not null,
 	gender varchar2(4) not null,
 	address varchar2(100) not null,
-	phone varchar2(11) not null,
+	phone varchar2(13) not null,
 	email varchar2(100) not null,
 	userRole varchar2(20),
 	agreement varchar2(10)

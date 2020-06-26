@@ -40,7 +40,8 @@ public class UserRepositroy {
 			pstmt = conn.prepareStatement(SQL);
 
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+			pstmt.setString(2, password); 
+			
 
 			rs = pstmt.executeQuery();
 
@@ -57,7 +58,7 @@ public class UserRepositroy {
 				member.setPhone(rs.getString("phone"));
 				member.setEmail(rs.getString("email"));
 				member.setUserRole(RoleType.valueOf(rs.getString("userRole")));
-				member.setAddress(rs.getString("agreement"));
+				member.setAgreement(rs.getString("agreement"));
 			}
 			return member;
 
