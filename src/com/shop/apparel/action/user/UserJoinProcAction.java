@@ -76,6 +76,7 @@ public class UserJoinProcAction implements Action {
 				.agreement(agreement)
 				.build();
 		
+
 		UserRepositroy userRepositroy = UserRepositroy.getInstance();
 		int result = userRepositroy.save(member);
 		
