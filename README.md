@@ -63,6 +63,16 @@ CREATE TABLE category(
 	name varchar2(100) not null,
 	foreign key(productId) references product(id)
 );
+
+CREATE TABLE notice(
+	id number primary key,
+	memberId number,
+	title varchar2(100) not null,
+	content clob,
+	orderDate timestamp not null,
+	readCount number not null,
+	foreign key (memberId) references member(id)
+);
 ```
 
 ## 시퀀스
@@ -86,5 +96,18 @@ VALUES(4,'test4',19000,'/shop/testImg/Tcarousel1.png',1);
 
 INSERT INTO category(id,productId,name)
 VALUES(1,1,'CARDIGAN');
+
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(1,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
+
+
+INSERT INTO notice(id,memberId,title,content,orderDate,readCount)
+VALUES(1,1,'공지사항TEST01','공지사항detail','2000-01-01',0);
+
+INSERT INTO notice(id,memberId,title,content,orderDate,readCount)
+VALUES(2,1,'공지사항TEST02','공지사항detail','2000-01-01',0);
+
+INSERT INTO notice(id,memberId,title,content,orderDate,readCount)
+VALUES(3,1,'공지사항TEST03','공지사항detail','2000-01-01',0);
 ```
 
