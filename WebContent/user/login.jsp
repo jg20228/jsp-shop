@@ -37,13 +37,14 @@
 						<fieldset>
 <!-- 							<legend>member login</legend> -->
 							<div class="id">
-								<label></label><input type="text" name="id" maxlength="20" onblur="document.form1.passwd.focus();" class="MS_login_id">
+								<label></label><input type="text" name="username" maxlength="20" onblur="document.form1.passwd.focus();" class="MS_login_id">
 							</div>
 							<div class="password">
 								<label></label><input type="password" name="password" maxlength="20" onkeydown="CheckKey(event);" value="" class="MS_login_pw">
 							</div>
 							<div class="rollover">
-								<a href="javascript:check();"><img class="btn-mlog" src="/shop/image/login/login_btn.gif" alt="로그인"></a>
+<!-- 								<a href="javascript:check();"><img class="btn-mlog" src="/shop/image/login/login_btn.gif" alt="로그인"></a> -->
+								</a><button type="submit"><img class="btn-mlog" src="/shop/image/login/login_btn.gif" alt="로그인"></button>
 							</div>
 							<p class="se-log">
 								<label><input type="checkbox" name="save_id" id="chk_save_id" value="on"> 아이디저장</label>&nbsp;&nbsp;&nbsp;<label><input type="checkbox" name="ssl" value="Y"
