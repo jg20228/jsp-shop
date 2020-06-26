@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!-- Header -->
 <!-- 최상단 메뉴들 (로그인,회원가입,장바구니,내정보,주문,출석체크,북마크) -->
 <header class="header shop">
@@ -11,11 +13,25 @@
 					<!-- Top Right -->
 					<div class="right-content">
 						<ul class="list-main">
-							<li><i class="ti-power-off"></i><a href="/shop/user?cmd=login">Login</a></li>
+<!-- 							<li><i class="ti-power-off"></i><a href="/shop/user?cmd=login">Login</a></li> -->
+<!-- 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=join">JOIN</a></li> -->
+<!-- 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">CART</a></li> -->
+<!-- 							<li><i class="ti-user"></i> <a href="/shop/user?cmd=update">MYPAGE</a></li> -->
+<!-- 							<li><i class="ti-alarm-clock"></i> <a href="/shop/user?cmd=order">ORDER</a></li> -->
+				<c:choose>
+					<c:when test="${empty sessionScope.principal}">
+						<li><i class="ti-power-off"></i><a href="/shop/user?cmd=login">Login</a></li>
 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=join">JOIN</a></li>
 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">CART</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=logout">LOGOUT</a></li>
+							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">CART</a></li>
+							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">WISH LIST</a></li>
 							<li><i class="ti-user"></i> <a href="/shop/user?cmd=update">MYPAGE</a></li>
 							<li><i class="ti-alarm-clock"></i> <a href="/shop/user?cmd=order">ORDER</a></li>
+					</c:otherwise>
+				</c:choose>
 						</ul>
 					</div>
 					<!-- End Top Right -->

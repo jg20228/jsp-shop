@@ -44,7 +44,7 @@
     
 </ul>
 
-<img src="/shop/testImg/EXsize.png">
+<img src="/shop/image/notice/washing_tip.jpg">
     
 <%@ include file="/include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
