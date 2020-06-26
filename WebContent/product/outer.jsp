@@ -6,7 +6,6 @@
 <%@ include file="/include/nav.jsp"%>
 
 		<div class="content__box">
-		
 					<!-- Start Product Area -->
 			<div class="product-area section">
 				<div class="container">
@@ -50,7 +49,7 @@
 																	<span>Add to Compare</span></a>
 																</div>
 																<div class="product-action-2">
-																	<a title="Add to cart" href="#">Add to cart</a>
+																	<a title="Add to cart" onclick=addCart(${product.id})>Add to cart</a>
 																</div>
 															</div>
 														</div>
@@ -688,7 +687,10 @@
 				</div>
 			</div>
 			<!-- End Product Area -->
+	
+
 <%@ include file="/include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>
+<script src="/shop/js/cart.js"></script>
 <%@ include file="/include/footer.jsp"%>

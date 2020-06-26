@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.action.product.ProductAddCartAction;
 import com.shop.apparel.action.product.ProductDetailAction;
 import com.shop.apparel.action.product.ProductHomeAction;
 import com.shop.apparel.action.product.ProductOuterAction;
@@ -65,6 +66,8 @@ public class ProductController extends HttpServlet {
 			return new ProductTopAction(); //�󼼺���
 		}else if(cmd.equals("search")) {
 		//	return new ProductSearchAction(); // ����
+		}else if(cmd.equals("addCart")) {
+			return new ProductAddCartAction();
 		}
 		return null;
 	}

@@ -65,6 +65,11 @@ CREATE TABLE category(
 );
 ```
 
+## 시퀀스
+```
+CREATE SEQUENCE member_SEQ START WITH 1 INCREMENT BY 1;
+```
+
 ## Test data
 ```
 INSERT INTO product(id,name,price,imgSrc,categoryId)
@@ -82,3 +87,4 @@ VALUES(4,'test4',19000,'/shop/testImg/Tcarousel1.png',1);
 INSERT INTO category(id,productId,name)
 VALUES(1,1,'CARDIGAN');
 ```
+
