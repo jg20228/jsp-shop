@@ -185,45 +185,46 @@ CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
 
 ## Test data for product
 ```
-INSERT INTO product(id,name,price,imgSrc,categoryId)
-VALUES(1,'test1',51000,'/shop/testImg/Tcarousel1.png',1);
+INSERT INTO product(id,name,type, price,thumbnail,categoryId)
+VALUES(1,'test1', 'OUTER', 51000,'/shop/testImg/Tcarousel1.png',100);
 
-INSERT INTO product(id,name,price,imgSrc,categoryId)
-VALUES(2,'test2',37000,'/shop/testImg/Tcarousel2.png',1);
+INSERT INTO product(id,name,type, price,thumbnail,categoryId)
+VALUES(2,'test2','OUTER',37000,'/shop/testImg/Tcarousel2.png',100);
 
-INSERT INTO product(id,name,price,imgSrc,categoryId)
-VALUES(3,'test3',24000,'/shop/testImg/Tcarousel3.png',1);
+INSERT INTO product(id,name,type, price,thumbnail,categoryId)
+VALUES(3,'test3','OUTER',24000,'/shop/testImg/Tcarousel3.png',100);
 
-INSERT INTO product(id,name,price,imgSrc,categoryId)
-VALUES(4,'test4',19000,'/shop/testImg/Tcarousel1.png',1);
+INSERT INTO product(id,name, type, price,thumbnail,categoryId)
+VALUES(4,'test4','OUTER',19000,'/shop/testImg/Tcarousel1.png',100);
 ```
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
 VALUES(1,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
 
 
-INSERT INTO notice(id,memberId,title,content,orderDate,readCount)
+INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(1,1,'공지사항TEST01','공지사항detail','2000-01-01',0);
 
-INSERT INTO notice(id,memberId,title,content,orderDate,readCount)
+INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(2,1,'공지사항TEST02','공지사항detail','2000-01-01',0);
 
-INSERT INTO notice(id,memberId,title,content,orderDate,readCount)
+INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(3,1,'공지사항TEST03','공지사항detail','2000-01-01',0);
 ## TEST DATA for catefory
 ```
-INSERT INTO category (id, name, parent_type_id) VALUES (100, 'OUTER', 100);
-INSERT INTO category (id, name, parent_type_id) VALUES (101, 'OUTER', 100);
-INSERT INTO category (id, name, parent_type_id) VALUES (102, 'JACKET', 100);
-INSERT INTO category (id, name, parent_type_id) VALUES (103, 'BBY', 100);
-INSERT INTO category (id, name, parent_type_id) VALUES (104, 'CARDIGAN', 100);
-INSERT INTO category (id, name, parent_type_id) VALUES (105, 'COAT', 100);
+INSERT INTO category (id, type, parentTypeId) VALUES (100, 'OUTER', 100);
+INSERT INTO category (id, type, parentTypeId) VALUES (101, 'OUTER', 100);
+INSERT INTO category (id, type, parentTypeId) VALUES (102, 'JACKET', 100);
+INSERT INTO category (id, type, parentTypeId) VALUES (103, 'BBY', 100);
+INSERT INTO category (id, type, parentTypeId) VALUES (104, 'CARDIGAN', 100);
+INSERT INTO category (id, type, parentTypeId) VALUES (105, 'COAT', 100);
 
-INSERT INTO category (id, name, parent_type_id) VALUES (200, 'TOP', 200);
-INSERT INTO category (id, name, parent_type_id) VALUES (201, 'TOP', 200);
-INSERT INTO category (id, name, parent_type_id) VALUES (202, 'STRIPE', 200);
-INSERT INTO category (id, name, parent_type_id) VALUES (203, 'KNIT', 200);
-INSERT INTO category (id, name, parent_type_id) VALUES (204, 'BASIC', 200);
-INSERT INTO category (id, name, parent_type_id) VALUES (205, 'MTM', 200);
+INSERT INTO category (id, type, parentTypeId) VALUES (200, 'TOP', 200);
+INSERT INTO category (id, type, parentTypeId) VALUES (201, 'TOP', 200);
+INSERT INTO category (id, type, parentTypeId) VALUES (202, 'STRIPE', 200);
+INSERT INTO category (id, type, parentTypeId) VALUES (203, 'KNIT', 200);
+INSERT INTO category (id, type, parentTypeId) VALUES (204, 'BASIC', 200);
+INSERT INTO category (id, type, parentTypeId) VALUES (205, 'MTM', 200);
+
 ```
 
 ## 쿼리문 for category

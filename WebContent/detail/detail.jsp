@@ -19,7 +19,7 @@
 						<!--<a id="zoom_image" href="javascript:imageview('', '');" rel="/shopimages/pighip/">
 <img class="detail_image" id="lens_img" src="/shopimages/pighip/0330010012722.jpg?1592890404" border="0" width="300" />
 </a>-->
-						<img src="${product.imgSrc}">
+						<img src="${product.thumbnail}">
 					</div>
 					<div class="thumb-ctrl">
 						<a href="javascript:alert('상세 이미지가 없습니다.');"><img src="/shop/image/detail/view_image.gif" alt="큰 이미지 보기" title="큰 이미지 보기"></a>
