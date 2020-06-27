@@ -12,6 +12,8 @@ public class UserUpdateProcAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.getParameter("");
 		response.sendRedirect("user/myPage.jsp");
 	}
 

@@ -1,7 +1,5 @@
 package com.shop.apparel.model;
 
-import java.sql.Timestamp;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Orders {
+public class Category {
 	private int id;
-	private int memberId;
-	private Timestamp orderDate;
-	private int totalPrice;
+	private String type;
+	private int parentTypeId;
 }

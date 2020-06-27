@@ -42,9 +42,10 @@ public class ProductRepositroy {
 				product = Product.builder()
 						.id(rs.getInt(1))
 						.name(rs.getString(2))
-						.price(rs.getInt(3))
-						.imgSrc(rs.getString(4))
-						.categoryId(rs.getInt(5))
+						.type(rs.getString(3))
+						.price(rs.getInt(4))
+						.thumbnail(rs.getString(5))
+						.categoryId(rs.getInt(6))
 						.build();
 			}
 			
@@ -73,9 +74,10 @@ public class ProductRepositroy {
 				Product product = Product.builder()
 						.id(rs.getInt(1))
 						.name(rs.getString(2))
-						.price(rs.getInt(3))
-						.imgSrc(rs.getString(4))
-						.categoryId(rs.getInt(5))
+						.type(rs.getString(3))
+						.price(rs.getInt(4))
+						.thumbnail(rs.getString(5))
+						.categoryId(rs.getInt(6))
 						.build();
 				products.add(product);
 			}
