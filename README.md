@@ -145,15 +145,6 @@ CREATE TABLE reply(
 	foreign key (qnaId) references product_qna(id)
 );
 
-CREATE TABLE notice(
-	id number primary key,
-	memberId number,
-	title varchar2(100) not null,
-	content clob,
-	orderDate timestamp not null,
-	readCount number not null,
-	foreign key (memberId) references member(id)
-);
 ```
 
 ## 시퀀스
@@ -183,32 +174,6 @@ CREATE SEQUENCE product_review_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
 ```
 
-## Test data for product
-```
-INSERT INTO product(id,name,type, price,thumbnail,categoryId)
-VALUES(1,'test1', 'OUTER', 51000,'/shop/testImg/Tcarousel1.png',100);
-
-INSERT INTO product(id,name,type, price,thumbnail,categoryId)
-VALUES(2,'test2','OUTER',37000,'/shop/testImg/Tcarousel2.png',100);
-
-INSERT INTO product(id,name,type, price,thumbnail,categoryId)
-VALUES(3,'test3','OUTER',24000,'/shop/testImg/Tcarousel3.png',100);
-
-INSERT INTO product(id,name, type, price,thumbnail,categoryId)
-VALUES(4,'test4','OUTER',19000,'/shop/testImg/Tcarousel1.png',100);
-```
-INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(1,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
-
-
-INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(1,1,'공지사항TEST01','공지사항detail','2000-01-01',0);
-
-INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(2,1,'공지사항TEST02','공지사항detail','2000-01-01',0);
-
-INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(3,1,'공지사항TEST03','공지사항detail','2000-01-01',0);
 ## TEST DATA for catefory
 ```
 INSERT INTO category (id, type, parentTypeId) VALUES (100, 'OUTER', 100);
@@ -225,6 +190,35 @@ INSERT INTO category (id, type, parentTypeId) VALUES (203, 'KNIT', 200);
 INSERT INTO category (id, type, parentTypeId) VALUES (204, 'BASIC', 200);
 INSERT INTO category (id, type, parentTypeId) VALUES (205, 'MTM', 200);
 
+```
+
+## Test data for product
+```
+INSERT INTO product(id,name,type, price,thumbnail,categoryId)
+VALUES(1,'test1', 'OUTER', 51000,'/shop/testImg/Tcarousel1.png',100);
+
+INSERT INTO product(id,name,type, price,thumbnail,categoryId)
+VALUES(2,'test2','OUTER',37000,'/shop/testImg/Tcarousel2.png',100);
+
+INSERT INTO product(id,name,type, price,thumbnail,categoryId)
+VALUES(3,'test3','OUTER',24000,'/shop/testImg/Tcarousel3.png',100);
+
+INSERT INTO product(id,name, type, price,thumbnail,categoryId)
+VALUES(4,'test4','OUTER',19000,'/shop/testImg/Tcarousel1.png',100);
+```
+```
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(1,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
+
+
+INSERT INTO notice(id,memberId,title,content,createDate,readCount)
+VALUES(1,1,'공지사항TEST01','공지사항detail','2000-01-01',0);
+
+INSERT INTO notice(id,memberId,title,content,createDate,readCount)
+VALUES(2,1,'공지사항TEST02','공지사항detail','2000-01-01',0);
+
+INSERT INTO notice(id,memberId,title,content,createDate,readCount)
+VALUES(3,1,'공지사항TEST03','공지사항detail','2000-01-01',0);
 ```
 
 ## 쿼리문 for category
