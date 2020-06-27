@@ -28,6 +28,36 @@ public class BoardRepositroy {
 	private ResultSet rs = null;
 	
 	
+	public Notice selectById(int id){
+		final String SQL = "SELECT * FROM notice WHERE id = ?";
+		Notice notice = null;
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				notice = Notice.builder()
+						.id(rs.getInt(1))
+						.memberId(rs.getInt(2))
+						.title(rs.getString(3))
+						.content(rs.getString(4))
+						.createDate(rs.getTimestamp(5))
+						.readCount(rs.getInt(6))
+						.build();
+			}
+			return notice;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "selectById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return null;
+	}
+	
+	
 	public List<Notice> selectAll(){
 		final String SQL = "SELECT * FROM notice ORDER BY id DESC";
 		List<Notice> notices = new ArrayList<>();

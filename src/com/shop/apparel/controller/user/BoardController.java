@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
 import com.shop.apparel.action.board.BoardNoticeAction;
+import com.shop.apparel.action.board.BoardNoticeDetailAction;
 import com.shop.apparel.action.board.BoardNoticeMemberAction;
 import com.shop.apparel.action.board.BoardNoticeOverseasAction;
 import com.shop.apparel.action.board.BoardNoticeSizeAction;
@@ -51,6 +52,8 @@ public class BoardController extends HttpServlet {
 			return new BoardNoticeOverseasAction(); 
 		}else if(cmd.equals("noticeSize")) {
 			return new BoardNoticeSizeAction(); 
+		}else if(cmd.equals("noticeDetail")) {
+			return new BoardNoticeDetailAction(); 
 		}
 		return null;
 	}
