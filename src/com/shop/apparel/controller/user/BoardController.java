@@ -15,6 +15,7 @@ import com.shop.apparel.action.board.BoardNoticeMemberAction;
 import com.shop.apparel.action.board.BoardNoticeOverseasAction;
 import com.shop.apparel.action.board.BoardNoticeSizeAction;
 import com.shop.apparel.action.board.BoardNoticeWriteAction;
+import com.shop.apparel.action.board.BoardNoticeWriteProcAction;
 import com.shop.apparel.action.product.ProductDetailAction;
 import com.shop.apparel.action.product.ProductHomeAction;
 
@@ -57,6 +58,8 @@ public class BoardController extends HttpServlet {
 			return new BoardNoticeDetailAction(); 
 		}else if(cmd.equals("noticeWrite")) {
 			return new BoardNoticeWriteAction(); 
+		}else if(cmd.equals("noticeWriteProc")) {
+			return new BoardNoticeWriteProcAction(); 
 		}
 		return null;
 	}
