@@ -6,11 +6,6 @@
 
 <div class="content__box">
 	<div id="productDetail">
-		<div class="loc-navi2">
-			<a href="/">home</a> &gt; <a href="/shop/shopbrand.html?xcode=033&amp;type=X&amp;sort=">top</a> &gt; 
-			<a href="/shop/shopbrand.html?xcode=033&amp;type=X&amp;sort=&amp;mcode=001">top</a>
-			<!--&gt; 와이드-t-->
-		</div>
 		<h2 class="tit-page">top</h2>
 		<div class="page-body">
 			<div class="thumb-info">
@@ -26,36 +21,8 @@
 					</div>
 				</div>
 				<!-- .thumb-wrap -->
+				<!-- 장바구니 -->
 				<form name="form1" method="post" id="form1" action="/shop/basket.html">
-					<input type="hidden" name="brandcode" value="033001001272"> 
-					<input type="hidden" name="branduid" value="24348"> 
-					<input type="hidden" name="xcode" value="033"> 
-					<input type="hidden" name="mcode" value="001"> 
-					<input type="hidden" name="typep" value="X"> 
-					<input type="hidden" name="ordertype"> 
-					<input type="hidden" name="opts"> 
-					<input type="hidden" name="mode"> <input type="hidden" name="optioncode"> 
-					<input type="hidden" name="optiontype"> 
-					<input type="hidden" name="optslist"> 
-					<input type="hidden" id="price" name="price" value="49,000"> 
-					<input type="hidden" id="disprice" name="disprice" value=""> 
-					<input type="hidden" id="price_wh" name="price_wh" value="49,000"> 
-					<input type="hidden" id="disprice_wh" name="disprice_wh" value=""> 
-					<input type="hidden" id="option_type_wh" name="option_type_wh" value="PS"> 
-					<input type="hidden" name="MOBILE_USE" value="NO"> 
-					<input type="hidden" name="multiopt_direct" value=""> 
-					<input type="hidden" name="collbasket_type" value="Y"> 
-					<input type="hidden" name="package_chk_val" value="0"> 
-					<input type="hidden" name="miniq" id="miniq" value="1"> 
-					<input type="hidden" name="maxq" id="maxq" value="2147483647"> 
-					<input type="hidden" name="cart_free" value=""> 
-					<input type="hidden" name="spcode"> 
-					<input type="hidden" name="spcode2"> 
-					<input type="hidden" id="regular_price"	name="regular_price" value="49,000"> 
-					<input type="hidden" id="discount_price" name="discount_price" value=""> 
-					<input type="hidden" id="discount_type" name="discount_type" value=""> 
-					<input type="hidden" name="uid" value="24348"> 
-					<input type="hidden" id="option_type" name="option_type" value="PS">
 					<div class="info">
 						<table border="0" cellpadding="0" cellspacing="0">
 							<tbody>
@@ -815,10 +782,13 @@
 				</center>
 				<center></center>
 				<center>
-					<a href="http://www.pighip.co.kr/board/board.html?code=pighip_board1&amp;page=1&amp;type=v&amp;board_cate=&amp;num1=999941&amp;num2=00000&amp;number=2&amp;lock=N"><img
-						src="http://pighip.jpg2.kr/yj/2018/01/23/s-tip.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a><a
-						href="http://www.pighip.co.kr/board/board.html?code=pighip_board1&amp;page=1&amp;type=v&amp;board_cate=&amp;num1=999906&amp;num2=00000&amp;number=10&amp;lock=N"><img
-						src="http://pighip.jpg2.kr/yj/2018/01/23/w-tip.jpg"></a>
+					<a href="http://www.pighip.co.kr/board/board.html?code=pighip_board1&amp;page=1&amp;type=v&amp;board_cate=&amp;num1=999941&amp;num2=00000&amp;number=2&amp;lock=N">
+						<img src="http://pighip.jpg2.kr/yj/2018/01/23/s-tip.jpg">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					</a>
+					<a href="http://www.pighip.co.kr/board/board.html?code=pighip_board1&amp;page=1&amp;type=v&amp;board_cate=&amp;num1=999906&amp;num2=00000&amp;number=10&amp;lock=N">
+						<img src="http://pighip.jpg2.kr/yj/2018/01/23/w-tip.jpg">
+					</a>
 				</center>
 				<center></center>
 				<center style="margin: 0px; text-align: center;">
