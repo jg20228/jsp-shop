@@ -46,8 +46,8 @@ CREATE TABLE member(
 	password varchar2(100) not null,
 	birthdate timestamp not null,
 	gender varchar2(4) not null,
-	address varchar2(100) not null,
-	phone varchar2(11) not null,
+	address varchar2(200) not null,
+	phone varchar2(13) not null,
 	email varchar2(100) not null,
 	userRole varchar2(20),
 	agreement varchar2(10)
@@ -208,7 +208,7 @@ VALUES(4,'test4','OUTER',19000,'/shop/testImg/Tcarousel1.png',100);
 ```
 ```
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(1,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
+VALUES(0,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
 
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
