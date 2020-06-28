@@ -25,7 +25,7 @@
 						<tbody>
 							<c:forEach var="product" items="${carts}">
 							<tr>
-								<td class="image" data-title="No"><img src="${product.imgSrc}" alt="#"></td>
+								<td class="image" data-title="No"><img src="${product.thumbnail}" alt="#"></td>
 								<td class="product-des" data-title="Description">
 									<p class="product-name"><a href="#">${product.name}</a></p>
 									<p class="product-des">설명은 dto 혹은 product 모델 수정</p>
