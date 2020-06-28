@@ -27,6 +27,7 @@ public class UserUpdateAction implements Action {
 		System.out.println(member.getPhone());
 		System.out.println(member.getEmail());
 		System.out.println(member.getAddress());
+		System.out.println();
 
 		Timestamp ts = Timestamp.valueOf(member.getBirthdate());
 

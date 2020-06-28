@@ -10,6 +10,7 @@
 
 <div class="content__box">
 	<form name="form1" method="post" id="join_form" action="/shop/user?cmd=updateProc" autocomplete="off">
+	<input type="hidden" name="id" value="${sessionScope.principal.id}">
 		<h2 class="tit-page">MY PAGE</h2>
 		<!-- 일반회원 기본 노출 -->
 		<div id="personInfo">
@@ -27,7 +28,7 @@
 						</th>
 						<td class="none">
 							<div class="tb-l pl-6">
-								<input type="text" name="name" id="name" value="${sessionScope.principal.name}" class="MS_input_txt w137" size="15" maxlength="30" disabled="disabled">
+								<input type="text" name="name" id="name" value="${sessionScope.principal.name}" class="MS_input_txt w137" size="15" maxlength="30" readonly="readonly">
 							</div>
 						</td>
 					</tr>
@@ -39,7 +40,7 @@
 						</th>
 						<td>
 							<div class="tb-l pl-6">
-								<input type="text" name="username" id="username" value="${sessionScope.principal.username}" class="MS_input_txt w137" size="10" maxlength="12" disabled="disabled""> <span> <a
+								<input type="text" name="username" id="username" value="${sessionScope.principal.username}" class="MS_input_txt w137" size="10" maxlength="12" readonly="readonly"> <span> <a
 									style="font-size: 0;" href="javascript:check('id');"> <img src="/shop/image/user/join/idcheck.gif" alt="ID중복확인">
 								</a>
 								</span>
@@ -79,17 +80,17 @@
 						</th>
 						<td>
 							<div class="tb-l pl-6">
-								<input type="text" name="birthyear" value="${dto.birthyear}" size="10" maxlength="4">년 <input type="text" name="birthmonth" value="${dto.birthmonth}" size="10" maxlength="4">월
-								<input type="text" name="birthdate" value="${dto.birthdate}" size="10" maxlength="4">일
+								<input type="text" name="birthyear" value="${dto.birthyear}" size="10" maxlength="4" readonly="readonly">년 <input type="text" name="birthmonth" value="${dto.birthmonth}" size="10" maxlength="4" readonly="readonly">월
+								<input type="text" name="birthdate" value="${dto.birthdate}" size="10" maxlength="4" readonly="readonly">일
 
 								<c:choose>
 									<c:when test="${sessionScope.principal.gender eq '1'}">
-										<input type="radio" name="gender" value="1" class="MS_radio" checked> 남
-										<input type="radio" name="gender" value="2" class="MS_radio">여
+										<input type="radio" name="gender" value="1" class="MS_radio" checked readonly="readonly"> 남
+										<input type="radio" name="gender" value="2" class="MS_radio" readonly="readonly">여
 									</c:when>
 									<c:otherwise>
-										<input type="radio" name="gender" value="1" class="MS_radio"> 남
-										<input type="radio" name="gender" value="2" class="MS_radio" checked>여	
+										<input type="radio" name="gender" value="1" class="MS_radio" readonly="readonly"> 남
+										<input type="radio" name="gender" value="2" class="MS_radio" checked readonly="readonly">여	
 									</c:otherwise>
 								</c:choose>
 							</div>

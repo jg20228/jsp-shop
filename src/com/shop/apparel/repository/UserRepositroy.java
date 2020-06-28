@@ -27,6 +27,85 @@ public class UserRepositroy {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
+	// 회원 수정시 세션에 principal 값 갱신
+	public Member findById(int id) {
+
+		final String SQL = "SELECT id, name, username, password, birthdate, gender, address, phone, email, userRole, agreement "
+				+ "FROM member WHERE id = ? ";
+		
+		Member member = null;
+		
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+
+			pstmt.setInt(1, id);
+						
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				
+				member = new Member();
+				member.setId(rs.getInt("id"));
+				member.setName(rs.getString("name"));
+				member.setUsername(rs.getString("username"));
+				member.setPassword(rs.getString("password"));
+				member.setBirthdate(rs.getString("birthdate"));
+				member.setGender(rs.getString("gender"));
+				member.setAddress(rs.getString("address"));
+				member.setPhone(rs.getString("phone"));
+				member.setEmail(rs.getString("email"));
+				member.setUserRole(RoleType.valueOf(rs.getString("userRole")));
+				member.setAgreement(rs.getString("agreement"));
+			}
+			return member;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findByUsernameAndPassword : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+
+		return null;
+	}
+	
+	// 회원 정보 수정
+	public int  update(Member member) {
+
+		final String SQL = "UPDATE member SET password =?, address = ?, phone = ?, email = ?, agreement = ? WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+
+			System.out.println("update : " + member.getPassword());
+			System.out.println("update : " + member.getAddress());
+			System.out.println("update : " + member.getPhone());
+			System.out.println("update : " + member.getEmail());
+			System.out.println("update : " + member.getAgreement());
+			System.out.println("update : " + member.getId());
+			System.out.println();
+			
+			pstmt.setString(1, member.getPassword());
+			pstmt.setString(2, member.getAddress());
+			pstmt.setString(3, member.getPhone());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getAgreement());
+			pstmt.setInt(6, member.getId());
+			
+			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "update : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+
+		return -1;
+	}
+	
 	// 로그인
 	public Member findByUsernameAndPassword(String username, String password) {
 
