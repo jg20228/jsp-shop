@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
 import com.shop.apparel.action.board.BoardNoticeAction;
+import com.shop.apparel.action.board.BoardNoticeDeleteProc;
 import com.shop.apparel.action.board.BoardNoticeDetailAction;
 import com.shop.apparel.action.board.BoardNoticeMemberAction;
 import com.shop.apparel.action.board.BoardNoticeOverseasAction;
 import com.shop.apparel.action.board.BoardNoticeSizeAction;
+import com.shop.apparel.action.board.BoardNoticeUpdateAction;
+import com.shop.apparel.action.board.BoardNoticeUpdateProcAction;
 import com.shop.apparel.action.board.BoardNoticeWriteAction;
 import com.shop.apparel.action.board.BoardNoticeWriteProcAction;
 import com.shop.apparel.action.product.ProductDetailAction;
@@ -60,6 +63,12 @@ public class BoardController extends HttpServlet {
 			return new BoardNoticeWriteAction(); 
 		}else if(cmd.equals("noticeWriteProc")) {
 			return new BoardNoticeWriteProcAction(); 
+		}else if(cmd.equals("noticeDeleteProc")) {
+			return new BoardNoticeDeleteProc(); 
+		}else if(cmd.equals("noticeUpdate")) {
+			return new BoardNoticeUpdateAction(); 
+		}else if(cmd.equals("noticeUpdateProc")) {
+			return new BoardNoticeUpdateProcAction(); 
 		}
 		return null;
 	}

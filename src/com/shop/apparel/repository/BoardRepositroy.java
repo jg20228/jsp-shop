@@ -26,12 +26,28 @@ public class BoardRepositroy {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	//delete
 	
+	public int deleteById(int id) {
+		final String SQL = "DELETE FROM notice WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
 	
 	//관리자가 작성하는 공지사항
 	public int saveNotice(Notice notice){
 		final String SQL = "INSERT INTO notice(id, memberId, title, content, createDate, readCount) "
-				+ "VALUES(notice.SEQ.nextval,?,?,?,sysdate,0)";
+				+ "VALUES(notice_SEQ.nextval,?,?,?,sysdate,0)";
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);

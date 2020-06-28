@@ -53,7 +53,6 @@
 				onmouseout="this.src='/shop/image/notice/noticemenu4.gif'">
 		</a></li>
 	</ul>
-	<!-- asdaddskdjalfjlaksfjsklajasdljsadlksadsl; -->
 	<div class="bbs-table-view">
 		<table summary="게시글 보기">
 			<caption>게시글 보기</caption>
@@ -157,18 +156,20 @@
 				<tbody>
 					<tr>
 						<td style="padding: 0; border: 0;"><a
-							href="/board/board.html?code=pighip&amp;page=1&amp;board_cate=&amp;num1=816107&amp;num2=00000&amp;type=q&amp;type2=u"
+							href="/shop/board?cmd=noticeUpdate&id=${notice.id}"
 							class="none"><img src="/shop/image/board/board_modify.gif"
-								alt="수정"></a> <a
-							href="/board/board.html?code=pighip&amp;page=1&amp;board_cate=&amp;num1=816107&amp;num2=00000&amp;type=q&amp;type2=d"><img
-								src="/shop/image/board/board_del.gif" alt="삭제"></a> <a
+								alt="수정"></a> 
+							<a
+							href="/shop/board?cmd=noticeDeleteProc&id=${notice.id}">
+							<img src="/shop/image/board/board_del.gif" alt="삭제"></a> 
+							<a
 							class="write"
-							href="/board/board.html?code=pighip&amp;page=1&amp;board_cate=&amp;type=i"><img
+							href="/shop/board?cmd=noticeWrite"><img
 								src="/shop/image/board/board_write.gif" alt="글쓰기"></a>
 						</td>
 						<td style="text-align: right; padding: 0; border: 0;"><a
-							href="/board/board.html?code=pighip&amp;page=1&amp;board_cate=&amp;s_id=&amp;stext=&amp;ssubject=&amp;shname=&amp;scontent=&amp;sbrand=&amp;sgid=&amp;datekey=&amp;branduid="><img
-								src="/shop/image/board/board_list.gif" alt="목록보기"></a></td>
+							href="/shop/board?cmd=noticeBoard">
+							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a></td>
 					</tr>
 				</tbody>
 			</table>

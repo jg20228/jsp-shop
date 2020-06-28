@@ -27,16 +27,16 @@ jQuery.noConflict();
 
 <div class="content__box">
 	<div class="container">
-		<form action="/shop/board?cmd=noticeWriteProc" method="POST">
+		<form action="/shop/board?cmd=noticeUpdateProc" method="POST">
 			<div class="form-group">
 				<label for="title">Title:</label> <input type="text"
-					class="form-control" placeholder="title" id="title" name="title">
+					class="form-control" placeholder="title" id="title" name="title" value="${notice.title}">
 			</div>
 	
 			<div class="form-group">
 				<label for="content">Content:</label>
 				<textarea id="summernote" class="form-control" rows="5" id="content"
-					name="content"></textarea>
+					name="content">${notice.content}</textarea>
 			</div>
 	
 			<button type="submit" class="btn btn-primary">글쓰기 등록</button>
