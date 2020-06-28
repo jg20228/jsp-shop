@@ -28,6 +28,27 @@ public class BoardRepositroy {
 	private ResultSet rs = null;
 	
 	
+	//관리자가 작성하는 공지사항
+	public int saveNotice(Notice notice){
+		final String SQL = "INSERT INTO notice(id, memberId, title, content, createDate, readCount) "
+				+ "VALUES(notice.SEQ.nextval,?,?,?,sysdate,0)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, notice.getMemberId());
+			pstmt.setString(2, notice.getTitle());
+			pstmt.setString(3, notice.getContent());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "saveNotice : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
 	public Notice selectById(int id){
 		final String SQL = "SELECT * FROM notice WHERE id = ?";
 		Notice notice = null;

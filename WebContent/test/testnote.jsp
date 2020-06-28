@@ -28,7 +28,6 @@ jQuery.noConflict();
 <div class="content__box">
 	<div class="container">
 		<form action="/shop/board?cmd=noticeWriteProc" method="POST">
-	
 			<div class="form-group">
 				<label for="title">Title:</label> <input type="text"
 					class="form-control" placeholder="title" id="title" name="title">
