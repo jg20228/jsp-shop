@@ -111,7 +111,7 @@
 <c:choose>
 	<c:when test="${sessionScope.principal.userRole.toString().equals('ADMIN')}">
 		<a class="center"
-		href="">
+		href="/shop/board?cmd=noticeWrite">
 		<img src="/shop/image/board/board_write.gif" alt="글쓰기"></a>    
 	</c:when>
 	<c:otherwise>

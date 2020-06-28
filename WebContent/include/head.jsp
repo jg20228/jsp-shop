@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!-- 섬머노트 -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	
 	<!-- jquery, ajax -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Meta Tag -->
@@ -44,7 +51,6 @@
 	<link rel="stylesheet" href="/shop//css/style.css">
     <link rel="stylesheet" href="/shop//eshop-template/css/responsive.css">
     <!-- myStyle -->
-
     <link rel="stylesheet" href="/shop//css/myStyle.css">
     <link rel="stylesheet" href="/shop//css/pighip.css">
 

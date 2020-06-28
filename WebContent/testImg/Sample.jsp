@@ -9,17 +9,18 @@
 //document.domain = "abc.go.kr";
 
 function goPopup(){
-	// 주소검색을 수행할 팝업 페이지를 호출합니다.
-	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	var pop = window.open("/shop/test/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("/shop/testImg/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
-function jusoCallBack(haddress1, post){
+
+
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail, zipNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		var tfhAddress1 = document.querySelector("#haddress1");
-		tfhAddress1.value = haddress1;
-		var tfPost = document.querySelector("#post");
-		tfPost.value = post;
+		document.form.roadFullAddr.value = roadFullAddr;
+		document.form.roadAddrPart1.value = roadAddrPart1;
+		document.form.addrDetail.value = addrDetail;
+		document.form.zipNo.value = zipNo;
 }
+
 </script>
 <title>주소 입력 샘플</title>
 </head>
@@ -29,8 +30,10 @@ function jusoCallBack(haddress1, post){
 	<div id="list"></div>
 	<div id="callBackDiv">
 		<table>
-			<tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="haddress1"  name="haddress1" /></td></tr>
-			<tr><td>우편번호           </td><td><input type="text"  style="width:500px;" id="post"  name="post" /></td></tr>
+			<tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" /></td></tr>
+			<tr><td>도로명주소           </td><td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td></tr>
+			<tr><td>고객입력 상세주소    </td><td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td></tr>
+			<tr><td>우편번호             </td><td><input type="text"  style="width:500px;" id="zipNo"  name="zipNo" /></td></tr>
 		</table>
 	</div>
 </form>
