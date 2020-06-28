@@ -111,7 +111,7 @@
 <c:choose>
 	<c:when test="${sessionScope.principal.userRole.toString().equals('ADMIN')}">
 		<a class="center"
-		href="javascript:;alert('해당 게시판은 글쓰기,수정,삭제가 금지된 게시판입니다.');">
+		href="">
 		<img src="/shop/image/board/board_write.gif" alt="글쓰기"></a>    
 	</c:when>
 	<c:otherwise>
