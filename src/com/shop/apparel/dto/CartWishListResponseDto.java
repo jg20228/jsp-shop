@@ -15,5 +15,5 @@ public class CartWishListResponseDto {
 	private int productId;
 	private String productName;
 	private int productPrice;
-	private String productThumbnail;
+	private String productThumbnailH;
 }

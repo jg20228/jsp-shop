@@ -30,7 +30,6 @@ public class UserCartAction implements Action{
 				.cartResponseDtos(dtos)
 				.cartWishListResponseDto(cartWishListResponseDto)
 				.build();
-		
 		request.setAttribute("dto", dto);
 		RequestDispatcher dis = request.getRequestDispatcher("user/cart.jsp");
 		dis.forward(request, response);

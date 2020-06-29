@@ -31,8 +31,8 @@
 													<div class="single-product">
 														<div class="product-img">
 															<a href="/shop/product?cmd=detail&id=${product.id}"> 
-															<img class="default-img" src="${product.thumbnail}" alt="#">
-															<img class="hover-img" src="${product.thumbnail}" alt="#">
+															<img class="default-img" src="${product.thumbnailH}" alt="#">
+															<img class="hover-img" src="${product.thumbnailH}" alt="#">
 															</a>
 															<div class="button-head">
 																<div class="product-action">

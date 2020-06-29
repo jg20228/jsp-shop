@@ -60,7 +60,7 @@
 										<div class="thumb">
 											<a
 												href="/shop/product?cmd=detail&id=${cart.productId}">
-												<img src="${cart.productThumbnail}" alt="상품 섬네일"
+												<img src="${cart.productThumbnailH}" alt="상품 섬네일"
 												title="상품 섬네일">
 											</a>
 										</div>
@@ -155,8 +155,8 @@
 			<div class="mem-lvl">
 				<p>											
 					저희 쇼핑몰을 이용해주셔서 감사합니다.
-					<span class="MS_group_content"> <span class="MS_group_hname">${dto.cartResponseDtos.get(0).memberUsername}</span>
-						<span class="username">님</span>이 <span class="MS_group_condition"></span>구매시,
+					<span class="MS_group_content"> <span class="MS_group_hname"></span>
+						<span class="username">${principal.username}님</span>이 <span class="MS_group_condition"></span>구매시,
 						<span class="MS_group_msg">구매금액의 <font color="#F26622">1</font>%를
 							<font color="#F26622">추가 적립</font>해 드립니다.
 					</span>
@@ -199,7 +199,7 @@
 									<div class="thumb">
 										<a
 											href="/shop/shopdetail.html?branduid=24368&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=bm9%2FW1w%3D"><img
-											src="${wish.productThumbnail}"
+											src="${wish.productThumbnailH}"
 											alt="상품 섬네일" title="상품 섬네일"></a>
 									</div>
 								</div>

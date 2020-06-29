@@ -17,7 +17,7 @@ public class CartResponseDtos {
 	private int cartId;
 	private int cartQuantity;
 	private int productPrice;
-	private String productThumbnail;
+	private String productThumbnailH;
 	private int memberId;
 	private String memberUsername;
 }

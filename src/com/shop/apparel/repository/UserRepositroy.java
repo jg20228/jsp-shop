@@ -69,7 +69,7 @@ public class UserRepositroy {
 
 	// WishList
 		public List<CartWishListResponseDto> cartWishDto(int memberId) {
-			final String SQL = "SELECT w.id, w.memberid, p.id, p.name, p.price, p.thumbnail "
+			final String SQL = "SELECT w.id, w.memberid, p.id, p.name, p.price, p.thumbnailH "
 					+ "FROM wishList w INNER JOIN product p "
 					+ "ON w.productid = p.id "
 					+ "WHERE w.memberid = ?";
@@ -88,7 +88,7 @@ public class UserRepositroy {
 							.productId(rs.getInt(3))
 							.productName(rs.getString(4))
 							.productPrice(rs.getInt(5))
-							.productThumbnail(rs.getString(6))
+							.productThumbnailH(rs.getString(6))
 							.build();
 					dtos.add(dto);
 				}
@@ -150,7 +150,7 @@ public class UserRepositroy {
 
 	// 장바구니 페이지 불러오기
 	public List<CartResponseDtos> findCartById(int id) {
-		final String SQL = "SELECT p.id, p.name, p.type, c.id ,c.quantity,  p.price, p.thumbnail, m.id, m.username "
+		final String SQL = "SELECT p.id, p.name, p.type, c.id ,c.quantity,  p.price, p.thumbnailH, m.id, m.username "
 				+ "FROM " + "cart c INNER JOIN product p " + "ON p.id = c.productId " + "INNER JOIN member m "
 				+ "ON m.id = c.memberId " + "WHERE m.id = ? ";
 		try {
@@ -167,7 +167,7 @@ public class UserRepositroy {
 				dto.setCartId(rs.getInt(4));
 				dto.setCartQuantity(rs.getInt(5));
 				dto.setProductPrice(rs.getInt(6));
-				dto.setProductThumbnail(rs.getString(7));
+				dto.setProductThumbnailH(rs.getString(7));
 				dto.setMemberId(rs.getInt(8));
 				dto.setMemberUsername(rs.getString(9));
 				dtos.add(dto);

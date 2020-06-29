@@ -30,7 +30,6 @@ alter user shop default tablespace users quota unlimited on users;
 DROP TABLE notice;
 DROP TABLE orders_detail;
 DROP TABLE product_detail;
-DROP TABLE product_disc;
 DROP TABLE product_review;
 DROP TABLE REPLY;
 DROP TABLE product_qna;
@@ -74,9 +73,11 @@ CREATE TABLE product(
 	id number primary key,
     name varchar2(100) not null,
 	type varchar2(100) not null,
+	titleComment CLOB not null,
 	price number not null,
 	thumbnailW varchar2(100) not null,
 	thumbnailH varchar2(100) not null,
+	contents CLOB not null,
 	categoryId number not null,
     foreign key(categoryId) references category(id)
 );
@@ -89,11 +90,6 @@ CREATE TABLE orders_detail(
     price number not null,
 	foreign key(orderId) references orders(id),
     foreign key(productId) references product(id)
-);
-
-CREATE TABLE product_disc(
-    id number primary key,
-    content BLOB
 );
 
 CREATE TABLE product_qna(
@@ -125,8 +121,7 @@ CREATE TABLE product_detail(
     discriptionId number,
     foreign key(productId) references product(id),
     foreign key(reviewId) references product_review(id),
-    foreign key(qnaId) references product_qna(id),
-    foreign key(discriptionId) references product_disc(id)
+    foreign key(qnaId) references product_qna(id)
 );
 
 CREATE TABLE notice(
@@ -176,7 +171,6 @@ DROP SEQUENCE orders_SEQ;
 DROP SEQUENCE orders_detail_SEQ;
 DROP SEQUENCE product_SEQ;
 DROP SEQUENCE product_detail_SEQ;
-DROP SEQUENCE product_disc_SEQ;
 DROP SEQUENCE product_qna_SEQ;
 DROP SEQUENCE product_review_SEQ;
 DROP SEQUENCE reply_SEQ;
@@ -191,7 +185,6 @@ CREATE SEQUENCE orders_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_detail_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_detail_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_disc_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_qna_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_review_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
@@ -217,18 +210,19 @@ INSERT INTO category (id, type, parentTypeId) VALUES (205, 'MTM', 200);
 
 ## Test data for product
 ```
-INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,categoryId)
-VALUES(1,'test1', 'OUTER', '언니가 인스타에서 추천한 바지 ♥♥ 색감 하나하나 너무 예뻐요 ! 컬러 추가되어 재진행합니다 :)', 51000, '/shop/testImg/thumbW(1)', '/shop/testImg/thumbH(1)',100);
+INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
+VALUES(1,'test1', 'OUTER', '언니가 인스타에서 추천한 바지 ♥♥ 색감 하나하나 너무 예뻐요 ! 컬러 추가되어 재진행합니다 :)', 51000, '/shop/image/detail/thumbW(1).jpg', '/shop/image/detail/thumbH(1).gif','disc컨텐츠 예약',100);
 
-INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,categoryId)
-VALUES(2,'test2','OUTER', '확실히 포인트 되면서도 얼굴 작아 보이게 만들어주는 사랑스러운 이어링이에요 ♥',37000, '/shop/testImg/thumbW(2)','/shop/testImg/thumbH(2).png',100);
+INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
+VALUES(2,'test2','OUTER', '확실히 포인트 되면서도 얼굴 작아 보이게 만들어주는 사랑스러운 이어링이에요 ♥',37000, '/shop/image/detail/thumbW(2).jpg','/shop/image/detail/thumbH(2).gif','disc컨텐츠 예약',100);
 
-INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,categoryId)
-VALUES(3,'test3','OUTER', '캐주얼한 나그랑 티셔츠예요 ! 박시핏이라 남녀 공용으로 편하게 입으실 수 있어요 ♥', 24000, '/shop/testImg/thumbW(3)','/shop/testImg/thumbH(3).png',100);
+INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
+VALUES(3,'test3','OUTER', '캐주얼한 나그랑 티셔츠예요 ! 박시핏이라 남녀 공용으로 편하게 입으실 수 있어요 ♥', 24000, '/shop/image/detail/thumbW(3).jpg','/shop/image/detail/thumbH(3).gif','disc컨텐츠 예약',100);
 
-INSERT INTO product(id,name, type, titleComment, price,thumbnailW,thumbnailH,categoryId)
-VALUES(4,'test4','OUTER', '톡톡 튀는 컬러들이 믹스된 타이다이 티셔츠 ! 긴팔 버전으로 나왔어요 ♡',19000, '/shop/testImg/thumbW(4)','/shop/testImg/thumbH(4).png',100);
+INSERT INTO product(id,name, type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
+VALUES(4,'test4','OUTER', '톡톡 튀는 컬러들이 믹스된 타이다이 티셔츠 ! 긴팔 버전으로 나왔어요 ♡',19000, '/shop/image/detail/thumbW(4).jpg','/shop/image/detail/thumbH(4).gif','disc컨텐츠 예약',100);
 ```
+
 ```
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
 VALUES(0,'관리자','admin',1234,'2020-06-22','관','test','010-0000-0000','test@test.com','ADMIN','T');
