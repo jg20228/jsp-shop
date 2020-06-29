@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shop.apparel.db.DBConn;
-import com.shop.apparel.dto.CartResponseDto;
+import com.shop.apparel.dto.CartResponseDtos;
+import com.shop.apparel.dto.CartWishListResponseDto;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.RoleType;
+import com.shop.apparel.model.WishList;
 
 public class UserRepositroy {
 	// TAG는 오류 발생시 쉽게 추적하기 위함
@@ -30,7 +32,106 @@ public class UserRepositroy {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
-	//장바구니 삭제
+	//deleteWishList
+	public int deleteWishId(int wishId) {
+		final String SQL = "DELETE FROM wishlist WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, wishId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteWishId : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	// WishList 추가
+	public int saveWishList(int memberId, int productId) {
+		final String SQL = "INSERT INTO wishList(id,memberId,productId) " + "VALUES(wishList_SEQ.NEXTVAL,?,?)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			pstmt.setInt(2, productId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "saveWishList : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+
+	// WishList
+		public List<CartWishListResponseDto> cartWishDto(int memberId) {
+			final String SQL = "SELECT w.id, w.memberid, p.id, p.name, p.price, p.thumbnail "
+					+ "FROM wishList w INNER JOIN product p "
+					+ "ON w.productid = p.id "
+					+ "WHERE w.memberid = ?";
+			List<CartWishListResponseDto> dtos = null;
+			try {
+				conn = DBConn.getConnection();
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setInt(1, memberId);
+				dtos = new ArrayList<>();
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					CartWishListResponseDto dto = CartWishListResponseDto.builder()
+							.wishId(rs.getInt(1))
+							.memberId(rs.getInt(2))
+							.productId(rs.getInt(3))
+							.productName(rs.getString(4))
+							.productPrice(rs.getInt(5))
+							.productThumbnail(rs.getString(6))
+							.build();
+					dtos.add(dto);
+				}
+				return dtos;
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(TAG + "cartWishDto : " + e.getMessage());
+			} finally {
+				DBConn.close(conn, pstmt, rs);
+			}
+			return null;
+		}
+	
+	// WishList
+	public List<WishList> findAllWishList(int memberId) {
+		final String SQL = "SELECT * FROM wishList WHERE memberId = ?";
+		List<WishList> wishLists = null;
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			wishLists = new ArrayList<>();
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				WishList wishList = WishList.builder()
+						.id(rs.getInt(1))
+						.memberId(rs.getInt(2))
+						.productId(rs.getInt(3))
+						.build();
+				wishLists.add(wishList);
+			}
+			return wishLists;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findAllWishList : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+
+	// 장바구니 삭제
 	public int deleteCartId(int cartId) {
 		final String SQL = "DELETE FROM cart WHERE id = ?";
 		try {
@@ -46,34 +147,29 @@ public class UserRepositroy {
 		}
 		return -1;
 	}
-	
-	
-	//장바구니 페이지 불러오기
-	public List<CartResponseDto> findCartById(int id) {
+
+	// 장바구니 페이지 불러오기
+	public List<CartResponseDtos> findCartById(int id) {
 		final String SQL = "SELECT p.id, p.name, p.type, c.id ,c.quantity,  p.price, p.thumbnail, m.id, m.username "
-				+"FROM "
-				+"cart c INNER JOIN product p "
-				+"ON p.id = c.productId "
-				+"INNER JOIN member m "
-				+"ON m.id = c.memberId "
-				+"WHERE m.id = ? ";
+				+ "FROM " + "cart c INNER JOIN product p " + "ON p.id = c.productId " + "INNER JOIN member m "
+				+ "ON m.id = c.memberId " + "WHERE m.id = ? ";
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
-			List<CartResponseDto> dtos = new ArrayList<>();
-			while(rs.next()) {
-					CartResponseDto dto = new CartResponseDto();
-					dto.setProductId(rs.getInt(1));
-					dto.setProductName(rs.getString(2));
-					dto.setProductType(rs.getString(3));
-					dto.setCartId(rs.getInt(4));
-					dto.setCartQuantity(rs.getInt(5));
-					dto.setProductPrice(rs.getInt(6));
-					dto.setProductThumbnail(rs.getString(7));
-					dto.setMemberId(rs.getInt(8));
-					dto.setMemberUsername(rs.getString(9));
+			List<CartResponseDtos> dtos = new ArrayList<>();
+			while (rs.next()) {
+				CartResponseDtos dto = new CartResponseDtos();
+				dto.setProductId(rs.getInt(1));
+				dto.setProductName(rs.getString(2));
+				dto.setProductType(rs.getString(3));
+				dto.setCartId(rs.getInt(4));
+				dto.setCartQuantity(rs.getInt(5));
+				dto.setProductPrice(rs.getInt(6));
+				dto.setProductThumbnail(rs.getString(7));
+				dto.setMemberId(rs.getInt(8));
+				dto.setMemberUsername(rs.getString(9));
 				dtos.add(dto);
 			}
 			return dtos;
@@ -85,12 +181,10 @@ public class UserRepositroy {
 		}
 		return null;
 	}
-	
-	
-	//장바구니 추가
-	public int saveCartId(int memberId,int productId) {
-		final String SQL = "INSERT INTO cart(id,memberId,productId,quantity) "
-				+ "VALUES(cart_SEQ.NEXTVAL,?,?,1)";
+
+	// 장바구니 추가
+	public int saveCartId(int memberId, int productId) {
+		final String SQL = "INSERT INTO cart(id,memberId,productId,quantity) " + "VALUES(cart_SEQ.NEXTVAL,?,?,1)";
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -106,7 +200,7 @@ public class UserRepositroy {
 		return -1;
 	}
 
-	//장바구니 업데이트
+	// 장바구니 업데이트
 	public int updateCart(int quantity, int memberId, int productId) {
 
 		final String SQL = "UPDATE cart SET quantity = ? WHERE memberId = ? AND productId = ?";
@@ -125,27 +219,25 @@ public class UserRepositroy {
 		}
 		return -1;
 	}
-	
-	
+
 	// 회원 수정시 세션에 principal 값 갱신
 	public Member findById(int id) {
 
 		final String SQL = "SELECT id, name, username, password, birthdate, gender, address, phone, email, userRole, agreement "
 				+ "FROM member WHERE id = ? ";
-		
+
 		Member member = null;
-		
+
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 
 			pstmt.setInt(1, id);
-						
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				
+
 				member = new Member();
 				member.setId(rs.getInt("id"));
 				member.setName(rs.getString("name"));
@@ -170,9 +262,9 @@ public class UserRepositroy {
 
 		return null;
 	}
-	
+
 	// 회원 정보 수정
-	public int  update(Member member) {
+	public int update(Member member) {
 
 		final String SQL = "UPDATE member SET password =?, address = ?, phone = ?, email = ?, agreement = ? WHERE id = ?";
 		try {
@@ -186,14 +278,14 @@ public class UserRepositroy {
 			System.out.println("update : " + member.getAgreement());
 			System.out.println("update : " + member.getId());
 			System.out.println();
-			
+
 			pstmt.setString(1, member.getPassword());
 			pstmt.setString(2, member.getAddress());
 			pstmt.setString(3, member.getPhone());
 			pstmt.setString(4, member.getEmail());
 			pstmt.setString(5, member.getAgreement());
 			pstmt.setInt(6, member.getId());
-			
+
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -205,27 +297,26 @@ public class UserRepositroy {
 
 		return -1;
 	}
-	
+
 	// 로그인
 	public Member findByUsernameAndPassword(String username, String password) {
 
 		final String SQL = "SELECT id, name, username, password, birthdate, gender, address, phone, email, userRole, agreement "
 				+ "FROM member WHERE username = ? AND password = ? ";
-		
+
 		Member member = null;
-		
+
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 
 			pstmt.setString(1, username);
-			pstmt.setString(2, password); 
-			
+			pstmt.setString(2, password);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				
+
 				member = new Member();
 				member.setId(rs.getInt("id"));
 				member.setName(rs.getString("name"));
