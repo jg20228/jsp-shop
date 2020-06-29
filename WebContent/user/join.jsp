@@ -199,10 +199,12 @@
 			var pop = window.open("/shop/user/jusoPopup.jsp", "pop",
 					"width=570,height=420, scrollbars=yes, resizable=yes");
 		}
-		function jusoCallBack(haddress1, post, haddress2) {
+		function jusoCallBack(haddress0, haddress1, post, haddress2) {
 			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			var tfhAddress0 = document.querySelector("#haddress0");
 			var tfhAddress1 = document.querySelector("#haddress1");
-			tfhAddress1.value = haddress1;
+			tfhAddress1.value = haddress0 +" "+ haddress1;
+			
 			var tfhAddress2 = document.querySelector("#haddress2");
 			tfhAddress2.value = haddress2;
 			var tfPost = document.querySelector("#post");

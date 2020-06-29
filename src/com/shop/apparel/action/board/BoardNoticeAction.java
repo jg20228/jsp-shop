@@ -16,13 +16,8 @@ public class BoardNoticeAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		BoardRepositroy boardRepositroy = BoardRepositroy.getInstance();
 		List<Notice> notices = boardRepositroy.selectAll();
-		System.out.println("notice : "+notices);
-		for (Notice notice : notices) {
-			System.out.println(notice.getTitle());
-		}
 		request.setAttribute("notices", notices);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("notice/noticeBoard.jsp");

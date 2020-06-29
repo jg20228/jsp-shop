@@ -3,8 +3,11 @@ package com.shop.apparel.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.shop.apparel.db.DBConn;
+import com.shop.apparel.dto.CartResponseDto;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.RoleType;
 
@@ -26,7 +29,104 @@ public class UserRepositroy {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
+	//장바구니 삭제
+	public int deleteCartId(int cartId) {
+		final String SQL = "DELETE FROM cart WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, cartId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteCartId : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
+	//장바구니 페이지 불러오기
+	public List<CartResponseDto> findCartById(int id) {
+		final String SQL = "SELECT p.id, p.name, p.type, c.id ,c.quantity,  p.price, p.thumbnail, m.id, m.username "
+				+"FROM "
+				+"cart c INNER JOIN product p "
+				+"ON p.id = c.productId "
+				+"INNER JOIN member m "
+				+"ON m.id = c.memberId "
+				+"WHERE m.id = ? ";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			List<CartResponseDto> dtos = new ArrayList<>();
+			while(rs.next()) {
+					CartResponseDto dto = new CartResponseDto();
+					dto.setProductId(rs.getInt(1));
+					dto.setProductName(rs.getString(2));
+					dto.setProductType(rs.getString(3));
+					dto.setCartId(rs.getInt(4));
+					dto.setCartQuantity(rs.getInt(5));
+					dto.setProductPrice(rs.getInt(6));
+					dto.setProductThumbnail(rs.getString(7));
+					dto.setMemberId(rs.getInt(8));
+					dto.setMemberUsername(rs.getString(9));
+				dtos.add(dto);
+			}
+			return dtos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findCartById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
+	
+	//장바구니 추가
+	public int saveCartId(int memberId,int productId) {
+		final String SQL = "INSERT INTO cart(id,memberId,productId,quantity) "
+				+ "VALUES(cart_SEQ.NEXTVAL,?,?,1)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			pstmt.setInt(2, productId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "saveCartId : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
 
+	//장바구니 업데이트
+	public int updateCart(int quantity, int memberId, int productId) {
+
+		final String SQL = "UPDATE cart SET quantity = ? WHERE memberId = ? AND productId = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, quantity);
+			pstmt.setInt(2, memberId);
+			pstmt.setInt(3, productId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "updateCart : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
 	// 회원 수정시 세션에 principal 값 갱신
 	public Member findById(int id) {
 

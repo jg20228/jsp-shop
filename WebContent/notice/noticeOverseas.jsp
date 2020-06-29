@@ -18,29 +18,29 @@
 
 <ul id="noticemenu" class="rollover">
 
-    <li>
-    	<a href="/shop/notice/noticeBoard.jsp">
-    	<img src="/shop/image/notice/noticemenu1.gif" onmouseover="this.src='/shop/image/notice/noticemenu1_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu1.gif'">
-    	</a>
-    </li>
-    
-    <li>
-    	<a href="/shop/notice/noticeMember.jsp">
-    	    <img src="/shop/image/notice/noticemenu2.gif" onmouseover="this.src='/shop/image/notice/noticemenu2_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu2.gif'">
-    	</a>
-    </li>
-    
-    <li>
-    	<a href="/shop/notice/noticeOverseas.jsp">
-    	    <img src="/shop/image/notice/noticemenu3_over.gif" onmouseover="this.src='/shop/image/notice/noticemenu3_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu3_over.gif'">
-    	</a>
-    </li>
-    
-    <li>
-    	<a href="/shop/notice/noticeSize.jsp">
-    	    <img src="/shop/image/notice/noticemenu4.gif" onmouseover="this.src='/shop/image/notice/noticemenu4_over.gif'" onmouseout="this.src='/shop/image/notice/noticemenu4.gif'">
-    	</a>
-    </li>
+    <li><a href="/shop/board?cmd=noticeBoard"> <img
+				src="/shop/image/notice/noticemenu1.gif"
+				onmouseover="this.src='/shop/image/notice/noticemenu1_over.gif'"
+				onmouseout="this.src='/shop/image/notice/noticemenu1.gif'">
+		</a></li>
+
+		<li><a href="/shop/board?cmd=noticeMember"> <img
+				src="/shop/image/notice/noticemenu2.gif"
+				onmouseover="this.src='/shop/image/notice/noticemenu2_over.gif'"
+				onmouseout="this.src='/shop/image/notice/noticemenu2.gif'">
+		</a></li>
+
+		<li><a href="/shop/board?cmd=noticeOverseas"> <img
+				src="/shop/image/notice/noticemenu3_over.gif"
+				onmouseover="this.src='/shop/image/notice/noticemenu3_over.gif'"
+				onmouseout="this.src='/shop/image/notice/noticemenu3_over.gif'">
+		</a></li>
+
+		<li><a href="/shop/board?cmd=noticeSize"> <img
+				src="/shop/image/notice/noticemenu4.gif"
+				onmouseover="this.src='/shop/image/notice/noticemenu4_over.gif'"
+				onmouseout="this.src='/shop/image/notice/noticemenu4.gif'">
+		</a></li>
 </ul>
 
 <img src="/shop/testImg/EXoverseas.png">

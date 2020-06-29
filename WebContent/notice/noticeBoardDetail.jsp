@@ -166,21 +166,23 @@
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr>
-						<td style="padding: 0; border: 0;">
-							<a href="/shop/board?cmd=noticeUpdate&id=${notice.id}" class="none">
-								<img src="/shop/image/board/board_modify.gif" alt="수정">
-							</a> 
-							<a href="/shop/board?cmd=noticeDeleteProc&id=${notice.id}">
-								<img src="/shop/image/board/board_del.gif" alt="삭제">
-							</a> 
-							<a class="write" href="/shop/board?cmd=noticeWrite">
-								<img src="/shop/image/board/board_write.gif" alt="글쓰기">
-							</a>
+						<c:if test="${sessionScope.principal.userRole.toString().equals('ADMIN')}">
+						<td style="padding: 0; border: 0;"><a
+							href="/shop/board?cmd=noticeUpdate&id=${notice.id}"
+							class="none"><img src="/shop/image/board/board_modify.gif"
+								alt="수정"></a> 
+							<a
+							href="/shop/board?cmd=noticeDeleteProc&id=${notice.id}">
+							<img src="/shop/image/board/board_del.gif" alt="삭제"></a> 
+							<a
+							class="write"
+							href="/shop/board?cmd=noticeWrite"><img
+								src="/shop/image/board/board_write.gif" alt="글쓰기"></a>
 						</td>
-						<td style="text-align: right; padding: 0; border: 0;">
-							<a	href="/shop/board?cmd=noticeBoard">
-								<img src="/shop/image/board/board_list.gif" alt="목록보기">
-							</a>
+						</c:if>
+						<td style="text-align: right; padding: 0; border: 0;"><a
+							href="/shop/board?cmd=noticeBoard">
+							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a>
 						</td>
 					</tr>
 				</tbody>
