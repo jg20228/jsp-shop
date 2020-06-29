@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shop.apparel.db.DBConn;
+import com.shop.apparel.model.Cart;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.Product;
 
@@ -28,7 +29,34 @@ public class ProductRepositroy {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	public List<Cart> selectAllCartById(int memberId){
+		final String SQL = "SELECT * FROM cart WHERE memberId = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			rs = pstmt.executeQuery();
+			List<Cart> carts = new ArrayList<>();
+			while(rs.next()) {
+				Cart cart = Cart.builder()
+						.id(rs.getInt(1))
+						.memberId(rs.getInt(2))
+						.productId(rs.getInt(3))
+						.quantity(rs.getInt(4))
+						.build();
+				carts.add(cart);
+			}
+			return carts;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "selectAllCartById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null;
+	}
 	
+	//물품 하나씩 찾기
 	public Product selectById(int productId){
 		final String SQL = "SELECT * FROM product WHERE id = ?";
 		Product product = null;
@@ -54,9 +82,8 @@ public class ProductRepositroy {
 			e.printStackTrace();
 			System.out.println(TAG + "selectById : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt);
+			DBConn.close(conn, pstmt, rs);
 		}
-		
 		return null;
 	}
 	
@@ -86,7 +113,7 @@ public class ProductRepositroy {
 			e.printStackTrace();
 			System.out.println(TAG + "selectAll : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt);
+			DBConn.close(conn, pstmt, rs);
 		}
 		return null;
 	}

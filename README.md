@@ -145,6 +145,14 @@ CREATE TABLE reply(
 	foreign key (qnaId) references product_qna(id)
 );
 
+CREATE TABLE cart(
+	id number primary key,
+	memberId number,
+	productId number,
+	quantity number,
+    foreign key (memberId) references member(id)
+);
+
 ```
 
 ## 시퀀스
@@ -160,7 +168,9 @@ DROP SEQUENCE product_disc_SEQ;
 DROP SEQUENCE product_qna_SEQ;
 DROP SEQUENCE product_review_SEQ;
 DROP SEQUENCE reply_SEQ;
+DROP SEQUENCE cart_SEQ;
 
+CREATE SEQUENCE cart_SEQ START WITH 3 INCREMENT BY 1;
 CREATE SEQUENCE category_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE member_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE notice_SEQ START WITH 4 INCREMENT BY 1;
@@ -174,7 +184,7 @@ CREATE SEQUENCE product_review_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
 ```
 
-## TEST DATA for catefory
+## TEST DATA for category
 ```
 INSERT INTO category (id, type, parentTypeId) VALUES (100, 'OUTER', 100);
 INSERT INTO category (id, type, parentTypeId) VALUES (101, 'OUTER', 100);
@@ -208,8 +218,9 @@ VALUES(4,'test4','OUTER',19000,'/shop/testImg/Tcarousel1.png',100);
 ```
 ```
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(0,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@test.com','ADMIN','T');
-
+VALUES(0,'관리자','admin',1234,'2020-06-22','관','test','010-0000-0000','test@test.com','ADMIN','T');
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(1,'테스트계정','sara',1234,'2020-06-29','테','test','010-0000-0000','test@test.com','USER','T');
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(1,0,'공지사항TEST01','공지사항detail','2000-01-01',0);
@@ -219,6 +230,14 @@ VALUES(2,0,'공지사항TEST02','공지사항detail','2000-01-01',0);
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(3,0,'공지사항TEST03','공지사항detail','2000-01-01',0);
+```
+
+## Test data for cart
+```
+INSERT INTO cart(id,memberId,productId,quantity)
+VALUES(1,0,1,2);
+INSERT INTO cart(id,memberId,productId,quantity)
+VALUES(2,0,2,3);
 ```
 
 ## 쿼리문 for category

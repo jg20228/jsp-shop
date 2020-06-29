@@ -2,17 +2,20 @@ package com.shop.apparel.action.user;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.repository.UserRepositroy;
 
-public class UserJoinAction implements Action{
+public class UserCartDeleteAction implements Action{
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dis = request.getRequestDispatcher("user/join.jsp");
-		dis.forward(request, response);
+		int cartId = Integer.parseInt(request.getParameter("cartId"));
+		UserRepositroy userRepositroy = UserRepositroy.getInstance();
+		userRepositroy.deleteCartId(cartId);
+		
 	}
 }

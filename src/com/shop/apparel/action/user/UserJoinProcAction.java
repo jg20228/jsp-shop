@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.RoleType;
+import com.shop.apparel.repository.ProductRepositroy;
 import com.shop.apparel.repository.UserRepositroy;
 
 public class UserJoinProcAction implements Action {
@@ -35,8 +36,17 @@ public class UserJoinProcAction implements Action {
 
 		String password = request.getParameter("password1");
 		String birthdate = request.getParameter("birthyear");
-		birthdate += request.getParameter("birthmonth");
-		birthdate += request.getParameter("birthdate");		
+		if(Integer.parseInt(request.getParameter("birthmonth")) < 10) {
+			birthdate += "0"+request.getParameter("birthmonth");
+		}else {
+			birthdate += request.getParameter("birthmonth");
+		}
+		
+		if(Integer.parseInt(request.getParameter("birthdate")) < 10) {
+			birthdate += "0"+request.getParameter("birthdate");
+		}else {
+			birthdate += request.getParameter("birthdate");
+		}
 		String gender = request.getParameter("gender");		
 		String post = request.getParameter("post") + "/";
 		String address = post;
@@ -81,7 +91,5 @@ public class UserJoinProcAction implements Action {
 		int result = userRepositroy.save(member);
 		
 		response.sendRedirect("user/login.jsp");
-		
 	}
-
 }
