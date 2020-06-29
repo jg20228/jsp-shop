@@ -1,9 +1,5 @@
 package com.shop.apparel.dto;
 
-import java.util.List;
-
-import com.shop.apparel.model.WishList;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CartResponseDto {
-	List<CartWishListResponseDto> cartWishListResponseDto;
-	List<CartResponseDtos> cartResponseDtos;
+public class CartWishListResponseDto {
+	private int wishId;
+	private int memberId;
+	private int productId;
+	private String productName;
+	private int productPrice;
+	private String productThumbnail;
 }

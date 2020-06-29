@@ -35,6 +35,8 @@ DROP TABLE product_review;
 DROP TABLE REPLY;
 DROP TABLE product_qna;
 DROP TABLE orders;
+DROP TABLE cart;
+DROP TABLE wishList;
 DROP TABLE member;
 DROP TABLE product;
 DROP TABLE category;
@@ -154,10 +156,19 @@ CREATE TABLE cart(
     foreign key (memberId) references member(id)
 );
 
+CREATE TABLE wishList(
+	id number primary key,
+	memberId number,
+	productId number,
+    foreign key (memberId) references member(id),
+    foreign key (productId) references product(id)
+);
+
 ```
 
 ## 시퀀스
 ```
+DROP SEQUENCE wishList_SEQ;
 DROP SEQUENCE category_SEQ;
 DROP SEQUENCE member_SEQ;
 DROP SEQUENCE notice_SEQ;
@@ -171,6 +182,7 @@ DROP SEQUENCE product_review_SEQ;
 DROP SEQUENCE reply_SEQ;
 DROP SEQUENCE cart_SEQ;
 
+CREATE SEQUENCE wishList_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE cart_SEQ START WITH 3 INCREMENT BY 1;
 CREATE SEQUENCE category_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE member_SEQ START WITH 1 INCREMENT BY 1;
@@ -241,6 +253,14 @@ INSERT INTO cart(id,memberId,productId,quantity)
 VALUES(2,0,2,3);
 ```
 
+## Test data for wishList
+```
+INSERT INTO wishlist(id,memberId,productId)
+VALUES(1,0,1);
+INSERT INTO wishlist(id,memberId,productId)
+VALUES(2,0,2);
+```
+
 ## 쿼리문 for category
 ```
 --대분류(OUTER=100)로 중분류 찾기
@@ -252,4 +272,13 @@ WHERE b.id = a.parent_type_id AND b.id = 100;
 SELECT a.parent_type_id, b.name, a.id, a.name
 FROM categoryTest a, categoryTest b
 WHERE b.id = a.parent_type_id AND a.id = 104;
+
+--Cart Join문
+SELECT p.id, p.name, p.type, c.id ,c.quantity,  p.price, p.thumbnail, m.id, m.username
+FROM 
+cart c INNER JOIN product p 
+ON p.id = c.productId 
+INNER JOIN member m
+ON m.id = c.memberId
+WHERE m.id = 0;
 ```

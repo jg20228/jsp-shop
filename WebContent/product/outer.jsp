@@ -41,9 +41,11 @@
 																	<i class=" ti-eye"></i>
 																	<span>Quick Shop</span></a> 
 																	
-																	<a title="Wishlist" href="#">
+																	<a title="Wishlist" onclick=addWishList(${product.id},${principal.id})>
 																	<i class=" ti-heart "></i>
 																	<span>Add to Wishlist</span></a> 
+																	
+																	
 																	<a title="Compare" href="#">
 																	<i class="ti-bar-chart-alt"></i>
 																	<span>Add to Compare</span></a>

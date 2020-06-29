@@ -126,7 +126,7 @@
 											href="javascript:go_wish('24359','0','0','0','0','');"><img
 												src="/shop/image/cart/cart_wish.gif" alt="관심상품" title="관심상품"></a></span>
 										<span class="d-block"><a
-											href="javascript:deleteCart(${cart.cartId});"><img
+											href="javascript:deleteCart(${cart.cartId})"><img
 												src="/shop/image/cart/cart_del.gif" alt="삭제" title="삭제"></a></span>
 									</div>
 								</td>
@@ -191,7 +191,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="wish" items="${dto.cartWishListResponseDto}">
 						<form name="formwish" method="post"></form>
 						<tr class="nbg">
 							<td>
@@ -199,32 +198,31 @@
 									<div class="thumb">
 										<a
 											href="/shop/shopdetail.html?branduid=24368&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=bm9%2FW1w%3D"><img
-											src="${wish.productThumbnail}"
+											src="/shopimages/pighip/0070000017303.jpg?1593154414"
 											alt="상품 섬네일" title="상품 섬네일"></a>
 									</div>
 								</div>
 							</td>
 							<td><div class="tb-left"
-									style="font-size: 13px; font-weight: bold;">${wish.productName}</div></td>
+									style="font-size: 13px; font-weight: bold;">투몬-ops</div></td>
 							<td><div class="tb-center">
 									<input type="text" name="amount" class="MS_input_txt txt-right"
 										value="1" size="2">개
 								</div></td>
 							<td style="color: #7d7d7d;"><div class="tb-center">0</div></td>
-							<td><div class="tb-center tb-bold">${wish.productPrice}</div></td>
+							<td><div class="tb-center tb-bold">51,000원</div></td>
 							<td><div class="tb-center">있음</div></td>
 							<td>
 								<div class="tb-center">
 									<span class="d-block"><a
 										href="javascript:wish('0', 'ins');"><img
 											src="/shop/image/cart/btn_h19_cart.gif" alt="장바구니"
-											title="장바구니"></a></span> <span class="d-block">
-											<a href="javascript:deleteWish(${wish.wishId});">
-										<img src="/shop/image/cart/cart_del.gif" alt="삭제" title="삭제"></a></span>
+											title="장바구니"></a></span> <span class="d-block"><a
+										href="javascript:wish('0','del');"><img
+											src="/shop/image/cart/cart_del.gif" alt="삭제" title="삭제"></a></span>
 								</div>
 							</td>
 						</tr>
-						</c:forEach>
 					</tbody>
 				</table>
 			</div>

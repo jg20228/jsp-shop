@@ -20,6 +20,7 @@ import com.shop.apparel.action.user.UserOrderAction;
 import com.shop.apparel.action.user.UserUpdateAction;
 import com.shop.apparel.action.user.UserUpdateProcAction;
 import com.shop.apparel.action.user.UserUsernameCheckAction;
+import com.shop.apparel.action.user.UserWishDeleteAction;
 
 
 
@@ -81,6 +82,8 @@ public class UserController extends HttpServlet {
 			return new UserOrderAction();
 		}else if(cmd.equals("deleteCart")) {
 			return new UserCartDeleteAction();
+		}else if(cmd.equals("deleteWishList")) {
+			return new UserWishDeleteAction();
 		}
 		return null;
 	}
