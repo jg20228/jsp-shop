@@ -23,6 +23,7 @@ public class ProductAddCartActionTest implements Action{
 		UserRepositroy userRepositroy = UserRepositroy.getInstance();
 		List<Cart> carts = productRepositroy.selectAllCartById(memberId);
 		
+		// cart내에 중복된 물품이 있으면 안담고 그냥 수량이 증가
 		for (Cart cart : carts) {
 			if(cart.getProductId() == productId) {
 				cart.setQuantity(cart.getQuantity()+1);
