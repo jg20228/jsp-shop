@@ -107,17 +107,19 @@
 			</tbody>
 		</table>
 	</div>
+	<c:if
+		test="${sessionScope.principal.userRole.toString().equals('ADMIN')}">
+		<table>
+			<tr>
+				<td style="text-align: right; padding: 0; border: 0;">
+				<a class="right" href="/shop/board?cmd=noticeWrite"> 
+				<img src="/shop/image/board/board_write.gif" alt="글쓰기">
+				</a>
+				</td>
+			</tr>
+		</table>
+	</c:if>
 
-<c:choose>
-	<c:when test="${sessionScope.principal.userRole.toString().equals('ADMIN')}">
-		<a class="center"
-		href="/shop/board?cmd=noticeWrite">
-		<img src="/shop/image/board/board_write.gif" alt="글쓰기"></a>    
-	</c:when>
-	<c:otherwise>
-
-	</c:otherwise>
-</c:choose>
 	<%@ include file="/include/serviceArea.jsp"%>
 </div>
 <!-- end of content__box -->

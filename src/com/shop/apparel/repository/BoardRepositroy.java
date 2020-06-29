@@ -28,6 +28,24 @@ public class BoardRepositroy {
 	private ResultSet rs = null;
 	//delete
 	
+	public int updateById(Notice notice) {
+		final String SQL = "UPDATE notice set title = ? , content = ? WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setInt(3, notice.getId());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "updateById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
 	public int deleteById(int id) {
 		final String SQL = "DELETE FROM notice WHERE id = ?";
 		try {

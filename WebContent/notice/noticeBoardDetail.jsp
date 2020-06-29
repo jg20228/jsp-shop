@@ -155,6 +155,7 @@
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr>
+						<c:if test="${sessionScope.principal.userRole.toString().equals('ADMIN')}">
 						<td style="padding: 0; border: 0;"><a
 							href="/shop/board?cmd=noticeUpdate&id=${notice.id}"
 							class="none"><img src="/shop/image/board/board_modify.gif"
@@ -167,9 +168,11 @@
 							href="/shop/board?cmd=noticeWrite"><img
 								src="/shop/image/board/board_write.gif" alt="글쓰기"></a>
 						</td>
+						</c:if>
 						<td style="text-align: right; padding: 0; border: 0;"><a
 							href="/shop/board?cmd=noticeBoard">
-							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a></td>
+							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

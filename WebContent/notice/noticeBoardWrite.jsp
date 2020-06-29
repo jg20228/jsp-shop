@@ -38,11 +38,28 @@ jQuery.noConflict();
 				<textarea id="summernote" class="form-control" rows="5" id="content"
 					name="content"></textarea>
 			</div>
-	
-			<button type="submit" class="btn btn-primary">글쓰기 등록</button>
+
+			<table style="margin-top: 30px;">
+				<tbody>
+					<tr>
+						<td style="border: 0; text-align: center; padding-left: 120px;">
+							<button type="submit"> <a class="write" href="JavaScript:send();">
+							<img src="/shop/image/board/board_ok.gif" alt="글쓰기"></a> </button>
+							
+							<a href="/shop/board?cmd=noticeBoard">
+							<img src="/shop/image/board/board_cancel.gif" alt="글쓰기취소" style="margin: 0 0 0 5px;">
+							</a>
+						</td>
+						<td
+							style="border: 0; text-align: right; width: 100px; padding-right: 20px;"><a
+							href="/shop/board?cmd=noticeBoard">
+							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</form>
 	</div>
-
 <!-- end of content__box -->
 	<%@ include file="/include/serviceArea.jsp"%>
 </div>

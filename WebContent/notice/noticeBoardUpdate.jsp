@@ -28,6 +28,7 @@ jQuery.noConflict();
 <div class="content__box">
 	<div class="container">
 		<form action="/shop/board?cmd=noticeUpdateProc" method="POST">
+			<input type="hidden" name="id" value="${notice.id}">
 			<div class="form-group">
 				<label for="title">Title:</label> <input type="text"
 					class="form-control" placeholder="title" id="title" name="title" value="${notice.title}">
@@ -39,7 +40,25 @@ jQuery.noConflict();
 					name="content">${notice.content}</textarea>
 			</div>
 	
-			<button type="submit" class="btn btn-primary">글쓰기 등록</button>
+			<table style="margin-top: 30px;">
+				<tbody>
+					<tr>
+						<td style="border: 0; text-align: center; padding-left: 120px;">
+							<button type="submit"> <a class="write" href="JavaScript:send();">
+							<img src="/shop/image/board/board_ok.gif" alt="글쓰기"></a> </button>
+							
+							<a href="/shop/board?cmd=noticeBoard">
+							<img src="/shop/image/board/board_cancel.gif" alt="글쓰기취소" style="margin: 0 0 0 5px;">
+							</a>
+						</td>
+						<td
+							style="border: 0; text-align: right; width: 100px; padding-right: 20px;"><a
+							href="/shop/board?cmd=noticeBoard">
+							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</form>
 	</div>
 
