@@ -15,7 +15,7 @@
 						<!--<a id="zoom_image" href="javascript:imageview('', '');" rel="/shopimages/pighip/">
 <img class="detail_image" id="lens_img" src="/shopimages/pighip/0330010012722.jpg?1592890404" border="0" width="300" />
 </a>-->
-						<img src="${product.thumbnail}">
+						<img src="${product.thumbnailW}">
 					</div>
 					<div class="thumb-ctrl">
 						<a href="javascript:alert('상세 이미지가 없습니다.');">
@@ -36,7 +36,7 @@
 											<span class="line">${product.name}</span>
 										</h3>
 										<!-- product테이블에 이부분 컬럼 만들어야 할듯! 예를 들어 titleComment -->
-										<div>큼지막한 지구 프린팅이 돋보이는 티셔츠 ♡ 배색 포인트가 매력이예요 !</div>
+										<div>큼지막한 지구 프린팅이 돋보이는 티셔츠 ♡ 배색 포인트가 매력이예요 !${product.titleComment}</div>
 										<!-- 장바구니, 주문하기, 위시리스트 버튼 -->
 										<div class="prd-btns">
 											<div class="rollover">
@@ -807,7 +807,7 @@
 				<!-- 몰티비 플레이어 노출 위치 -->
 				<div id="malltb_video_player" style="margin-top: 10px; margin-bottom: 10px; text-align: center; display: none;"></div>
 			</div>
-			<!-- 메뉴바 -->
+			<!-- detail, withItem, review, qna, readme를 위한 nav bar -->
 			<div class="detailmenu" id="withitem">
 				<ul>
 					<li><a href="#detail">DETAIL</a></li>
@@ -817,6 +817,7 @@
 					<li><a href="#readme">READ ME</a></li>
 				</ul>
 			</div>
+			<!-- WHITH ITEM 관련상품-->
 			<form name="allbasket" method="post" action="/shop/basket.html">
 				<h3 class="detail-title">WITH ITEM</h3>
 				<div class="prd-list">
@@ -824,18 +825,21 @@
 						<caption>관련 상품 리스트</caption>
 						<tbody>
 							<tr>
+							<!-- 관련상품 왼쪽부분 -->
 								<td width="16.666%;">
 									<table border="0" cellpadding="0" cellspacing="0" style="width: 170px; margin: 0 auto;">
 										<tbody>
 											<tr>
 												<td><div class="thumb">
 														<a href="/shop/shopdetail.html?branduid=23321&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=am93UA%3D%3D">
-														<img class="MS_prod_img_s" src="/shopimages/pighip/0340010004763.gif?1590737949" alt="상품 섬네일" title="상품 섬네일"></a>
+														<!-- 관련상품 세로썸네일, 여기에 사진 뿌리면서 사이즈가 작아져야 할텐데.. 그리고 세로 사진 썸네일임... /shop/image/detail/thumbH(1).jpg-->
+														<img class="MS_prod_img_s" src="${product.thumbnailH}" alt="상품 섬네일" title="상품 섬네일"></a>
 													</div></td>
 											</tr>
 											<tr>
 												<td><div class="prd-name">
-														<a href="/shop/shopdetail.html?branduid=23321&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=am93UA%3D%3D">86project_boy pants 유니언니가 인스타에서 추천한 바지 ♥♥<br> 색감 하나하나 너무 예뻐요 !<br> 컬러
+													<!-- 관련상품 이상품의 detail페이지로 이동///이 상품의 titleComment ${product.titleComment} -->
+														<a href="/shop/">86project_boy pants 유니언니가 인스타에서 추천한 바지 ♥♥<br> 색감 하나하나 너무 예뻐요 !<br> 컬러
 															추가되어 재진행합니다 :)
 														</a>
 													</div></td>
@@ -845,6 +849,7 @@
 													<div -class="prd-price">
 
 														<ul>
+														<!-- 이 관련상품의 가격 ${product.price} -->
 															<li class="prd-price">22,000원</li>
 														</ul>
 
@@ -860,9 +865,11 @@
                                             </td>
                                         </tr>
                                         -->
+											<!-- 이 관련 상품의 옵션 -->                                        
 											<tr>
 												<td>
 													<div class="option_select">
+													<!-- 색상 옵션 -->
 														<div>
 															색상 : <select id="optionlist0_0" name="optionlist0[]" onchange="seloptvalue();display_coll_option_stock('PS', 0);" mandatory="Y" class="MS_related_option vo_value_list">
 																<option value="">--- 필수 옵션입니다 ---</option>
@@ -874,27 +881,37 @@
 																<option value="베이지" origin="베이지">베이지</option>
 															</select>
 														</div>
+														<!-- 사이즈 옵션 -->
 														<div>
 															사이즈 : <select id="optionlist0_1" name="optionlist0[]" onchange="seloptvalue();display_coll_option_stock('PS', 0);" mandatory="Y" class="MS_related_option vo_value_list">
-																<option value="">--- 필수 옵션입니다 ---</option>
-																<option value="S" origin="S">S</option>
-																<option value="M" origin="M">M</option>
-															</select><input type="hidden" id="uid0" name="uid0" value="23321"> <input type="hidden" id="option_type0" name="option_type0" value="PS"> <input type="hidden" name="spcode">
-															<input type="hidden" name="spcode2"> <input type="hidden" id="JsonData0" name="JsonData0" value="YY"> <input type="hidden" id="collprice0" name="collprice0"
-																value="22000"><input type="hidden" id="colloptprice0_1" name="colloptprice0_1" value="0"><input type="hidden" id="colloptprice0_2" name="colloptprice0_2" value="0">
+																		<option value="">--- 필수 옵션입니다 ---</option>
+																		<option value="S" origin="S">S</option>
+																		<option value="M" origin="M">M</option>
+																	</select><input type="hidden" id="uid0" name="uid0" value="23321"> 
+																	<input type="hidden" id="option_type0" name="option_type0" value="PS"> 
+																	<input type="hidden" name="spcode">
+																	<input type="hidden" name="spcode2"> 
+																	<input type="hidden" id="JsonData0" name="JsonData0" value="YY"> 
+																	<input type="hidden" id="collprice0" name="collprice0" value="22000">
+																	<input type="hidden" id="colloptprice0_1" name="colloptprice0_1" value="0">
+																	<input type="hidden" id="colloptprice0_2" name="colloptprice0_2" value="0">
 														</div>
 													</div>
 												</td>
 											</tr>
+											<!-- 이 관련 상품의 수량 ??근데 환면에 나오지를 않음...-->
 											<tr>
 												<td>
 													<div class="prd-amount">
-														<input type="text" name="quantity" value="1" size="4" style="text-align: right; float: left;" class="MS_related_quantity"> <span class="btns"> <a class="btn-up"
-															href="javascript:collquan_control('0', 'up');">수량증가</a> <a class="btn-dw" href="javascript:collquan_control('0', 'down');">수량감소</a>
+														<input type="text" name="quantity" value="1" size="4" style="text-align: right; float: left;" class="MS_related_quantity"> 
+														<span class="btns"> 
+															<a class="btn-up" href="javascript:collquan_control('0', 'up');">수량증가</a> 
+															<a class="btn-dw" href="javascript:collquan_control('0', 'down');">수량감소</a>
 														</span>
 													</div>
 												</td>
 											</tr>
+											<!-- 이 관련상품의 체크박스 - 누르면 장바구니에 담기는 기능이다.  -->
 											<tr>
 												<td><div class="prd-check">
 														<input type="checkbox" name="collbasket" value="034001000476" class="MS_related_checkbox">
@@ -903,17 +920,20 @@
 										</tbody>
 									</table>
 								</td>
+								<!-- 관련상품 오른쪽부분 : 관련상품 하나 더 -->
 								<td width="16.666%;">
 									<table border="0" cellpadding="0" cellspacing="0" style="width: 170px; margin: 0 auto;">
 										<tbody>
 											<tr>
 												<td><div class="thumb">
 														<a href="/shop/shopdetail.html?branduid=23900&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=aGt3UA%3D%3D">
+														<!-- 하나 더인 관련상품의 세로 썸네일사진 ${product.thumbnailH} -->
 														<img class="MS_prod_img_s" src="/shopimages/pighip/0140130004853.gif?1579222241" alt="상품 섬네일" title="상품 섬네일"></a>
 													</div></td>
 											</tr>
 											<tr>
 												<td><div class="prd-name">
+												<!-- 관련상품 이상품의 detail페이지로 이동///이 상품의 titleComment ${product.titleComment} -->
 														<a href="/shop/shopdetail.html?branduid=23900&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=aGt3UA%3D%3D">silver.루덴E 확실히 포인트 되면서도<br> 얼굴 작아 보이게 만들어주는<br> 사랑스러운 이어링이에요 ♥
 														</a>
 													</div></td>
@@ -923,6 +943,7 @@
 													<div -class="prd-price">
 
 														<ul>
+														<!-- 이 관련상품의 가격 ${product.price} -->
 															<li class="prd-price">34,000원</li>
 														</ul>
 
@@ -938,6 +959,7 @@
                                             </td>
                                         </tr>
                                         -->
+                                        	<!-- 관련상품(오른쪽) - 옵션인데 안보임 -->
 											<tr>
 												<td>
 													<div class="option_select">
@@ -950,15 +972,19 @@
 													</div>
 												</td>
 											</tr>
+											<!-- 관련상품(오른쪽) - 수량인데 화면에 안보임-->
 											<tr>
 												<td>
 													<div class="prd-amount">
-														<input type="text" name="quantity" value="1" size="4" style="text-align: right; float: left;" class="MS_related_quantity"> <span class="btns"> <a class="btn-up"
-															href="javascript:collquan_control('1', 'up');">수량증가</a> <a class="btn-dw" href="javascript:collquan_control('1', 'down');">수량감소</a>
+														<input type="text" name="quantity" value="1" size="4" style="text-align: right; float: left;" class="MS_related_quantity"> 
+														<span class="btns"> 
+															<a class="btn-up" href="javascript:collquan_control('1', 'up');">수량증가</a> 
+															<a class="btn-dw" href="javascript:collquan_control('1', 'down');">수량감소</a>
 														</span>
 													</div>
 												</td>
 											</tr>
+											<!-- 관련상품(오른쪽) - 이 체크박스 누르면 장바구니에 담기는 기능이다. -->
 											<tr>
 												<td><div class="prd-check">
 														<input type="checkbox" name="collbasket" value="014013000485" class="MS_related_checkbox">

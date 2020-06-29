@@ -13,7 +13,9 @@ public class Product {
 	private int id;
 	private String name;
 	private String type;
+	private String titleComment;
 	private int price;
-	private String thumbnail;
+	private String thumbnailW;
+	private String thumbnailH;
 	private int categoryId;
 }

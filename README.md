@@ -73,7 +73,8 @@ CREATE TABLE product(
     name varchar2(100) not null,
 	type varchar2(100) not null,
 	price number not null,
-	thumbnail varchar2(100) not null,
+	thumbnailW varchar2(100) not null,
+	thumbnailH varchar2(100) not null,
 	categoryId number not null,
     foreign key(categoryId) references category(id)
 );
@@ -204,17 +205,17 @@ INSERT INTO category (id, type, parentTypeId) VALUES (205, 'MTM', 200);
 
 ## Test data for product
 ```
-INSERT INTO product(id,name,type, price,thumbnail,categoryId)
-VALUES(1,'test1', 'OUTER', 51000,'/shop/testImg/Tcarousel1.png',100);
+INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,categoryId)
+VALUES(1,'test1', 'OUTER', '언니가 인스타에서 추천한 바지 ♥♥ 색감 하나하나 너무 예뻐요 ! 컬러 추가되어 재진행합니다 :)', 51000, '/shop/testImg/thumbW(1)', '/shop/testImg/thumbH(1)',100);
 
-INSERT INTO product(id,name,type, price,thumbnail,categoryId)
-VALUES(2,'test2','OUTER',37000,'/shop/testImg/Tcarousel2.png',100);
+INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,categoryId)
+VALUES(2,'test2','OUTER', '확실히 포인트 되면서도 얼굴 작아 보이게 만들어주는 사랑스러운 이어링이에요 ♥',37000, '/shop/testImg/thumbW(2)','/shop/testImg/thumbH(2).png',100);
 
-INSERT INTO product(id,name,type, price,thumbnail,categoryId)
-VALUES(3,'test3','OUTER',24000,'/shop/testImg/Tcarousel3.png',100);
+INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,categoryId)
+VALUES(3,'test3','OUTER', '캐주얼한 나그랑 티셔츠예요 ! 박시핏이라 남녀 공용으로 편하게 입으실 수 있어요 ♥', 24000, '/shop/testImg/thumbW(3)','/shop/testImg/thumbH(3).png',100);
 
-INSERT INTO product(id,name, type, price,thumbnail,categoryId)
-VALUES(4,'test4','OUTER',19000,'/shop/testImg/Tcarousel1.png',100);
+INSERT INTO product(id,name, type, titleComment, price,thumbnailW,thumbnailH,categoryId)
+VALUES(4,'test4','OUTER', '톡톡 튀는 컬러들이 믹스된 타이다이 티셔츠 ! 긴팔 버전으로 나왔어요 ♡',19000, '/shop/testImg/thumbW(4)','/shop/testImg/thumbH(4).png',100);
 ```
 ```
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
