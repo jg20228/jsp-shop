@@ -100,48 +100,59 @@
 		<div id="comment_list_0"></div>
 		<form id="comment_form" name="comment" action="board.html?"
 			method="post" autocomplete="off">
-			<input type="hidden" name="page_type" value="board_view"> <input
-				type="hidden" name="formnum" value="0"> <input type="hidden"
-				name="code" value="pighip"> <input type="hidden" name="num1"
-				value="816107"> <input type="hidden" name="num2"
-				value="00000"> <input type="hidden" name="page" value="1">
-			<input type="hidden" name="lock" value="Y"> <input
-				type="hidden" name="type" value="v"> <input type="hidden"
-				name="type2"> <input type="hidden" name="comnum"> <input
-				type="hidden" name="comtype"> <input type="text"
-				name="___DUMMY___" readonly="" disabled="" style="display: none;">
-			<fieldset>
-				<legend>코멘트 쓰기</legend>
-				<table summary="코멘트 쓰기" class="comment-box">
-					<caption>코멘트 쓰기</caption>
-					<colgroup>
-						<col width="120">
-						<col>
-						<col width="150">
-					</colgroup>
-					<tbody>
-						<tr>
-							<td colspan="3" class="com-wrt-box">
-								<div>
-									<div class="wrt">
-										<label class="th">NAME</label><span>jg20228<input
-											name="cname" type="hidden" value="jg20228"></span> <label
-											class="th">PASSWORD</label><span><input
-											type="password" name="cpass"
-											class="MS_input_txt input-style input-style2"
-											onclick="CheckLogin()" onkeypress="CheckLogin()"
-											placeholder="패스워드"> </span>
-										<div class="clear"></div>
+			<input type="hidden" name="page_type" value="board_view"> 
+			<input type="hidden" name="formnum" value="0"> 
+			<input type="hidden" name="code" value="pighip"> 
+			<input type="hidden" name="num1" value="816107"> 
+			<input type="hidden" name="num2" value="00000"> 
+			<input type="hidden" name="page" value="1">
+			<input type="hidden" name="lock" value="Y"> 
+			<input type="hidden" name="type" value="v"> 
+			<input type="hidden" name="type2"> 
+			<input type="hidden" name="comnum"> 
+			<input type="hidden" name="comtype"> 
+			<input type="text" name="___DUMMY___" readonly="" disabled="" style="display: none;">
+		<fieldset>
+			<legend>코멘트 쓰기</legend>
+			<table summary="코멘트 쓰기" class="comment-box">
+				<caption>코멘트 쓰기</caption>
+				<colgroup>
+					<col width="120">
+					<col>
+					<col width="150">
+				</colgroup>
+				<tbody>
+					<tr>
+						<td colspan="3" class="com-wrt-box">
+							<div>
+								<div class="wrt">
+									<label class="th">NAME</label>
+									<span>jg20228
+										<input name="cname" type="hidden" value="jg20228">
+									</span> 
+									<label class="th">PASSWORD</label>
+									<span><input type="password" name="cpass" 
+										class="MS_input_txt input-style input-style2"
+										onclick="CheckLogin()" onkeypress="CheckLogin()"
+										placeholder="패스워드"> 
+									</span>
+									<div class="clear"></div>
 									</div>
 
 									<div class="wrt">
-										<label class="th">CONTENTS</label><span><textarea
-												name="comment" onchange="Checklength(this);"
+										<label class="th">CONTENTS</label>
+										<span>
+											<textarea name="comment" onchange="Checklength(this);"
 												onkeyup="Checklength(this);" onclick="CheckLogin()"
-												placeholder="내용"></textarea></span><span><a
-											href="javascript:comment_save('');"> <img
-												src="/shop/image/board/btn_comment.gif" alt="글쓰기"
-												title="글쓰기" style="margin-left: 10px;"></a></span>
+												placeholder="내용">
+											</textarea>
+										</span>
+											<span>
+												<a href="javascript:comment_save('');"> 
+												<img src="/shop/image/board/btn_comment.gif" alt="글쓰기"
+												title="글쓰기" style="margin-left: 10px;">
+												</a>
+											</span>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -155,21 +166,22 @@
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr>
-						<td style="padding: 0; border: 0;"><a
-							href="/shop/board?cmd=noticeUpdate&id=${notice.id}"
-							class="none"><img src="/shop/image/board/board_modify.gif"
-								alt="수정"></a> 
-							<a
-							href="/shop/board?cmd=noticeDeleteProc&id=${notice.id}">
-							<img src="/shop/image/board/board_del.gif" alt="삭제"></a> 
-							<a
-							class="write"
-							href="/shop/board?cmd=noticeWrite"><img
-								src="/shop/image/board/board_write.gif" alt="글쓰기"></a>
+						<td style="padding: 0; border: 0;">
+							<a href="/shop/board?cmd=noticeUpdate&id=${notice.id}" class="none">
+								<img src="/shop/image/board/board_modify.gif" alt="수정">
+							</a> 
+							<a href="/shop/board?cmd=noticeDeleteProc&id=${notice.id}">
+								<img src="/shop/image/board/board_del.gif" alt="삭제">
+							</a> 
+							<a class="write" href="/shop/board?cmd=noticeWrite">
+								<img src="/shop/image/board/board_write.gif" alt="글쓰기">
+							</a>
 						</td>
-						<td style="text-align: right; padding: 0; border: 0;"><a
-							href="/shop/board?cmd=noticeBoard">
-							<img src="/shop/image/board/board_list.gif" alt="목록보기"></a></td>
+						<td style="text-align: right; padding: 0; border: 0;">
+							<a	href="/shop/board?cmd=noticeBoard">
+								<img src="/shop/image/board/board_list.gif" alt="목록보기">
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

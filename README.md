@@ -212,13 +212,13 @@ VALUES(0,'관리자','admin',1234,'2020-06-22','관','test','01000000000','test@
 
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(1,1,'공지사항TEST01','공지사항detail','2000-01-01',0);
+VALUES(1,0,'공지사항TEST01','공지사항detail','2000-01-01',0);
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(2,1,'공지사항TEST02','공지사항detail','2000-01-01',0);
+VALUES(2,0,'공지사항TEST02','공지사항detail','2000-01-01',0);
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(3,1,'공지사항TEST03','공지사항detail','2000-01-01',0);
+VALUES(3,0,'공지사항TEST03','공지사항detail','2000-01-01',0);
 ```
 
 ## 쿼리문 for category
