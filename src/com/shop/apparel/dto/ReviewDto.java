@@ -1,6 +1,6 @@
 package com.shop.apparel.dto;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DetailResponseDto {
-	ProductDto productDto;
-	List<WithItemDto> withItemDtos;
-	List<ReviewDto> reviewDtos;
-	List<QnADto> qnaADtos;
+public class ReviewDto {
+	private String content;
+	private Timestamp reviewDate;
+	private String photo;
+	private String username; //member테이블이랑 조인
 }
