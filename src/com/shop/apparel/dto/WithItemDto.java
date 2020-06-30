@@ -1,5 +1,7 @@
 package com.shop.apparel.dto;
 
+import com.shop.apparel.model.WithItem;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class WithItemDto {
+public class WithItemDto{
+	private WithItem withItem;
 	private String name;         //productId - product - name
 	private String titleComment; //productId - product - titleComment
 	private int price;           //productId - product - price

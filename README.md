@@ -28,6 +28,7 @@ alter user shop default tablespace users quota unlimited on users;
 ## 테이블
 ```sql
 DROP TABLE notice;
+DROP TABLE withItem;
 DROP TABLE orders_detail;
 DROP TABLE product_detail;
 DROP TABLE product_review;
@@ -92,36 +93,29 @@ CREATE TABLE orders_detail(
     foreign key(productId) references product(id)
 );
 
-CREATE TABLE product_qna(
-	id number primary key,
-    category varchar2(100),
-	replyState varchar2(100) not null,
-	title varchar2(100) not null,
-    content varchar2(100) not null,
-	qnaDate TIMESTAMP not null,
-    memberId number,
-    foreign key(memberId) references member(id)
-);
-    
-CREATE TABLE product_review(
-	id number primary key,
-    title varchar2(100),
-    content varchar2(100),
-    reviewDate TIMESTAMP not null,
-    photo BLOB,
-    memberId number,
-    foreign key(memberId) references member(id)
-);    
-
-CREATE TABLE product_detail(
+CREATE TABLE qna(
 	id number primary key,
     productId number,
-    reviewId number,
-    qnaId number,
+	replyState varchar2(100) not null,
+	title varchar2(100) not null,
+    content varchar2(200) not null,
+	qnADate TIMESTAMP not null,
+    memberId number,
     foreign key(productId) references product(id),
-    foreign key(reviewId) references product_review(id),
-    foreign key(qnaId) references product_qna(id)
+	foreign key(memberId) references member(id)
 );
+    
+CREATE TABLE review(
+	id number primary key,
+    content varchar2(100),
+    reviewDate TIMESTAMP not null,
+    photo CLOB,
+    memberId number,
+	productId number,
+	foreign key(productId) references product(id),
+    foreign key(memberId) references member(id)
+	
+);    
 
 CREATE TABLE notice(
 	id number primary key,
@@ -160,11 +154,11 @@ CREATE TABLE wishList(
 
 CREATE TABLE withItem(
 	id number primary key,
-	productId number,
-	detailId number,
-    foreign key (productId) references product(id),
-	foreign key (detailId) references product_detail(id)
-)
+	parentProductId number,
+	withItemId number,
+    foreign key (parentProductId) references product(id),
+	foreign key (withItemId) references product(id)
+);
 
 ```
 
@@ -192,9 +186,8 @@ CREATE SEQUENCE notice_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_detail_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_detail_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_qna_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_review_SEQ START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE qnA_SEQ START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE Review_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE withItem_SEQ START WITH 1 INCREMENT BY 1;
 ```
