@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shop.apparel.db.DBConn;
+import com.shop.apparel.dto.ProductDto;
 import com.shop.apparel.model.Cart;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.Product;
@@ -28,6 +29,37 @@ public class ProductRepositroy {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
+	// detail.jsp에 쓰기 위해 product중에 필요한 것들만!
+	public ProductDto selectByIdForDto(int productId){
+		final String SQL = "SELECT id, name, titleComment, price, thumbnailW, contents FROM product WHERE id = ?";
+		ProductDto productDto = null;
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, productId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				productDto = ProductDto.builder()
+						.id(rs.getInt(1))
+						.name(rs.getString(2))
+						.titleComment(rs.getString(3))
+						.price(rs.getInt(4))
+						.thumbnailW(rs.getString(5))
+						.contents(rs.getString(6))
+						.build();
+			}
+			
+			return productDto;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "selectByIdForDto : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null;
+	}
 	
 	public List<Cart> selectAllCartById(int memberId){
 		final String SQL = "SELECT * FROM cart WHERE memberId = ?";

@@ -1,5 +1,7 @@
 package com.shop.apparel.model;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,8 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class WithItem {
+public class Review {
 	private int id;
-	private int parentProductId;
-	private int withItemId;
+	private String content;
+	private Timestamp reviewDate;
+	private String photo;
+	private int memberId;
+	private int productId;
 }

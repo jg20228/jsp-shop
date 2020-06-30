@@ -1,6 +1,7 @@
 package com.shop.apparel.action.product;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.dto.ProductDto;
+import com.shop.apparel.dto.WithItemDto;
 import com.shop.apparel.model.Product;
 import com.shop.apparel.repository.ProductRepositroy;
+import com.shop.apparel.repository.WithItemRepository;
 
 public class ProductDetailAction implements Action{
 
@@ -22,7 +26,13 @@ public class ProductDetailAction implements Action{
 		//현재는 테스트를 위해서 id값으로 검색한 product 하나만 보내고 있다.
 		int productId = Integer.parseInt(request.getParameter("id"));
 		ProductRepositroy productRepositroy = ProductRepositroy.getInstance();
+		WithItemRepository withItemRepository = WithItemRepository.getInstance();
+		
 		Product product = productRepositroy.selectById(productId);
+		ProductDto productDto = productRepositroy.selectByIdForDto(productId);
+		List<WithItemDto> withItemDtos = withItemRepository.selectByIdForDto(productId);
+		
+		
 		
 		
 		request.setAttribute("product", product);

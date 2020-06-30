@@ -9,8 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class WithItem {
+public class QnA {
 	private int id;
-	private int parentProductId;
-	private int withItemId;
+	private int productId;
+	private String replyState;
+	private String title;
+	private String content;
+	private String qnADate;
+	private int memberId;
 }

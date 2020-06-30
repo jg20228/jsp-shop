@@ -93,25 +93,28 @@ CREATE TABLE orders_detail(
     foreign key(productId) references product(id)
 );
 
-CREATE TABLE product_qna(
+CREATE TABLE qna(
 	id number primary key,
-    category varchar2(100),
+    productId number,
 	replyState varchar2(100) not null,
 	title varchar2(100) not null,
-    content varchar2(100) not null,
-	qnaDate TIMESTAMP not null,
+    content varchar2(200) not null,
+	qnADate TIMESTAMP not null,
     memberId number,
-    foreign key(memberId) references member(id)
+    foreign key(productId) references product(id),
+	foreign key(memberId) references member(id)
 );
     
-CREATE TABLE product_review(
+CREATE TABLE review(
 	id number primary key,
-    title varchar2(100),
     content varchar2(100),
     reviewDate TIMESTAMP not null,
-    photo BLOB,
+    photo CLOB,
     memberId number,
+	productId number,
+	foreign key(productId) references product(id),
     foreign key(memberId) references member(id)
+	
 );    
 
 
@@ -152,11 +155,12 @@ CREATE TABLE wishList(
 
 CREATE TABLE withItem(
 	id number primary key,
-	productId number,
-	detailId number,
-    foreign key (productId) references product(id),
-	foreign key (detailId) references product_detail(id)
+	parentProductId number,
+	withItemId number,
+    foreign key (parentProductId) references product(id),
+	foreign key (withItemId) references product(id)
 );
+
 ```
 
 ## 시퀀스
@@ -183,9 +187,8 @@ CREATE SEQUENCE notice_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_detail_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_detail_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_qna_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE product_review_SEQ START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE qnA_SEQ START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE Review_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE withItem_SEQ START WITH 1 INCREMENT BY 1;
 ```
