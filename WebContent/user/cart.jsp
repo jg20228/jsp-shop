@@ -5,6 +5,9 @@
 <%@ include file="/include/header.jsp"%>
 <%@ include file="/include/nav.jsp"%>
 
+<!-- JSTL에서 , 를 찍기 위함 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <div class="content__box">
 	<div id="cartWrap">
@@ -38,28 +41,18 @@
 							<th scope="col"><div class="tb-center">TOTAL</div></th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<td colspan="8">
-								<div class="tb-right">
-									상품구매금액 <span style="font-size: 15px;"> 126,000원</span> = 합계 : <strong><span
-										style="font-size: 15px;">126,000원</span></strong>
-								</div>
-							</td>
-						</tr>
-					</tfoot>
-
+					<c:set var="sum" value="0" />
 					<tbody>
+						<c:forEach var="cart" items="${dto.cartResponseDtos}" varStatus="status">
 						<form action="basket.html" method="post" name="forms"
-							id="basket_form0"></form>
-						<c:forEach var="cart" items="${dto.cartResponseDtos}">
+							id="basket_form${status.count}">
+							<c:set var="sum" value="${sum + (cart.productPrice*cart.cartQuantity)}"/>
 							<tr class="nbg">
-								<td><div class="tb-center">1</div></td>
+								<td><div class="tb-center">${status.count}</div></td>
 								<td>
 									<div class="tb-center">
 										<div class="thumb">
-											<a
-												href="/shop/product?cmd=detail&id=${cart.productId}">
+											<a href="/shop/product?cmd=detail&id=${cart.productId}">
 												<img src="${cart.productThumbnailH}" alt="상품 섬네일"
 												title="상품 섬네일">
 											</a>
@@ -68,8 +61,7 @@
 								</td>
 								<td>
 									<div class="tb-left">
-										<a
-											href="/shop/product?cmd=detail&id=${cart.productId}"
+										<a href="/shop/product?cmd=detail&id=${cart.productId}"
 											style="font-size: 13px; font-weight: bold;">${cart.productName}</a>
 										<span class="MK-product-icons"></span>
 										<div class="tb-left tb-opt" style="padding: 10px 0 0 0;">
@@ -79,21 +71,23 @@
 								<td>
 									<div class="tb-center" style="padding-left: 35px;">
 										<div class="opt-spin" style="float: left;">
-											<input type="text" name="amount" value="${cart.cartQuantity}"
-												class="txt-spin"> <span class="btns"> <a
-												href="javascript:count_change(0, 0)"><img class="btn-up"
-													src="/shop/image/cart/cart_up.gif"></a> <a
-												href="javascript:count_change(1, 0)"><img class="btn-dw"
-													src="/shop/image/cart/cart_down.gif"></a>
+										
+											<input type="text" name="amount" value="${cart.cartQuantity}"class="txt-spin"> 
+											<span class="btns"> 
+													<a href="javascript:count_change(0,${status.count})">
+														<img class="btn-up" src="/shop/image/cart/cart_up.gif"></a> 
+														<a href="javascript:count_change(1,${status.count})">
+														<img class="btn-dw" src="/shop/image/cart/cart_down.gif">
+													</a>
 											</span>
 										</div>
 										<a style="float: left;"
-											href="javascript:send_basket(0, 'upd')"><img
+											href="javascript:updateCart(${cart.productId}, ${cart.memberId},${status.count})"><img
 											src="/shop/image/cart/cart_modify.gif" alt="수정" title="수정"></a>
 									</div>
 								</td>
 								<td><div class="tb-center tb-price">
-										<span>${cart.productPrice}</span>원
+										<span><fmt:formatNumber value="${cart.productPrice}" pattern="#,###"/></span>원
 									</div></td>
 								<td><div class="tb-center" style="color: #7d7d7d;">0</div></td>
 								<td><div class="tb-center tb-delivery">
@@ -123,7 +117,7 @@
 								<td>
 									<div class="tb-center">
 										<span class="d-block"><a
-											href="javascript:go_wish('24359','0','0','0','0','');"><img
+											href="javascript:go_wish(${cart.productId},${cart.memberId},${cart.cartId});"><img
 												src="/shop/image/cart/cart_wish.gif" alt="관심상품" title="관심상품"></a></span>
 										<span class="d-block"><a
 											href="javascript:deleteCart(${cart.cartId});"><img
@@ -131,8 +125,24 @@
 									</div>
 								</td>
 							</tr>
+							</form>
 						</c:forEach>
 					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="8">
+								<div class="tb-right">
+									상품구매금액 <span style="font-size: 15px;">
+									<fmt:formatNumber value="${sum}" pattern="#,###"/>
+									</span> = 합계 : 
+									<strong><span style="font-size: 15px;"><fmt:formatNumber value="${sum}" pattern="#,###"/></span>
+									</strong>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+
+
 				</table>
 			</div>
 			<!-- .table-fill-prd -->
@@ -153,11 +163,11 @@
 			<div style="text-align: right;"></div>
 
 			<div class="mem-lvl">
-				<p>											
-					저희 쇼핑몰을 이용해주셔서 감사합니다.
-					<span class="MS_group_content"> <span class="MS_group_hname"></span>
-						<span class="username">${principal.username}님</span>이 <span class="MS_group_condition"></span>구매시,
-						<span class="MS_group_msg">구매금액의 <font color="#F26622">1</font>%를
+				<p>
+					저희 쇼핑몰을 이용해주셔서 감사합니다. <span class="MS_group_content"> <span
+						class="MS_group_hname"></span> <span class="username">${principal.username}님</span>이
+						<span class="MS_group_condition"></span>구매시, <span
+						class="MS_group_msg">구매금액의 <font color="#F26622">1</font>%를
 							<font color="#F26622">추가 적립</font>해 드립니다.
 					</span>
 					</span>
@@ -192,38 +202,36 @@
 					</thead>
 					<tbody>
 						<c:forEach var="wish" items="${dto.cartWishListResponseDto}">
-						<form name="formwish" method="post"></form>
-						<tr class="nbg">
-							<td>
-								<div class="tb-center">
-									<div class="thumb">
-										<a
-											href="/shop/shopdetail.html?branduid=24368&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=bm9%2FW1w%3D"><img
-											src="${wish.productThumbnailH}"
-											alt="상품 섬네일" title="상품 섬네일"></a>
+							<form name="formwish" method="post"></form>
+							<tr class="nbg">
+								<td>
+									<div class="tb-center">
+										<div class="thumb">
+											<a href="/shop/product?cmd=detail&id=${wish.productId}"><img
+												src="${wish.productThumbnailH}" alt="상품 섬네일" title="상품 섬네일"></a>
+										</div>
 									</div>
-								</div>
-							</td>
-							<td><div class="tb-left"
-									style="font-size: 13px; font-weight: bold;">${wish.productName}</div></td>
-							<td><div class="tb-center">
-									<input type="text" name="amount" class="MS_input_txt txt-right"
-										value="1" size="2">개
-								</div></td>
-							<td style="color: #7d7d7d;"><div class="tb-center">0</div></td>
-							<td><div class="tb-center tb-bold">${wish.productPrice}</div></td>
-							<td><div class="tb-center">있음</div></td>
-							<td>
-								<div class="tb-center">
-									<span class="d-block"><a
-										href="javascript:wish('0', 'ins');"><img
-											src="/shop/image/cart/btn_h19_cart.gif" alt="장바구니"
-											title="장바구니"></a></span> <span class="d-block">
-											<a href="javascript:deleteWish(${wish.wishId});">
-										<img src="/shop/image/cart/cart_del.gif" alt="삭제" title="삭제"></a></span>
-								</div>
-							</td>
-						</tr>
+								</td>
+								<td><div class="tb-left"
+										style="font-size: 13px; font-weight: bold;">${wish.productName}</div></td>
+								<td><div class="tb-center">
+										<input type="text" name="amount"
+											class="MS_input_txt txt-right" value="1" size="2">개
+									</div></td>
+								<td style="color: #7d7d7d;"><div class="tb-center">0</div></td>
+								<td><div class="tb-center tb-bold"><fmt:formatNumber value="${wish.productPrice}" pattern="#,###"/></div></td>
+								<td><div class="tb-center">있음</div></td>
+								<td>
+									<div class="tb-center">
+										<span class="d-block"><a
+											href="javascript:go_cart(${wish.productId},${wish.memberId},${wish.wishId});"><img
+												src="/shop/image/cart/btn_h19_cart.gif" alt="장바구니"
+												title="장바구니"></a></span> <span class="d-block"> <a
+											href="javascript:deleteWish(${wish.wishId});"> <img
+												src="/shop/image/cart/cart_del.gif" alt="삭제" title="삭제"></a></span>
+									</div>
+								</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>

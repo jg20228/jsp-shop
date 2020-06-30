@@ -51,7 +51,7 @@
 																	<span>Add to Compare</span></a>
 																</div>
 																<div class="product-action-2">
-																	<a title="Add to cart" onclick=addCartTest(${product.id},${principal.id})>Add to cart</a>
+																	<a title="Add to cart" onclick=addCart(${product.id},${principal.id})>Add to cart</a>
 																</div>
 															</div>
 														</div>

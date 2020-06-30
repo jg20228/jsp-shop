@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.action.user.UserCartAction;
 import com.shop.apparel.action.user.UserCartDeleteAction;
+import com.shop.apparel.action.user.UserCartUpdateAction;
 import com.shop.apparel.action.user.UserJoinAction;
 import com.shop.apparel.action.user.UserJoinProcAction;
 import com.shop.apparel.action.user.UserLoginAction;
@@ -84,6 +85,8 @@ public class UserController extends HttpServlet {
 			return new UserCartDeleteAction();
 		}else if(cmd.equals("deleteWishList")) {
 			return new UserWishDeleteAction();
+		}else if(cmd.equals("updateCart")) {
+			return new UserCartUpdateAction();
 		}
 		return null;
 	}
