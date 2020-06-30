@@ -28,6 +28,7 @@ alter user shop default tablespace users quota unlimited on users;
 ## 테이블
 ```sql
 DROP TABLE notice;
+DROP TABLE withItem;
 DROP TABLE orders_detail;
 DROP TABLE product_detail;
 DROP TABLE product_review;
@@ -113,15 +114,6 @@ CREATE TABLE product_review(
     foreign key(memberId) references member(id)
 );    
 
-CREATE TABLE product_detail(
-	id number primary key,
-    productId number,
-    reviewId number,
-    qnaId number,
-    foreign key(productId) references product(id),
-    foreign key(reviewId) references product_review(id),
-    foreign key(qnaId) references product_qna(id)
-);
 
 CREATE TABLE notice(
 	id number primary key,
@@ -164,8 +156,7 @@ CREATE TABLE withItem(
 	detailId number,
     foreign key (productId) references product(id),
 	foreign key (detailId) references product_detail(id)
-)
-
+);
 ```
 
 ## 시퀀스

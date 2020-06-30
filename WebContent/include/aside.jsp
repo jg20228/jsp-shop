@@ -18,6 +18,17 @@
 					<hr />
 					<li><a class="menuLink" href="#">TODAY VIEW</a></li>
 					<hr />
+					<li>
+					<div class="search-bar">
+						<form>
+							<input name="search" placeholder="Search Products Here....."
+								type="search">
+							<button style="visibility:hidden" class="btnn">
+								<i class="ti-search"></i>
+							</button>
+						</form>
+					</div>
+				</li>
 				</ul>
 			</aside>
 		</div>

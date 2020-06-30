@@ -29,7 +29,7 @@
 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart&id=${principal.id}">CART</a></li>
 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">WISH LIST</a></li>
 							<li><i class="ti-user"></i> <a href="/shop/user?cmd=update">MYPAGE</a></li>
-							<li><i class="ti-alarm-clock"></i> <a href="/shop/user?cmd=order">ORDER</a></li>
+							<li><i class="ti-alarm-clock"></i> <a href="/shop/user?cmd=order&id=${principal.id}">ORDER</a></li>
 					</c:otherwise>
 				</c:choose>
 						</ul>
