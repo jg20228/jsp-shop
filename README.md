@@ -177,10 +177,10 @@ DROP SEQUENCE reply_SEQ;
 DROP SEQUENCE cart_SEQ;
 
 CREATE SEQUENCE wishList_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE cart_SEQ START WITH 3 INCREMENT BY 1;
+CREATE SEQUENCE cart_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE category_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE member_SEQ START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE notice_SEQ START WITH 4 INCREMENT BY 1;
+CREATE SEQUENCE notice_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE orders_detail_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_SEQ START WITH 1 INCREMENT BY 1;
@@ -211,48 +211,69 @@ INSERT INTO category (id, type, parentTypeId) VALUES (205, 'MTM', 200);
 ## Test data for product
 ```
 INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
-VALUES(1,'test1', 'OUTER', '언니가 인스타에서 추천한 바지 ♥♥ 색감 하나하나 너무 예뻐요 ! 컬러 추가되어 재진행합니다 :)', 51000, '/shop/image/detail/thumbW(1).jpg', '/shop/image/detail/thumbH(1).gif','disc컨텐츠 예약',100);
+VALUES(product_SEQ.nextval,'test1', 'OUTER', '언니가 인스타에서 추천한 바지 ♥♥ 색감 하나하나 너무 예뻐요 ! 컬러 추가되어 재진행합니다 :)', 51000, '/shop/image/detail/thumbW(1).jpg', '/shop/image/detail/thumbH(1).gif','disc컨텐츠 예약',100);
 
 INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
-VALUES(2,'test2','OUTER', '확실히 포인트 되면서도 얼굴 작아 보이게 만들어주는 사랑스러운 이어링이에요 ♥',37000, '/shop/image/detail/thumbW(2).jpg','/shop/image/detail/thumbH(2).gif','disc컨텐츠 예약',100);
+VALUES(product_SEQ.nextval,'test2','OUTER', '확실히 포인트 되면서도 얼굴 작아 보이게 만들어주는 사랑스러운 이어링이에요 ♥',37000, '/shop/image/detail/thumbW(2).jpg','/shop/image/detail/thumbH(2).gif','disc컨텐츠 예약',100);
 
 INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
-VALUES(3,'test3','OUTER', '캐주얼한 나그랑 티셔츠예요 ! 박시핏이라 남녀 공용으로 편하게 입으실 수 있어요 ♥', 24000, '/shop/image/detail/thumbW(3).jpg','/shop/image/detail/thumbH(3).gif','disc컨텐츠 예약',100);
+VALUES(product_SEQ.nextval,'test3','OUTER', '캐주얼한 나그랑 티셔츠예요 ! 박시핏이라 남녀 공용으로 편하게 입으실 수 있어요 ♥', 24000, '/shop/image/detail/thumbW(3).jpg','/shop/image/detail/thumbH(3).gif','disc컨텐츠 예약',100);
 
 INSERT INTO product(id,name, type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
-VALUES(4,'test4','OUTER', '톡톡 튀는 컬러들이 믹스된 타이다이 티셔츠 ! 긴팔 버전으로 나왔어요 ♡',19000, '/shop/image/detail/thumbW(4).jpg','/shop/image/detail/thumbH(4).gif','disc컨텐츠 예약',100);
+VALUES(product_SEQ.nextval,'test4','OUTER', '톡톡 튀는 컬러들이 믹스된 타이다이 티셔츠 ! 긴팔 버전으로 나왔어요 ♡',19000, '/shop/image/detail/thumbW(4).jpg','/shop/image/detail/thumbH(4).gif','disc컨텐츠 예약',100);
 ```
 
 ```
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(0,'관리자','admin',1234,'2020-06-22','관','test','010-0000-0000','test@test.com','ADMIN','T');
+VALUES(0,'관리자','admin',1234,'2020-06-22','관','test/test2/test3','010-0000-0000','test@test.com','ADMIN','T');
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(1,'테스트계정','sara',1234,'2020-06-29','테','test','010-0000-0000','test@test.com','USER','T');
+VALUES(member_SEQ.nextval,'테스트계정','sara',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(1,0,'공지사항TEST01','공지사항detail','2000-01-01',0);
+VALUES(notice_SEQ.nextval,0,'공지사항TEST01','공지사항detail','2000-01-01',0);
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(2,0,'공지사항TEST02','공지사항detail','2000-01-01',0);
+VALUES(notice_SEQ.nextval,0,'공지사항TEST02','공지사항detail','2000-01-01',0);
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
-VALUES(3,0,'공지사항TEST03','공지사항detail','2000-01-01',0);
+VALUES(notice_SEQ.nextval,0,'공지사항TEST03','공지사항detail','2000-01-01',0);
 ```
 
-## Test data for cart
+## Test data for cart & wishList
 ```
 INSERT INTO cart(id,memberId,productId,quantity)
-VALUES(1,0,1,2);
+VALUES(cart_SEQ.nextval,0,1,2);
 INSERT INTO cart(id,memberId,productId,quantity)
-VALUES(2,0,2,3);
+VALUES(cart_SEQ.nextval,0,2,3);
+
+INSERT INTO wishlist(id,memberId,productId)
+VALUES(wishList_SEQ.nextval,0,1);
+INSERT INTO wishlist(id,memberId,productId)
+VALUES(wishList_SEQ.nextval,0,2);
 ```
 
-## Test data for wishList
+## Test data for orders & orders_detail
 ```
-INSERT INTO wishlist(id,memberId,productId)
-VALUES(1,0,1);
-INSERT INTO wishlist(id,memberId,productId)
-VALUES(2,0,2);
+INSERT INTO orders(id,memberId,orderDate,totalPrice)
+VALUES(orders_SEQ.nextval,0,'2020-06-30',102000);
+
+INSERT INTO orders(id,memberId,orderDate,totalPrice)
+VALUES(orders_SEQ.nextval,1,'2020-06-28',61000);
+
+INSERT INTO orders(id,memberId,orderDate,totalPrice)
+VALUES(orders_SEQ.nextval,1,'2020-06-29',38000);
+
+INSERT INTO orders_detail(ID,orderId,productId,quantity,price)
+VALUES(orders_detail_SEQ.nextval,1,1,2,102000);
+
+INSERT INTO orders_detail(ID,orderId,productId,quantity,price)
+VALUES(orders_detail_SEQ.nextval,2,2,1,37000);
+
+INSERT INTO orders_detail(ID,orderId,productId,quantity,price)
+VALUES(orders_detail_SEQ.nextval,2,3,1,24000);
+
+INSERT INTO orders_detail(ID,orderId,productId,quantity,price)
+VALUES(orders_detail_SEQ.nextval,3,4,2,19000);
 ```
 
 ## 쿼리문 for category
