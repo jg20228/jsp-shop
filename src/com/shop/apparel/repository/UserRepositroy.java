@@ -32,6 +32,25 @@ public class UserRepositroy {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	//updateCart
+	public int updateCartQuantityById(int memberId, int productId, int quantity) {
+		final String SQL = "UPDATE cart SET quantity = ? WHERE memberid = ? AND productId = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, quantity);
+			pstmt.setInt(2, memberId);
+			pstmt.setInt(3, productId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "updateCartQuantityById : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
 	//deleteWishList
 	public int deleteWishId(int wishId) {
 		final String SQL = "DELETE FROM wishlist WHERE id = ?";

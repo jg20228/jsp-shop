@@ -1,24 +1,16 @@
-function addCart(id) {
+function addCart(productId, memberId) {
 	$.ajax({
 		type : "get",
-		url : "/shop/product?cmd=addCart&id="+id+"&cart="+document.cookie,
+		url : "/shop/product?cmd=addCart&productId="+productId+"&memberId="+memberId,
 		contentType : "application/x-www-form-urlencoded; charset=utf-8",
 		dataType : "text"
 	}).done(function(result) {
-		alert("성공");
-	}).fail(function(error) {
-		alert("실패");
-	});
-}
-
-function addCartTest(productId, memberId) {
-	$.ajax({
-		type : "get",
-		url : "/shop/product?cmd=addCartTest&productId="+productId+"&memberId="+memberId,
-		contentType : "application/x-www-form-urlencoded; charset=utf-8",
-		dataType : "text"
-	}).done(function(result) {
-		alert("성공");
+		if(result==0){
+			alert("10개를 초과 할 수 없습니다.")
+		}else{
+			alert("성공");
+		}
+		
 	}).fail(function(error) {
 		alert("실패");
 	});
