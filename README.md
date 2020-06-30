@@ -118,7 +118,6 @@ CREATE TABLE product_detail(
     productId number,
     reviewId number,
     qnaId number,
-    discriptionId number,
     foreign key(productId) references product(id),
     foreign key(reviewId) references product_review(id),
     foreign key(qnaId) references product_qna(id)
@@ -159,6 +158,14 @@ CREATE TABLE wishList(
     foreign key (productId) references product(id)
 );
 
+CREATE TABLE withItem(
+	id number primary key,
+	productId number,
+	detailId number,
+    foreign key (productId) references product(id),
+	foreign key (detailId) references product_detail(id)
+)
+
 ```
 
 ## 시퀀스
@@ -175,6 +182,7 @@ DROP SEQUENCE product_qna_SEQ;
 DROP SEQUENCE product_review_SEQ;
 DROP SEQUENCE reply_SEQ;
 DROP SEQUENCE cart_SEQ;
+DROP SEQUENCE withItem_SEQ;
 
 CREATE SEQUENCE wishList_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE cart_SEQ START WITH 1 INCREMENT BY 1;
@@ -188,6 +196,7 @@ CREATE SEQUENCE product_detail_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_qna_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE product_review_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE reply_SEQ START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE withItem_SEQ START WITH 1 INCREMENT BY 1;
 ```
 
 ## TEST DATA for category

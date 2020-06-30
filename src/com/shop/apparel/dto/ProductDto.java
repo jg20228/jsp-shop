@@ -1,7 +1,5 @@
 package com.shop.apparel.dto;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DetailResponseDto {
-	ProductDto productDto;
-	List<WithItemDto> withItemDtos;
-	List<ReviewDto> reviewDtos;
-	List<QnADto> qnaADtos;
+public class ProductDto {
+	private int id;
+	private String name;
+	private String titleComment;
+	private int price;
+	private String thumbnailW;
+	private String contents;
 }
