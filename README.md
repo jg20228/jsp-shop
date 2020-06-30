@@ -32,8 +32,13 @@ DROP TABLE withItem;
 DROP TABLE orders_detail;
 DROP TABLE product_detail;
 DROP TABLE product_review;
+
+DROP TABLE review;
+
 DROP TABLE REPLY;
 DROP TABLE product_qna;
+DROP TABLE qna;
+
 DROP TABLE orders;
 DROP TABLE cart;
 DROP TABLE wishList;
@@ -134,7 +139,7 @@ CREATE TABLE reply(
 	content varchar2(100) not null,
     qnaId number,
 	orderDate timestamp not null,
-	foreign key (qnaId) references product_qna(id)
+	foreign key (qnaId) references qna(id)
 );
 
 CREATE TABLE cart(
