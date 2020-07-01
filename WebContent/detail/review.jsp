@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/shop/css/product/review.css">
 <script type="text/javascript" src="/shop/js/review.js"></script>
 <div id="powerReview">
@@ -151,7 +151,7 @@
 				</li>
 			</ul>
 		</div>
-		<!-- 사진8장 부분 <c:foreach문으로?8장만? -->
+<!--  		사진8장 부분 foreach문으로?8장만? -->
 		<div class="photo" style="width: 388px;">
 			<ul>
 				<li>
