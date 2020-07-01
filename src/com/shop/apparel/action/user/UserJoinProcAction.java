@@ -36,13 +36,13 @@ public class UserJoinProcAction implements Action {
 
 		String password = request.getParameter("password1");
 		String birthdate = request.getParameter("birthyear");
-		if(Integer.parseInt(request.getParameter("birthmonth")) < 10) {
+		if(Integer.parseInt(request.getParameter("birthmonth")) < 10 && (request.getParameter("birthmonth").length()) < 2){
 			birthdate += "0"+request.getParameter("birthmonth");
 		}else {
 			birthdate += request.getParameter("birthmonth");
 		}
 		
-		if(Integer.parseInt(request.getParameter("birthdate")) < 10) {
+		if(Integer.parseInt(request.getParameter("birthdate")) < 10 && (request.getParameter("birthdate").length()) < 2) {
 			birthdate += "0"+request.getParameter("birthdate");
 		}else {
 			birthdate += request.getParameter("birthdate");

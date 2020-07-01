@@ -9,6 +9,7 @@ import java.util.List;
 import com.shop.apparel.db.DBConn;
 import com.shop.apparel.dto.OrdersDetailDto;
 import com.shop.apparel.dto.OrdersProductDto;
+import com.shop.apparel.dto.PaymentActionDto;
 import com.shop.apparel.model.Notice;
 import com.shop.apparel.model.Orders;
 import com.shop.apparel.model.Orders_detail;
@@ -31,6 +32,80 @@ public class OrdersRepositroy {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
+	public List<PaymentActionDto> selectPaymentActionDto(int memberId) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT p.id, c.quantity, p.price ");
+		sb.append("FROM CART C INNER JOIN PRODUCT P ");
+		sb.append("ON C.productid = p.id ");
+		sb.append("WHERE MEMBERID = ?");
+		final String SQL = sb.toString();
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			rs = pstmt.executeQuery();
+			List<PaymentActionDto> dtos = new ArrayList<>();
+			while(rs.next()) {
+				PaymentActionDto dto = PaymentActionDto.builder()
+						.productId(rs.getInt(1))
+						.quantity(rs.getInt(2))
+						.price(rs.getInt(3))
+						.build();
+				dtos.add(dto);
+			}
+			return dtos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "selectPaymentActionDto : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt,rs);
+		}
+		return null;
+	}
+	
+	public int ordersDetailSave(int orderId, int productid, int quantity, int price) {
+		final String SQL = "INSERT INTO orders_detail(id,orderid,productid,quantity,price) "
+				+ "VALUES(orders_detail_SEQ.nextval,?,?,?,?)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, orderId);
+			pstmt.setInt(2, productid);
+			pstmt.setInt(3, quantity);
+			pstmt.setInt(4, price);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "ordersDetailSave : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	public int ordersSave(int memberId, int totalPrice) {
+		final String SQL = ("INSERT INTO orders(id,memberid,orderdate,totalprice) "
+				+ "VALUES(orders_SEQ.nextval,?,sysdate,?)" );
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL, new String[] {"id"});
+			pstmt.setInt(1, memberId);
+			pstmt.setInt(2, totalPrice);
+			pstmt.executeUpdate();
+			rs = pstmt.getGeneratedKeys();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "ordersSave : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt,rs);
+		}
+		return -1;
+	}
 	
 	public List<OrdersDetailDto> selectAllOrdersDetailDto(int ordersId){
 		StringBuilder sb = new StringBuilder();

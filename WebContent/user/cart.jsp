@@ -151,10 +151,12 @@
 			<div class="btn-order-ctrl rollover">
 				<a href="javascript:basket_clear();"> <img
 					src="/shop/image/cart/cart_empty.gif" alt="장바구니 비우기"
-					title="장바구니 비우기"></a> <a href="/html/mainm.html"> <img
+					title="장바구니 비우기"></a> 
+					<a href="index.jsp"> <img
 					src="http://www.pighip.co.kr/design/pighip/img/cart_shopping.gif"
-					alt="계속쇼핑하기" title="계속쇼핑하기"></a> <a href="order.html"><img
-					src="http://www.pighip.co.kr/design/pighip/img/cart_order.gif"
+					alt="계속쇼핑하기" title="계속쇼핑하기"></a> 
+					<a href="/shop/user?cmd=payment&id=${principal.id}">
+					<img src="http://www.pighip.co.kr/design/pighip/img/cart_order.gif"
 					alt="주문하기" title="주문하기"></a>
 
 				<!--<a href="javascript:basket_estimate()"><img src="/images/d3/modern_simple/btn/btn_h36_estimate_print.gif" alt="견적서 출력" title="견적서 출력" /></a>-->

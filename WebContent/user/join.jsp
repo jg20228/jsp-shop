@@ -79,8 +79,8 @@
 						</th>
 						<td>
 							<div class="tb-l pl-6">
-								<input type="text" name="birthyear" value="" size="10" maxlength="4">년 <input type="text" name="birthmonth" value="" size="10" maxlength="4">월 <input type="text"
-									name="birthdate" value="" size="10" maxlength="4">일 <input type="radio" name="gender" value="1" class="MS_radio"> 남 <input type="radio" name="gender" value="2"
+								<input type="text" name="birthyear" value="" size="10" maxlength="4">년 <input type="text" name="birthmonth" value="" size="10" maxlength="2">월 <input type="text"
+									name="birthdate" value="" size="10" maxlength="2">일 <input type="radio" name="gender" value="1" class="MS_radio"> 남 <input type="radio" name="gender" value="2"
 									class="MS_radio" checked>여
 							</div>
 						</td>
