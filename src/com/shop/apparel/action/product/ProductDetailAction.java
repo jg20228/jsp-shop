@@ -7,13 +7,16 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.soap.Detail;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.dto.DetailResponseDto;
 import com.shop.apparel.dto.ProductDto;
 import com.shop.apparel.dto.WithItemDto;
 import com.shop.apparel.model.Product;
+import com.shop.apparel.model.WithItem;
 import com.shop.apparel.repository.ProductRepositroy;
-import com.shop.apparel.repository.WithItemRepository;
+import com.shop.apparel.repository.ProductDetailRepository;
 
 public class ProductDetailAction implements Action{
 
@@ -26,16 +29,18 @@ public class ProductDetailAction implements Action{
 		//현재는 테스트를 위해서 id값으로 검색한 product 하나만 보내고 있다.
 		int productId = Integer.parseInt(request.getParameter("id"));
 		ProductRepositroy productRepositroy = ProductRepositroy.getInstance();
-		WithItemRepository withItemRepository = WithItemRepository.getInstance();
+		ProductDetailRepository productDetailRepository = ProductDetailRepository.getInstance();
 		
 		Product product = productRepositroy.selectById(productId);
-		ProductDto productDto = productRepositroy.selectByIdForDto(productId);
-		List<WithItemDto> withItemDtos = withItemRepository.selectByIdForDto(productId);
+		List<WithItemDto> withItemDtos = productDetailRepository.selectById(productId);
 		
+		DetailResponseDto detailResponseDtos = DetailResponseDto.builder()
+				.product(product)
+				.withItemDtos(withItemDtos)
+				.build();
 		
-		
-		
-		request.setAttribute("product", product);
+		request.setAttribute("dtos", detailResponseDtos);
+
 		
 		RequestDispatcher dis = request.getRequestDispatcher("detail/detail.jsp");
 		dis.forward(request, response);

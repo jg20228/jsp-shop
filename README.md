@@ -279,6 +279,27 @@ INSERT INTO orders_detail(ID,orderId,productId,quantity,price)
 VALUES(orders_detail_SEQ.nextval,3,4,2,19000);
 ```
 
+## Test data for withItem
+```
+INSERT INTO withItem (id, parentProductId, withitemId)
+VALUES(withItem_SEQ.nextval, 1, 2);
+
+INSERT INTO withItem (id, parentProductId, withitemId)
+VALUES(withItem_SEQ.nextval, 1, 3);
+
+INSERT INTO withItem (id, parentProductId, withitemId)
+VALUES(withItem_SEQ.nextval, 1, 4);
+
+INSERT INTO withItem (id, parentProductId, withitemId)
+VALUES(withItem_SEQ.nextval, 2, 1);
+
+INSERT INTO withItem (id, parentProductId, withitemId)
+VALUES(withItem_SEQ.nextval, 2, 3);
+
+INSERT INTO withItem (id, parentProductId, withitemId)
+VALUES(withItem_SEQ.nextval, 2, 4);
+```
+
 ## 쿼리문 for category
 ```
 --대분류(OUTER=100)로 중분류 찾기
