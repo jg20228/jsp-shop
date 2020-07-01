@@ -23,18 +23,14 @@ public class UserOrderAction implements Action {
 		List<OrdersProductDto> opdto = new ArrayList<OrdersProductDto>();
 
 		for (OrdersProductDto dto : dtos) {
-			
 			for (OrdersProductDto dto2 : dtos) {
-				
 				if (dto.getOrders().getId() == dto2.getOrders().getId()) {
 					if (opdto.contains(dto2)) {
-						
 						for (OrdersProductDto tdto : opdto) {
-							if(tdto.getOrders().getId()==dto2.getOrders().getId()) {
+							if(tdto.getOrders().getId()==dto2.getOrders().getId()&&!tdto.getProductName().contains("외")) {
 								tdto.setProductName(tdto.getProductName()+" 외...");
 							}
 						}
-						
 					}else {
 						opdto.add(dto2);
 					}

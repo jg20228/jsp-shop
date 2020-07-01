@@ -38,16 +38,12 @@ function updateCart(productId, memberId, idx) {
 	}
 	var amount = parseInt(_form.amount.value);
 
-	$
-			.ajax(
-					{
-						type : "get",
-						url : "/shop/user?cmd=updateCart&productId="
-								+ productId + "&memberId=" + memberId
-								+ "&amount=" + amount,
-						contentType : "application/x-www-form-urlencoded; charset=utf-8",
-						dataType : "text"
-					}).done(function(result) {
+	$.ajax({
+			type : "get",
+			url : "/shop/user?cmd=updateCart&productId="+ productId + "&memberId=" + memberId+ "&amount=" + amount,
+			contentType : "application/x-www-form-urlencoded; charset=utf-8",
+			dataType : "text"
+			}).done(function(result) {
 				location.href = location.href;
 			}).fail(function(error) {
 				alert("실패");
