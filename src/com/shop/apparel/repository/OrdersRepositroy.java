@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shop.apparel.db.DBConn;
+import com.shop.apparel.dto.OrdersDetailDto;
 import com.shop.apparel.dto.OrdersProductDto;
 import com.shop.apparel.model.Notice;
 import com.shop.apparel.model.Orders;
+import com.shop.apparel.model.Orders_detail;
+import com.shop.apparel.model.Product;
 
 public class OrdersRepositroy {
 	//TAG는 오류 발생시 쉽게 추적하기 위함
@@ -28,6 +31,52 @@ public class OrdersRepositroy {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
+	public List<OrdersDetailDto> selectAllOrdersDetailDto(int ordersId){
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT p.id, p.name, p.titlecomment, p.price, p.thumbnailh, od.id, od.quantity, od.price ");
+		sb.append("FROM PRODUCT p INNER JOIN ORDERS_detail od ");
+		sb.append("ON p.id = od.productid ");
+		sb.append("WHERE od.orderid = ? ");
+		final String SQL = sb.toString();
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, ordersId);
+			rs = pstmt.executeQuery();
+			
+			List<OrdersDetailDto> dtos = new ArrayList<>();
+			while(rs.next()) {
+				Product product = Product.builder()
+						.id(rs.getInt(1))
+						.name(rs.getString(2))
+						.titleComment(rs.getString(3))
+						.price(rs.getInt(4))
+						.thumbnailH(rs.getString(5))
+						.build();
+				
+				Orders_detail orders_detail = Orders_detail.builder()
+						.id(rs.getInt(6))
+						.quantity(rs.getInt(7))
+						.price(rs.getInt(8))
+						.build();
+				OrdersDetailDto dto = OrdersDetailDto.builder()
+						.product(product)
+						.orders_detail(orders_detail)
+						.build();
+				dtos.add(dto);
+			}
+			return dtos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "selectAllOrdersDetailDto : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt,rs);
+		}
+		return null;
+	}
+	
+
 	
 	public List<OrdersProductDto> selectAllDto(int id){
 		StringBuilder sb = new StringBuilder();
@@ -65,7 +114,7 @@ public class OrdersRepositroy {
 			e.printStackTrace();
 			System.out.println(TAG + "selectAllDto : " + e.getMessage());
 		} finally {
-			DBConn.close(conn, pstmt);
+			DBConn.close(conn, pstmt,rs);
 		}
 		return null;
 	}

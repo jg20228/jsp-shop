@@ -24,24 +24,22 @@
 				<thead>
 					<tr>
 						<th scope="row"><div class="tb-center">번호</div></th>
-						<th scope="row"><div class="tb-center">주문일자</div></th>
 						<th scope="row"><div class="tb-center">사진</div></th>
 						<th scope="row"><div class="tb-center">상품명</div></th>
+						<th scope="row"><div class="tb-center">상품가격</div></th>
+						<th scope="row"><div class="tb-center">구매량</div></th>
 						<th scope="row"><div class="tb-center">결제금액</div></th>
-						<th scope="row"><div class="tb-center">주문상세</div></th>
-						<th scope="row"><div class="tb-center">배송현황</div></th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="dto" items="${dtos}" varStatus="status">
 					<tr>
 						<td><div class="tb-center">${status.count}</div></td>
-						<td><div class="tb-center">${dto.orders.orderDate}</div></td>
-						<td><div class="tb-center"><img src="${dto.productThumbnailh}" alt="#"></div></td>
-						<td><div class="tb-center">${dto.productName}</div></td>
-						<td><div class="tb-center">${dto.orders.totalPrice}</div></td>
-						<td><div class="tb-center"><a href="/shop/user?cmd=orderDetail&id=${dto.orders.id}">주문상세</a></div></td>
-						<td><div class="tb-center">준비중</div></td>
+						<td><div class="tb-center"><img src="${dto.product.thumbnailH}" alt="#"></div></td>
+						<td><div class="tb-center">${dto.product.name}</div></td>
+						<td><div class="tb-center">${dto.orders_detail.price}</div></td>
+						<td><div class="tb-center">${dto.orders_detail.quantity}</div></td>
+						<td><div class="tb-center">${dto.orders_detail.price*dto.orders_detail.quantity}</div></td>
 					</tr>
 					</c:forEach>
 				</tbody>
