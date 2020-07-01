@@ -30,15 +30,9 @@ alter user shop default tablespace users quota unlimited on users;
 DROP TABLE notice;
 DROP TABLE withItem;
 DROP TABLE orders_detail;
-DROP TABLE product_detail;
-DROP TABLE product_review;
-
 DROP TABLE review;
-
 DROP TABLE REPLY;
-DROP TABLE product_qna;
 DROP TABLE qna;
-
 DROP TABLE orders;
 DROP TABLE cart;
 DROP TABLE wishList;
@@ -305,6 +299,17 @@ INSERT INTO withItem (id, parentProductId, withitemId)
 VALUES(withItem_SEQ.nextval, 2, 4);
 ```
 
+## 쿼리문 for review
+```INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
+VALUES(review_SEQ.nextval, '정말 잘 어울려요!', '2020-07-01', '/shop/image/detail/review(1).jpg', 1, 1);
+
+INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
+VALUES(review_SEQ.nextval, '배송 빨라요!', '2020-07-01', '/shop/image/detail/review(2).jpg', 4, 1);
+
+INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
+VALUES(review_SEQ.nextval, '마음에 쏙 들어요~!', '2020-07-01', '/shop/image/detail/review(3).jpg', 6, 1);
+```
+
 ## 쿼리문 for category
 ```
 --대분류(OUTER=100)로 중분류 찾기
@@ -325,4 +330,16 @@ ON p.id = c.productId
 INNER JOIN member m
 ON m.id = c.memberId
 WHERE m.id = 0;
+
+--WithItem JOIN문
+SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, w.id, w.parentproductId, w.withItemId
+FROM product p INNER JOIN withItem w
+ON p.id = w.withitemid
+WHERE w.parentProductId = ?;
+
+--Review JOIN문
+SELECT *
+FROM product p INNER JOIN review r
+ON p.id = r.productId
+WHERE r.productId = ?;
 ```

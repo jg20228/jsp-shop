@@ -9,8 +9,10 @@ import java.util.List;
 
 import com.shop.apparel.db.DBConn;
 import com.shop.apparel.dto.DetailResponseDto;
+import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.dto.WithItemDto;
 import com.shop.apparel.model.Product;
+import com.shop.apparel.model.Review;
 import com.shop.apparel.model.WithItem;
 
 public class ProductDetailRepository {
@@ -31,8 +33,60 @@ public class ProductDetailRepository {
 		private PreparedStatement pstmt = null;
 		private ResultSet rs = null;
 		
+		// detail.jsp의 review 부분에 필요한 것들 
+		public List<ReviewDto> selectByIdForReview(int productId) {
+			final String SQL = "SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, r.id, r.content, r.reviewDate, r.photo, r.memberId, r.productId " + 
+					"FROM product p INNER JOIN review " + 
+					"ON p.id = r.productId " + 
+					"WHERE r.productId = ? ";
+			List<ReviewDto> reviewDtos = new ArrayList<>();
+			
+			try {
+				conn = DBConn.getConnection();
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setInt(1, productId);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Product product = Product.builder()
+							.id(rs.getInt(1))
+							.name(rs.getString(2))
+							.type(rs.getString(3))
+							.titleComment(rs.getString(4))
+							.price(rs.getInt(5))
+							.thumbnailW(rs.getString(6))
+							.thumbnailH(rs.getString(7))
+							.contents(rs.getString(8))
+							.categoryId(rs.getInt(9))
+							.build();
+					Review review = Review.builder()
+							.id(rs.getInt(10))
+							.content(rs.getString(11))
+							.reviewDate(rs.getTimestamp(12))
+							.photo(rs.getString(13))
+							.memberId(rs.getInt(14))
+							.productId(rs.getInt(15))
+							.build();
+					ReviewDto reviewDto = ReviewDto.builder()
+							.product(product)
+							.review(review)
+							.build();
+					
+					reviewDtos.add(reviewDto);
+				}
+				return reviewDtos;				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println(TAG+"selectByIdForReview: "+e.getMessage());
+			} finally {
+				DBConn.close(conn, pstmt, rs);
+			}
+			
+			return null;
+		}
+		
 		// detail.jsp에 쓰기 위해 withItem 부분을 위함. 
-		public List<WithItemDto> selectById(int productId) {
+		public List<WithItemDto> selectByIdForWithItem(int productId) {
 			final String SQL = "SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, w.id, w.parentproductId, w.withItemId " + 
 					"FROM product p INNER JOIN withItem w " + 
 					"ON p.id = w.withitemid " + 
@@ -72,7 +126,7 @@ public class ProductDetailRepository {
 				return withItemDtos;				
 			} catch (SQLException e) {
 				e.printStackTrace();
-				System.out.println(TAG+"selectByIdForDto: "+e.getMessage());
+				System.out.println(TAG+"selectByIdForWithItem: "+e.getMessage());
 			} finally {
 				DBConn.close(conn, pstmt, rs);
 			}

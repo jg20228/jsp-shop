@@ -12,6 +12,7 @@ import javax.xml.soap.Detail;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.dto.DetailResponseDto;
 import com.shop.apparel.dto.ProductDto;
+import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.dto.WithItemDto;
 import com.shop.apparel.model.Product;
 import com.shop.apparel.model.WithItem;
@@ -32,16 +33,17 @@ public class ProductDetailAction implements Action{
 		ProductDetailRepository productDetailRepository = ProductDetailRepository.getInstance();
 		
 		Product product = productRepositroy.selectById(productId);
-		List<WithItemDto> withItemDtos = productDetailRepository.selectById(productId);
+		List<WithItemDto> withItemDtos = productDetailRepository.selectByIdForWithItem(productId);
+		List<ReviewDto> reviewDtos = productDetailRepository.selectByIdForReview(productId);
 		
 		DetailResponseDto detailResponseDtos = DetailResponseDto.builder()
 				.product(product)
 				.withItemDtos(withItemDtos)
+				.reviewsDtos(reviewDtos)
 				.build();
 		
 		request.setAttribute("dtos", detailResponseDtos);
 
-		
 		RequestDispatcher dis = request.getRequestDispatcher("detail/detail.jsp");
 		dis.forward(request, response);
 	}
