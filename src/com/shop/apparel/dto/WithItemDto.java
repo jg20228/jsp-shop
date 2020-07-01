@@ -1,5 +1,6 @@
 package com.shop.apparel.dto;
 
+import com.shop.apparel.model.Product;
 import com.shop.apparel.model.WithItem;
 
 import lombok.AllArgsConstructor;
@@ -12,10 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class WithItemDto{
+	private Product product;
 	private WithItem withItem;
-	private String name;         //productId - product - name
-	private String titleComment; //productId - product - titleComment
-	private int price;           //productId - product - price
-	private String thumbnailH;   //productId - product - thumbnailH
-	private int productId; //이거는 이 상품 눌러서 해당 디테일 페이지를 위한 것. 
 }

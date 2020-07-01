@@ -1,5 +1,7 @@
 package com.shop.apparel.model;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +17,6 @@ public class QnA {
 	private String replyState;
 	private String title;
 	private String content;
-	private String qnADate;
+	private Timestamp qnADate;
 	private int memberId;
 }
