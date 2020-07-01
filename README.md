@@ -229,6 +229,10 @@ VALUES(product_SEQ.nextval,'test3','OUTER', '캐주얼한 나그랑 티셔츠예
 
 INSERT INTO product(id,name, type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
 VALUES(product_SEQ.nextval,'test4','OUTER', '톡톡 튀는 컬러들이 믹스된 타이다이 티셔츠 ! 긴팔 버전으로 나왔어요 ♡',19000, '/shop/image/detail/thumbW(4).jpg','/shop/image/detail/thumbH(4).gif','disc컨텐츠 예약',100);
+
+INSERT INTO product(id,name, type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId)
+VALUES(product_SEQ.nextval,'test5','OUTER', '결제 테스트용 product',1000, '/shop/image/detail/thumbW(4).jpg','/shop/image/detail/thumbH(4).gif','disc컨텐츠 예약',100);
+
 ```
 
 ```
