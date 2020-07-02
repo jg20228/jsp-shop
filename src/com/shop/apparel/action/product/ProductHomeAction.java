@@ -6,8 +6,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.model.Member;
+import com.shop.apparel.util.Script;
 
 public class ProductHomeAction implements Action{
 
@@ -16,5 +19,4 @@ public class ProductHomeAction implements Action{
 		RequestDispatcher dis = request.getRequestDispatcher("home.jsp");
 		dis.forward(request, response);
 	}
-
 }

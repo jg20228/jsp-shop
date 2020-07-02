@@ -32,6 +32,8 @@ public class UserRepositroy {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	
+	
 	//updateCart
 	public int updateCartQuantityById(int memberId, int productId, int quantity) {
 		final String SQL = "UPDATE cart SET quantity = ? WHERE memberid = ? AND productId = ?";

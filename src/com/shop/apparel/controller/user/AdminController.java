@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.action.admin.AdminIndexAction;
+import com.shop.apparel.action.admin.AdminMemberListAction;
+import com.shop.apparel.action.admin.AdminTableAction;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
 import com.shop.apparel.action.product.ProductDetailAction;
 import com.shop.apparel.action.product.ProductHomeAction;
-
-
-
 
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
@@ -43,19 +43,35 @@ public class AdminController extends HttpServlet {
 	public Action router(String cmd) {
 		if(cmd.equals("productRegistration")) {
 			return new ProductRegistrationAction(); 
-		} //else if(cmd.equals("productRegistrationProc")) {
-//			return new ProductRegistrationProcAction(); 
-//		}else if(cmd.equals("productUpdate")) {
-//			return new ProductUpdateAction();
-//		}else if(cmd.equals("productUpdateProc")) {
-//			return new ProductUpdateProcAction(); 
-//		}else if(cmd.equals("productDelete")) {
-//			return new ProductDeleteAction(); 
-//		}else if(cmd.equals("productDeleteProc")) {
-//			return new ProductDeleteProcAction(); 
-//		}else if(cmd.equals("search")) {
-//			return new ProductSearchAction(); 
-//		}
+		}else if(cmd.equals("productRegistrationProc")) {
+			//return new ProductRegistrationProcAction(); 
+		}else if(cmd.equals("productUpdate")) {
+			//return new ProductUpdateAction();
+		}else if(cmd.equals("productUpdateProc")) {
+			//return new ProductUpdateProcAction(); 
+		}else if(cmd.equals("productDelete")) {
+			//return new ProductDeleteAction(); 
+		}else if(cmd.equals("productDeleteProc")) {
+			//return new ProductDeleteProcAction(); 
+		}else if(cmd.equals("search")) {
+			//return new ProductSearchAction(); 
+		}else if(cmd.equals("index")) {
+			return new AdminIndexAction();
+		}else if(cmd.equals("table")) {
+			return new AdminTableAction();
+		}else if(cmd.equals("memberList")) {
+			return new AdminMemberListAction();
+		}else if(cmd.equals("reviewList")) {
+			//return new AdminReviewListAction();
+		}else if(cmd.equals("replyList")) {
+			//return new AdminReplyListAction();
+		}else if(cmd.equals("qnAList")) {
+			//return new AdminQnAListAction();
+		}else if(cmd.equals("productList")) {
+			//return new AdminProductListAction();
+		}else if(cmd.equals("orderList")) {
+			//return new AdminOrderListAction();
+		}
 		return null;
 	}
 }
