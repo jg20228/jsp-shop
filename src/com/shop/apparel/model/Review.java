@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Review {
 	private int id;
+	private int star;
 	private String content;
 	private Timestamp reviewDate;
 	private String photo;

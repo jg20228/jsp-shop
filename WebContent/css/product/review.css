@@ -372,4 +372,5 @@
 #layerChkPasswd strong { margin: 4px 4px 0 0; letter-spacing: -1px; }
 #layerChkPasswd input { float: left; width: 150px; height: 18px; line-height: 18px; margin-right: 4px; padding: 0 5px; border: 1px solid #212121;}
 
+#powerReview .PR15N01-info .chart li .bar .abs, #powerReview .info .chart li .bar .abs { background:#000000;}
 /* BASIC css end */

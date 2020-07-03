@@ -13,6 +13,7 @@ import com.shop.apparel.action.Action;
 import com.shop.apparel.dto.DetailResponseDto;
 import com.shop.apparel.dto.ProductDto;
 import com.shop.apparel.dto.ReviewDto;
+import com.shop.apparel.dto.StarDto;
 import com.shop.apparel.dto.WithItemDto;
 import com.shop.apparel.model.Product;
 import com.shop.apparel.model.WithItem;
@@ -35,12 +36,35 @@ public class ProductDetailAction implements Action{
 		Product product = productRepositroy.selectById(productId);
 		List<WithItemDto> withItemDtos = productDetailRepository.selectByIdForWithItem(productId);
 		List<ReviewDto> reviewDtos = productDetailRepository.selectByIdForReview(productId);
+		int totalCount = productDetailRepository.selecTotalCount(productId);
+		int sum = productDetailRepository.sum(productId);
+		int one = productDetailRepository.one(productId);
+		int two = productDetailRepository.two(productId);
+		int three = productDetailRepository.three(productId);
+		int four = productDetailRepository.four(productId);	
+		int five = productDetailRepository.five(productId);		
+		
+		StarDto starDto = StarDto.builder()
+				.totalCount(totalCount)
+				.sum(sum)
+				.one(one)
+				.two(two)
+				.three(three)
+				.four(four)
+				.five(five)
+				.build();
 		
 		DetailResponseDto detailResponseDtos = DetailResponseDto.builder()
 				.product(product)
 				.withItemDtos(withItemDtos)
-				.reviewsDtos(reviewDtos)
+				.reviewDtos(reviewDtos)
+				.starDto(starDto)
 				.build();
+		
+		for (ReviewDto reviewDto : reviewDtos) {
+			System.out.println(reviewDto.getReview().getMemberId());
+			System.out.println(reviewDto.getReview().getReviewDate());
+		}
 		
 		request.setAttribute("dtos", detailResponseDtos);
 
