@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 public class ReviewDto {
 	private Product product;
 	private Review review;	
+	private String username;
 	
 //	private String content;
 //	private Timestamp reviewDate;

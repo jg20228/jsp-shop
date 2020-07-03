@@ -381,7 +381,7 @@
 			<!--<h3 class="detail-title">상품 상세 설명</h3>-->
 			<div class="prd-detail">
 				<!-- content 부분 -->
-				${product.contents}
+				${dtos.product.contents}
 				<!-- s: 상품 일반정보(상품정보제공 고시) -->
 				<!-- e: 상품 일반정보(상품정보제공 고시) -->
 			</div>
@@ -418,7 +418,7 @@
 											</tr>
 											<tr>
 												<td><div class="prd-name">
-													<!-- 관련상품 이상품의 detail페이지로 이동///이 상품의 titleComment ${product.titleComment} -->
+													<!-- 관련상품 이상품의 detail페이지로 이동///이 상품의 titleComment {product.titleComment} -->
 														<a href="/shop/">${withItemDto.product.name}  ${withItemDto.product.titleComment}
 														</a>
 													</div></td>
@@ -428,7 +428,7 @@
 													<div -class="prd-price">
 
 														<ul>
-														<!-- 이 관련상품의 가격 ${product.price} -->
+														<!-- 이 관련상품의 가격 {product.price} -->
 															<li class="prd-price">${withItemDto.product.price}원</li>
 														</ul>
 

@@ -59,15 +59,15 @@ public class ProductController extends HttpServlet {
 
 
 
-			return new ProductHomeAction(); //Board�� ���
+			return new ProductHomeAction();
 		} else if(cmd.equals("detail")) {
-			return new ProductDetailAction(); //�󼼺���
+			return new ProductDetailAction();
 		}else if(cmd.equals("outer")) {
-			return new ProductOuterAction(); //�󼼺���
+			return new ProductOuterAction();
 		}else if(cmd.equals("top")) {
-			return new ProductTopAction(); //�󼼺���
+			return new ProductTopAction(); 
 		}else if(cmd.equals("search")) {
-		//	return new ProductSearchAction(); // ����
+		//	return new ProductSearchAction();
 		}else if(cmd.equals("addCart")) {
 			return new ProductAddCartAction();
 		}else if(cmd.equals("addWishList")) {

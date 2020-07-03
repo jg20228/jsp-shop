@@ -16,8 +16,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class DetailResponseDto {
-	Product product;
-	List<WithItemDto> withItemDtos;
-	List<ReviewDto> reviewsDtos;
-	List<QnADto> qnADtos;
+	private Product product;
+	private List<WithItemDto> withItemDtos;
+	private List<ReviewDto> reviewDtos;
+	private List<QnADto> qnADtos;
+	private StarDto starDto;
+	
 }
