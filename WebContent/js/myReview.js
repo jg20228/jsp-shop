@@ -46,8 +46,18 @@ function makeTableItem(reviewDto) {
 	html += `<li class="pr-list-date">등록일 : ${reviewDto.review.reviewDate}</li>`;
 	html += 	`</ul>`;
 	html += 	`<div class="star-icon">`;
-	html +=		`<span class="star"><em>★★★★★</em></span>`;
-	html +=		`<span class="survey">아주만족</span>`;
+	html +=		`<span class="star">`;
+	html +=		`<em>`;
+	for (var i = 1; i<=`${reviewDto.review.star}`;i++) {
+		html +=	`★`;
+		}
+	/*html +=		`<c:forEach var="i" begin="1" end="${reviewDto.review.star}">`;
+
+	html +=		`</c:forEach>`;*/
+	
+	html +=		`</em>`;
+	html +=		`</span>`;
+	html +=		`<span class="survey">${reviewDto.level}</span>`;
 	html +=	 `</div>`;
 	html += `</div>`;
 	html += `<!-- <dl class="pr-options" style="display: block;">`;

@@ -204,12 +204,24 @@ public class ProductDetailRepository {
 		
 		// detail.jsp의 review 부분에 필요한 것들 
 		public List<ReviewDto> selectByIdForReview(int productId) {
-			final String SQL = "SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, r.id, r.star, r.content, r.reviewDate, r.photo, r.memberId, r.productId, m.username " + 
+			/*final String SQL = "SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, r.id, r.star, r.content, r.reviewDate, r.photo, r.memberId, r.productId, m.username " + 
+					"FROM product p INNER JOIN review r " + 
+					"ON p.id = r.productId " + 
+					"INNER JOIN member m " + 
+					"ON r.memberId = m.id " + 
+					"WHERE r.productId = ? ";*/
+			
+			final String SQL = "SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, r.id, r.star, r.content, r.reviewDate, r.photo, r.memberId, r.productId, m.username,DECODE(star, 5 , '아주 만족' , " + 
+					"4 , '만족' , " + 
+					"3 , '보통' , " + 
+					"2 , '미흡' , " + 
+					"1 , '불만족', '평점없음') \"level\" " + 
 					"FROM product p INNER JOIN review r " + 
 					"ON p.id = r.productId " + 
 					"INNER JOIN member m " + 
 					"ON r.memberId = m.id " + 
 					"WHERE r.productId = ? ";
+			
 			List<ReviewDto> reviewDtos = new ArrayList<>();
 			
 			try {
@@ -243,6 +255,7 @@ public class ProductDetailRepository {
 							.product(product)
 							.review(review)
 							.username(rs.getString(17))
+							.level(rs.getString(18))
 							.build();
 					
 					reviewDtos.add(reviewDto);

@@ -131,9 +131,7 @@
 			프리미엄 상품평 <span>(${dtos.starDto.totalCount}개)</span>
 		</h2>
 		<!-- 여기 누르는 곳 4개는 ajax로 할것같은데 -->
-		<div class="pr-photo-toggle pr-photo-toggle-sort">
-			<a href="javascript:power_review_list_toggle();">포토리뷰 모아보기</a>
-		</div>
+		
 		<!-- ajax로 값퍼올리기 정렬하기 -->
 		<ul class="sort">
 			<li class="now" val="date">
@@ -173,7 +171,7 @@
 							</em>
 						</span> 
 						<!--  별점에 따른 만족도 나타내기 -->
-						<span class="survey">아주만족</span> 
+						<span class="survey">${reviewDto.level}</span> 
 					</div>
 				</div>
 				<!-- 옵션 나타내는 부분 -->

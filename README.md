@@ -106,6 +106,7 @@ CREATE TABLE qna(
     
 CREATE TABLE review(
 	id number primary key,
+    star number,
     content varchar2(100),
     reviewDate TIMESTAMP not null,
     photo CLOB,
@@ -238,6 +239,13 @@ VALUES(member_SEQ.nextval,'무지','muzi',1234,'2020-06-29','테','test/test2/te
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
 VALUES(member_SEQ.nextval,'라이언','lion',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
 
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(member_SEQ.nextval,'단무지','muzi',1234,'2020-07-01','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
+
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(member_SEQ.nextval,'라이언','lion',1234,'2020-07-01','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
+
+
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(notice_SEQ.nextval,0,'공지사항TEST01','공지사항detail','2000-01-01',0);
 
@@ -252,13 +260,16 @@ VALUES(notice_SEQ.nextval,0,'공지사항TEST03','공지사항detail','2000-01-0
 ```
 INSERT INTO cart(id,memberId,productId,quantity)
 VALUES(cart_SEQ.nextval,0,1,2);
+
 INSERT INTO cart(id,memberId,productId,quantity)
 VALUES(cart_SEQ.nextval,0,2,3);
 
 INSERT INTO wishlist(id,memberId,productId)
 VALUES(wishList_SEQ.nextval,0,1);
+
 INSERT INTO wishlist(id,memberId,productId)
 VALUES(wishList_SEQ.nextval,0,2);
+
 ```
 
 ## Test data for orders & orders_detail
@@ -307,14 +318,14 @@ VALUES(withItem_SEQ.nextval, 2, 4);
 ```
 
 ## 쿼리문 for review
-```INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
-VALUES(review_SEQ.nextval, '정말 잘 어울려요!', '2020-07-01', '/shop/image/detail/review(1).jpg', 1, 1);
+INSERT INTO review (id, star, content, reviewDate, photo, memberId, productId)
+VALUES(review_SEQ.nextval, 3, '정말 잘 어울려요!', '2020-06-29', '/shop/image/detail/review(1).jpg', 1, 1);
 
-INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
-VALUES(review_SEQ.nextval, '배송 빨라요!', '2020-07-01', '/shop/image/detail/review(2).jpg', 2, 1);
+INSERT INTO review (id, star, content, reviewDate, photo, memberId, productId)
+VALUES(review_SEQ.nextval, 5,'배송 빨라요!', '2020-07-01', '/shop/image/detail/review(2).jpg', 2, 1);
 
-INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
-VALUES(review_SEQ.nextval, '마음에 쏙 들어요~!', '2020-07-01', '/shop/image/detail/review(3).jpg', 3, 1);
+INSERT INTO review (id, star, content, reviewDate, photo, memberId, productId)
+VALUES(review_SEQ.nextval, 4, '마음에 쏙 들어요~!', '2020-07-02', '/shop/image/detail/review(3).jpg', 3, 1);
 ```
 
 ## 쿼리문 for category

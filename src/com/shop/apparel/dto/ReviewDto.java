@@ -18,6 +18,7 @@ public class ReviewDto {
 	private Product product;
 	private Review review;	
 	private String username;
+	private String level;
 	
 //	private String content;
 //	private Timestamp reviewDate;
