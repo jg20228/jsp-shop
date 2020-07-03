@@ -16,20 +16,25 @@
 		<div class="PR15N01-write">
 			<form name="prw_form" id="prw_form" action="" method="post" autocomplete="off">
 			<div class="pr-txtbox">
-				<textarea name="content">리뷰 게시판은 ' 정상적으로 판매된 제품 ' 에 대한 고객님들의 의견 게시판입니다.
+			
+				<textarea name="content" onclick="this.value=''">리뷰 게시판은 ' 정상적으로 판매된 제품 ' 에 대한 고객님들의 의견 게시판입니다.
 해당 게시판에 남겨주실 경우 구매 확정 의사가 있으신 걸로 간주됩니다.
 
 오배송&amp;불량건 그 외의 이유로 대처를 해드려야 하는 경우의 리뷰건은 임의로 삭제처리되며, 
 고객센터(02-457-0944) 또는 성격에 맞는 게시판으로 문의부탁드립니다 :) 
+감사합니다 ♥
 
-감사합니다 ♥ </textarea>
-					<textarea style="display: none" name="board_writeword">리뷰 게시판은 ' 정상적으로 판매된 제품 ' 에 대한 고객님들의 의견 게시판입니다.
+</textarea>
+				<textarea style="display: none" name="board_writeword" onclick="this.value=''">
+리뷰 게시판은 ' 정상적으로 판매된 제품 ' 에 대한 고객님들의 의견 게시판입니다.
 해당 게시판에 남겨주실 경우 구매 확정 의사가 있으신 걸로 간주됩니다.
 
 오배송&amp;불량건 그 외의 이유로 대처를 해드려야 하는 경우의 리뷰건은 임의로 삭제처리되며, 
 고객센터(02-457-0944) 또는 성격에 맞는 게시판으로 문의부탁드립니다 :) 
+감사합니다 ♥ 
 
-감사합니다 ♥ </textarea>
+</textarea>
+
 					<div class="thumb-wrap"></div>
 				</div>
 			</form>
@@ -240,3 +245,11 @@
 	</div>
 	<!-- #layerReplyModify -->
 </div>
+
+
+<script>
+
+
+#prw_form)
+
+</script>
