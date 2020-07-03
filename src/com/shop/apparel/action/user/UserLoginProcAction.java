@@ -26,8 +26,6 @@ public class UserLoginProcAction implements Action {
 //			return;
 //		}
 
-		
-		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -53,6 +51,7 @@ public class UserLoginProcAction implements Action {
 			}
 			// 로그인 성공
 			Script.href("로그인 성공", "/shop/index.jsp", response);
+			
 		} else {
 			Script.back("로그인 실패. 다시 로그인 해주세요", response);
 		}

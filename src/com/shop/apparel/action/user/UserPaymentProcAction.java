@@ -31,9 +31,13 @@ public class UserPaymentProcAction implements Action{
 		OrdersRepositroy ordersRepositroy = OrdersRepositroy.getInstance();
 		int orderId = ordersRepositroy.ordersSave(memberId, totalPrice);
 		System.out.println(orderId);
+		
 		List<PaymentActionDto> dtos = ordersRepositroy.selectPaymentActionDto(memberId);
+		
 		for (PaymentActionDto dto : dtos) {
 			ordersRepositroy.ordersDetailSave(orderId, dto.getProductId(), dto.getQuantity(), dto.getPrice());
 		}
+		
+		
 	}
 }

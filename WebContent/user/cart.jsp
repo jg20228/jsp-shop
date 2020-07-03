@@ -91,28 +91,12 @@
 									</div></td>
 								<td><div class="tb-center" style="color: #7d7d7d;">0</div></td>
 								<td><div class="tb-center tb-delivery">
-										<div class="MS_tb_delivery">
-											<span class="MS_deli_txt" onmouseover="overcase(this, '0')"
-												onmouseout="outcase(this, '0')"> <span
-												class="MS_deli_title MS_deli_block">[기본배송]</span><span
-												class="MS_deli_desc MS_deli_block">조건</span>
-											</span>
-											<div id="deliverycase0" class="MS_layer_delivery"
-												style="display: none;">
-												<dl>
-													<dt>배송조건 : 기본배송(조건)</dt>
-													<dd>
-														주문금액이 <span class="MS_highlight">50,000원</span> 미만시 <br>
-														<br style="line-height: 3px">배송비 <span
-															class="MS_highlight">2,500원</span>이 청구됩니다.
-													</dd>
-												</dl>
-												<span class="bull"></span>
-												<iframe id="deliverycase_iframe0"
-													class="MS_layer_delivery_iframe" frameborder="no"
-													border="0"></iframe>
-											</div>
-										</div>
+												<div class="container">
+												  <a href="#" data-toggle="popover" title="배송조건 : 기본배송(조건)" data-content=
+												  "주문금액이 50,000원 미만시 
+														배송비 2,500원이 청구됩니다.">
+															기본배송[조건]</a>
+												</div>
 									</div></td>
 								<td>
 									<div class="tb-center">
@@ -124,7 +108,7 @@
 												src="/shop/image/cart/cart_del.gif" alt="삭제" title="삭제"></a></span>
 									</div>
 								</td>
-							</tr>
+							</tr> 
 							</form>
 						</c:forEach>
 					</tbody>
@@ -244,7 +228,11 @@
 	</div>
 	<%@ include file="/include/serviceArea.jsp"%>
 </div>
-
+<script>
+	$(document).ready(function(){
+	  $('[data-toggle="popover"]').popover();   
+	});
+</script>
 <script src="/shop/js/cartView.js"></script>
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>
