@@ -12,7 +12,7 @@ import com.shop.apparel.action.Action;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.util.Script;
 
-public class AdminIndexAction implements Action{
+public class ProductRegistrationProcAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -17,6 +17,7 @@ public class AdminMemberListAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//사용안함
 		Gson gson = new Gson();
 		AdminRepositroy adminRepositroy =AdminRepositroy.getInstance();
 		List<Member> members = adminRepositroy.adminAllMember();

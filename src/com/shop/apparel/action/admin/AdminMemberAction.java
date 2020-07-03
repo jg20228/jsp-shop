@@ -14,7 +14,7 @@ import com.shop.apparel.model.Member;
 import com.shop.apparel.repository.AdminRepositroy;
 import com.shop.apparel.util.Script;
 
-public class AdminTableAction implements Action{
+public class AdminMemberAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class AdminTableAction implements Action{
 		
 		request.setAttribute("members", members);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("startbootstrap/table.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("startbootstrap/member.jsp");
 		dis.forward(request, response);
 	}
 }
