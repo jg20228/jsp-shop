@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.action.admin.AdminIndexAction;
 import com.shop.apparel.action.admin.AdminMemberListAction;
-import com.shop.apparel.action.admin.AdminTableAction;
+import com.shop.apparel.action.admin.AdminMemberAction;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
+import com.shop.apparel.action.admin.ProductRegistrationProcAction;
 import com.shop.apparel.action.product.ProductDetailAction;
 import com.shop.apparel.action.product.ProductHomeAction;
 
@@ -44,7 +45,7 @@ public class AdminController extends HttpServlet {
 		if(cmd.equals("productRegistration")) {
 			return new ProductRegistrationAction(); 
 		}else if(cmd.equals("productRegistrationProc")) {
-			//return new ProductRegistrationProcAction(); 
+			return new ProductRegistrationProcAction(); 
 		}else if(cmd.equals("productUpdate")) {
 			//return new ProductUpdateAction();
 		}else if(cmd.equals("productUpdateProc")) {
@@ -57,20 +58,14 @@ public class AdminController extends HttpServlet {
 			//return new ProductSearchAction(); 
 		}else if(cmd.equals("index")) {
 			return new AdminIndexAction();
-		}else if(cmd.equals("table")) {
-			return new AdminTableAction();
-		}else if(cmd.equals("memberList")) {
-			return new AdminMemberListAction();
-		}else if(cmd.equals("reviewList")) {
-			//return new AdminReviewListAction();
-		}else if(cmd.equals("replyList")) {
-			//return new AdminReplyListAction();
-		}else if(cmd.equals("qnAList")) {
-			//return new AdminQnAListAction();
-		}else if(cmd.equals("productList")) {
-			//return new AdminProductListAction();
-		}else if(cmd.equals("orderList")) {
-			//return new AdminOrderListAction();
+		}else if(cmd.equals("product")) {
+			
+		}else if(cmd.equals("orders")) {
+		}else if(cmd.equals("member")) {
+			return new AdminMemberAction();
+		}else if(cmd.equals("review")) {
+		}else if(cmd.equals("reply")) {
+		}else if(cmd.equals("qnA")) {
 		}
 		return null;
 	}

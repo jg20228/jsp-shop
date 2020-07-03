@@ -13,12 +13,32 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
+      
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="/shop/admin?cmd=index">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/admin?cmd=product">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Product</span></a>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/admin?cmd=orders">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Orders</span></a>
       </li>
 
       <!-- Divider -->
@@ -26,9 +46,39 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="/shop/admin?cmd=table">
+        <a class="nav-link" href="/shop/admin?cmd=member">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Member</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
+            <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/admin?cmd=review">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Review</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
+            <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/admin?cmd=reply">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Reply</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
+            <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/admin?cmd=qnA">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Q&A</span></a>
       </li>
 
       <!-- Divider -->
