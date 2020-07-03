@@ -9,6 +9,7 @@ import java.util.List;
 import com.shop.apparel.db.DBConn;
 import com.shop.apparel.dto.ProductDto;
 import com.shop.apparel.model.Cart;
+import com.shop.apparel.model.Category;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.Product;
 
@@ -156,14 +157,51 @@ public class ProductRepositroy {
 		return null;
 	}
 	
-	
-	//상품 등록
-	public int save(Member user) {
-		
-		final String SQL = "";
+	public List<Category> findAllCategory() {
+		final String SQL = "SELECT id,type " +
+				"FROM category " +
+				"WHERE id = parenttypeid ";
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			List<Category> categories = new ArrayList<>();
+			
+			while(rs.next()) {
+				Category category = Category.builder()
+						.id(rs.getInt(1))
+						.type(rs.getString(2))
+						.build();
+				categories.add(category);
+			}
+			
+			return categories;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "findAllCategory : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
+	
+	//상품 등록
+	public int save(Product product) {
+		final String SQL = "INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId) " + 
+				"VALUES(product_SEQ.nextval,?,?,?,?,?,?,?,?)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, product.getName());
+			pstmt.setString(2, product.getType());
+			pstmt.setString(3, product.getTitleComment());
+			pstmt.setInt(4, product.getPrice());
+			pstmt.setString(5, product.getThumbnailW());
+			pstmt.setString(6, product.getThumbnailH());
+			pstmt.setString(7, product.getContents());
+			pstmt.setInt(8, product.getCategoryId());
+			
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -171,7 +209,6 @@ public class ProductRepositroy {
 		} finally {
 			DBConn.close(conn, pstmt);
 		}
-		
 		return -1;
 	}
 }

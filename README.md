@@ -171,9 +171,8 @@ DROP SEQUENCE notice_SEQ;
 DROP SEQUENCE orders_SEQ;
 DROP SEQUENCE orders_detail_SEQ;
 DROP SEQUENCE product_SEQ;
-DROP SEQUENCE product_detail_SEQ;
-DROP SEQUENCE product_qna_SEQ;
-DROP SEQUENCE product_review_SEQ;
+DROP SEQUENCE qna_SEQ;
+DROP SEQUENCE review_SEQ;
 DROP SEQUENCE reply_SEQ;
 DROP SEQUENCE cart_SEQ;
 DROP SEQUENCE withItem_SEQ;
@@ -234,6 +233,10 @@ INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,emai
 VALUES(0,'관리자','admin',1234,'2020-06-22','관','test/test2/test3','010-0000-0000','test@test.com','ADMIN','T');
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
 VALUES(member_SEQ.nextval,'테스트계정','sara',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(member_SEQ.nextval,'무지','muzi',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
+INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
+VALUES(member_SEQ.nextval,'라이언','lion',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
 
 INSERT INTO notice(id,memberId,title,content,createDate,readCount)
 VALUES(notice_SEQ.nextval,0,'공지사항TEST01','공지사항detail','2000-01-01',0);
@@ -308,10 +311,10 @@ VALUES(withItem_SEQ.nextval, 2, 4);
 VALUES(review_SEQ.nextval, '정말 잘 어울려요!', '2020-07-01', '/shop/image/detail/review(1).jpg', 1, 1);
 
 INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
-VALUES(review_SEQ.nextval, '배송 빨라요!', '2020-07-01', '/shop/image/detail/review(2).jpg', 4, 1);
+VALUES(review_SEQ.nextval, '배송 빨라요!', '2020-07-01', '/shop/image/detail/review(2).jpg', 2, 1);
 
 INSERT INTO review (id, content, reviewDate, photo, memberId, productId)
-VALUES(review_SEQ.nextval, '마음에 쏙 들어요~!', '2020-07-01', '/shop/image/detail/review(3).jpg', 6, 1);
+VALUES(review_SEQ.nextval, '마음에 쏙 들어요~!', '2020-07-01', '/shop/image/detail/review(3).jpg', 3, 1);
 ```
 
 ## 쿼리문 for category

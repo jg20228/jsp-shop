@@ -1,6 +1,7 @@
 package com.shop.apparel.action.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.model.Category;
 import com.shop.apparel.model.Member;
+import com.shop.apparel.repository.ProductRepositroy;
 import com.shop.apparel.util.Script;
 
 public class ProductRegistrationAction implements Action{
@@ -27,7 +30,12 @@ public class ProductRegistrationAction implements Action{
 			return;
 		}
 		
-		RequestDispatcher dis = request.getRequestDispatcher("startbootstrap/index.jsp");
+		ProductRepositroy productRepositroy = ProductRepositroy.getInstance();
+		List<Category> categories = productRepositroy.findAllCategory();
+		
+		request.setAttribute("categories", categories);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("startbootstrap/register.jsp");
 		dis.forward(request, response);
 	}
 }
