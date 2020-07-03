@@ -10,6 +10,8 @@ import com.shop.apparel.db.DBConn;
 import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.model.Review;
 
+import jdk.nashorn.internal.ir.GetSplitState;
+
 public class ReviewRepository {
 	private static final String TAG = "ReviewRepository";
 	private static ReviewRepository instance = new ReviewRepository();
@@ -23,13 +25,26 @@ public class ReviewRepository {
 	
 	
 	public List<ReviewDto> findScore(int productId) {
-		final String SQL = "SELECT r.content, r.reviewDate, r.star, m.username " + 
+		/*
+		 * final String SQL = "SELECT r.content, r.reviewDate, r.star, m.username " +
+		 * "FROM product p INNER JOIN review r " + "ON p.id = r.productId " +
+		 * "INNER JOIN member m " + "ON r.memberId = m.id " + "WHERE r.productId = ? " +
+		 * "ORDER BY r.star DESC ";
+		 */
+		
+		final String SQL = "SELECT r.content, r.reviewDate, r.star, m.username, DECODE(star, 5 , '아주 만족' , " + 
+				"4 , '만족' , " + 
+				"3 , '보통' , " + 
+				"2 , '미흡' , " + 
+				"1 , '불만족', '평점없음') \"level\" " + 
 				"FROM product p INNER JOIN review r " + 
 				"ON p.id = r.productId " + 
 				"INNER JOIN member m " + 
 				"ON r.memberId = m.id " + 
 				"WHERE r.productId = ? " + 
 				"ORDER BY r.star DESC ";
+		
+		
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -47,9 +62,11 @@ public class ReviewRepository {
 				ReviewDto reviewDto = ReviewDto.builder()
 						.review(review)
 						.username(rs.getString(4))
+						.level(rs.getString(5))
 						.build();
 				
 				reviewDtos.add(reviewDto);
+				
 			}
 			return reviewDtos;	
 			
@@ -65,7 +82,11 @@ public class ReviewRepository {
 	
 	
 	public List<ReviewDto> findNow(int productId) {
-		final String SQL = "SELECT r.content, r.reviewDate, r.star, m.username " + 
+			final String SQL = "SELECT r.content, r.reviewDate, r.star, m.username,DECODE(star, 5 , '아주 만족' , " + 
+				"4 , '만족' , " + 
+				"3 , '보통' , " + 
+				"2 , '미흡' , " + 
+				"1 , '불만족', '평점없음') \"level\" " + 
 				"FROM product p INNER JOIN review r " + 
 				"ON p.id = r.productId " + 
 				"INNER JOIN member m " + 
@@ -89,9 +110,11 @@ public class ReviewRepository {
 				ReviewDto reviewDto = ReviewDto.builder()
 						.review(review)
 						.username(rs.getString(4))
+						.level(rs.getString(5))
 						.build();
 				
 				reviewDtos.add(reviewDto);
+				
 			}
 			return reviewDtos;	
 			
