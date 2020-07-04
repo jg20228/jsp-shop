@@ -161,6 +161,7 @@ CREATE TABLE withItem(
 	foreign key (withItemId) references product(id)
 );
 
+
 ```
 
 ## 시퀀스
@@ -314,6 +315,7 @@ VALUES(withItem_SEQ.nextval, 2, 4);
 ```
 
 ## 쿼리문 for review
+```
 INSERT INTO review (id, star, content, reviewDate, photo, memberId, productId)
 VALUES(review_SEQ.nextval, 3, '정말 잘 어울려요!', '2020-06-29', '/shop/image/detail/review(1).jpg', 1, 1);
 
@@ -335,7 +337,10 @@ WHERE b.id = a.parent_type_id AND b.id = 100;
 SELECT a.parent_type_id, b.name, a.id, a.name
 FROM categoryTest a, categoryTest b
 WHERE b.id = a.parent_type_id AND a.id = 104;
+```
 
+## 사용된 Join 문
+```
 --Cart Join문
 SELECT p.id, p.name, p.type, c.id ,c.quantity,  p.price, p.thumbnail, m.id, m.username
 FROM 
@@ -356,4 +361,34 @@ SELECT *
 FROM product p INNER JOIN review r
 ON p.id = r.productId
 WHERE r.productId = ?;
+```
+
+## QnA, reply Test
+```
+INSERT INTO qna(id,productId,replyState,title,content,qnADate,memberId)
+VALUES(qna_SEQ.nextval,1,1,'QnA TEST 01', 'QnA TEST 01 content','2020-07-04',1);
+
+INSERT INTO qna(id,productId,replyState,title,content,qnADate,memberId)
+VALUES(qna_SEQ.nextval,1,1,'QnA TEST 02', 'QnA TEST 02 content','2020-07-04',2);
+
+INSERT INTO qna(id,productId,replyState,title,content,qnADate,memberId)
+VALUES(qna_SEQ.nextval,1,1,'QnA TEST 03', 'QnA TEST 03 content','2020-07-04',3);
+
+INSERT INTO qna(id,productId,replyState,title,content,qnADate,memberId)
+VALUES(qna_SEQ.nextval,2,0,'QnA TEST 04', 'QnA TEST 04 content','2020-07-04',1);
+
+INSERT INTO qna(id,productId,replyState,title,content,qnADate,memberId)
+VALUES(qna_SEQ.nextval,2,1,'QnA TEST 05', 'QnA TEST 05 content','2020-07-04',2);
+
+INSERT INTO reply(id,memberId,content,qnaId,replyDate)
+VALUES(qna_SEQ.nextval,1,'답변 01',1,'2020-07-04');
+
+INSERT INTO reply(id,memberId,content,qnaId,replyDate)
+VALUES(qna_SEQ.nextval,2,'답변 02',2,'2020-07-04');
+
+INSERT INTO reply(id,memberId,content,qnaId,replyDate)
+VALUES(qna_SEQ.nextval,2,'답변 03',3,'2020-07-04');
+
+INSERT INTO reply(id,memberId,content,qnaId,replyDate)
+VALUES(qna_SEQ.nextval,2,'답변 04',5,'2020-07-04');
 ```

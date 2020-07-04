@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.apparel.action.Action;
 import com.shop.apparel.action.user.UserCartAction;
+import com.shop.apparel.action.user.UserCartAllDeleteAction;
 import com.shop.apparel.action.user.UserCartDeleteAction;
 import com.shop.apparel.action.user.UserCartUpdateAction;
 import com.shop.apparel.action.user.UserJoinAction;
@@ -96,6 +97,8 @@ public class UserController extends HttpServlet {
 			return new UserPaymentAction();
 		}else if(cmd.equals("paymentProc")) {
 			return new UserPaymentProcAction();
+		}else if(cmd.equals("deleteAllCart")) {
+			return new UserCartAllDeleteAction();
 		}
 		return null;
 	}

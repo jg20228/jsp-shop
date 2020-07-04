@@ -1,4 +1,8 @@
-function now(id){
+function now(id, sort){
+    this.sort = sort;
+    var _val = sort.length > 0 ? sort : 'new';
+    $('ul.sort > li', '#powerReview').removeClass('now');
+    $('ul.sort > li[val='+_val+']', '#powerReview').addClass('now');
 	$.ajax({
 		type : "post",
 	   	url: "/shop/review?cmd=now",
@@ -14,7 +18,11 @@ function now(id){
 	
 }
 
-function score(id){
+function score(id, sort){
+	this.sort = sort;
+	var _val = sort.length > 0 ? sort : 'new';
+    $('ul.sort > li', '#powerReview').removeClass('now');
+    $('ul.sort > li[val='+_val+']', '#powerReview').addClass('now');
 	$.ajax({
 		type : "post",
 	   	url: "/shop/review?cmd=score",

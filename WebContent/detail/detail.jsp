@@ -32,9 +32,9 @@
 										<!-- 장바구니, 주문하기, 위시리스트 버튼 -->
 										<div class="prd-btns">
 											<div class="rollover">
-												<a href="javascript:send_multi('', '');"> <img src="/shop/image/detail/cart_btn.gif" alt="cart" title="cart">
+												<a href="javascript:addCart(${dtos.product.id}, ${principal.id});"> <img src="/shop/image/detail/cart_btn.gif" alt="cart" title="cart">
 												</a> <a href="javascript:send_multi('', 'baro', '');"> <img src="/shop/image/detail/buy_btn.gif" alt="buy now" title="buy now">
-												</a> <a href="javascript:login_chk('033001001272');"> <img src="/shop/image/detail/wish_btn.gif" alt="wishlist" title="wishlist"></a>
+												</a> <a href="javascript:addWishList(${dtos.product.id}, ${principal.id});"> <img src="/shop/image/detail/wish_btn.gif" alt="wishlist" title="wishlist"></a>
 											</div>
 										</div>
 									</td>
@@ -142,220 +142,9 @@
 															</div>
 														</td>
 													</tr>
-													<!-- 네이버 페이 -->
-													<tr>
-														<td colspan="2">
-															<div class="tb-left">
-																<div style="margin-top: 10px; text-align: center">
-																	<script type="text/javascript" src="http://pay.naver.com/customer/js/naverPayButton.js" charset="UTF-8"></script>
-																	<script type="text/javascript" src="https://pay.naver.com/customer/js/innerNaverPayButton.js?site_preference=normal&amp;442495" charset="UTF-8"></script>
-																	<link id="NAVER_PAY_STYLE" type="text/css" rel="stylesheet" href="shop/css/product/naverpay.css">
-																	<script language="javascript">
-																		function nhn_buy_nc_baro() {
-																			var nhnForm = document.allbasket;
-																			if (navigator.appName == 'Microsoft Internet Explorer') {
-																				var ie9_chk = navigator.appVersion
-																						.indexOf("MSIE 9") > -1 ? true
-																						: false;
-																				var ie10_chk = navigator.appVersion
-																						.indexOf("MSIE 10") > -1 ? true
-																						: false;
-
-																				if (ie10_chk == true) {
-																					ie9_chk = true;
-																				}
-																			}
-																			if (ie9_chk
-																					|| navigator.appName != 'Microsoft Internet Explorer') {
-																				var aElement = document
-																						.createElement("input");
-																				aElement
-																						.setAttribute(
-																								'type',
-																								'hidden');
-																				aElement
-																						.setAttribute(
-																								'name',
-																								'navercheckout');
-																				aElement
-																						.setAttribute(
-																								'value',
-																								'1');
-
-																				if (typeof (inflowParam) != 'undefined') {
-																					var aElement2 = document
-																							.createElement("input");
-																					aElement2
-																							.setAttribute(
-																									'type',
-																									'hidden');
-																					aElement2
-																							.setAttribute(
-																									'name',
-																									'nhn_ncisy');
-																					aElement2
-																							.setAttribute(
-																									'value',
-																									inflowParam);
-																				}
-																			} else {
-																				try {
-																					var aElement = document
-																							.createElement("<input type='hidden' name='navercheckout' value='1'>");
-
-																					if (typeof (inflowParam) != 'undefined') {
-																						var aElement2 = document
-																								.createElement("<input type='hidden' name='nhn_ncisy' value='"+inflowParam+"'>");
-																					}
-																				} catch (e) {
-																					var aElement = document
-																							.createElement("input");
-																					aElement
-																							.setAttribute(
-																									'type',
-																									'hidden');
-																					aElement
-																							.setAttribute(
-																									'name',
-																									'navercheckout');
-																					aElement
-																							.setAttribute(
-																									'value',
-																									'1');
-
-																					if (typeof (inflowParam) != 'undefined') {
-																						var aElement2 = document
-																								.createElement("input");
-																						aElement2
-																								.setAttribute(
-																										'type',
-																										'hidden');
-																						aElement2
-																								.setAttribute(
-																										'name',
-																										'nhn_ncisy');
-																						aElement2
-																								.setAttribute(
-																										'value',
-																										inflowParam);
-																					}
-
-																					ie9_chk = true;
-																				}
-																			}
-
-																			nhnForm
-																					.appendChild(aElement);
-
-																			if (typeof (inflowParam) != 'undefined') {
-																				nhnForm
-																						.appendChild(aElement2);
-																			}
-																			nhnForm.target = "loginiframe";
-																			nhnForm.ordertype.value = "baro|parent.";
-
-																			//send_multi('baro','');
-																			send_multi(
-																					'',
-																					'baro',
-																					'');
-																			if (ie9_chk
-																					|| navigator.appName != 'Microsoft Internet Explorer') {
-																				aElement
-																						.setAttribute(
-																								'value',
-																								'');
-																			} else {
-																				nhnForm.navercheckout.value = "";
-																			}
-
-																			nhnForm.target = "";
-																			nhnForm.ordertype.value = "";
-																			if (!ie9_chk) {
-																				for (var i = 0; i < nhnForm.navercheckout.length; i++) {
-																					nhnForm.navercheckout[i].value = "";
-																				}
-																			}
-																		}
-																		function nhn_buy_nc_order() {
-
-																			var type = "N";
-																			if (type == "N") {
-																				window
-																						.open(
-																								"order.html?navercheckout=2",
-																								"");
-																			} else {
-																				location.href = "order.html?navercheckout=2";
-																			}
-																			return false;
-																		}
-																		function nhn_wishlist_nc(
-																				url) {
-																			window
-																					.open(
-																							url,
-																							"",
-																							"scrollbars=yes,width=400,height=267");
-																			return false;
-																		}
-																	</script>
-																	<div id="nhn_btn" style="zoom: 1;">
-																		<script type="text/javascript">
-																			//<![CDATA[
-																			naver.NaverPayButton
-																					.apply({
-																						BUTTON_KEY : "4F7A6458-B519-41A4-A724-16E80207DDC1", // 체크아웃에서 제공받은 버튼 인증 키 입력
-																						TYPE : "B", // 버튼 모음 종류 설정
-																						COLOR : 1, // 버튼 모음의 색 설정
-																						COUNT : 2, // 버튼 개수 설정. 구매하기 버튼만 있으면(장바구니 페이지) 1, 찜하기 버튼도 있으면(상품 상세 페이지) 2를 입력.
-																						ENABLE : "Y", // 품절 등의 이유로 버튼 모음을 비활성화할 때에는 "N" 입력
-																						BUY_BUTTON_HANDLER : nhn_buy_nc_baro, // 구매하기 버튼 이벤트 Handler 함수 등록. 품절인 경우 not_buy_nc 함수 사용
-																						BUY_BUTTON_LINK_URL : "", // 링크 주소 (필요한 경우만 사용)
-																						WISHLIST_BUTTON_HANDLER : nhn_wishlist_nc, // 찜하기 버튼 이벤트 Handler 함수 등록
-																						WISHLIST_BUTTON_LINK_URL : "shopdetail.html?mode=wish&branduid=24348&navercheckout=2", // 찜하기 팝업 링크 주소
-																						EMBED_ID : "nhn_btn",
-																						"" : ""
-																					});
-																			//]]>
-																		</script>
-																		<div id="NC_ID_1592981993858371" class="npay_storebtn_bx npay_type_B_2">
-																			<div id="NPAY_BUTTON_BOX_ID" class="npay_button_box ">
-																				<div class="npay_button">
-																					<div class="npay_text">
-																						<span class="npay_blind">NAVER 네이버 ID로 간편구매 네이버페이</span>
-																					</div>
-																					<table class="npay_btn_list" cellspacing="0" cellpadding="0">
-																						<tbody>
-																							<tr>
-																								<td class="npay_btn_item"><a id="NPAY_BUY_LINK_IDNC_ID_1592981993858371" href="#" class="npay_btn_link npay_btn_pay btn_green" style="box-sizing: content-box;" title="새창"><span
-																										class="npay_blind">네이버페이 구매하기</span></a></td>
-																								<td class="npay_btn_item btn_width"><a id="NPAY_WISH_LINK_IDNC_ID_1592981993858371" href="shopdetail.html?mode=wish&amp;branduid=24348&amp;navercheckout=2"
-																									class="npay_btn_link npay_btn_zzim " style="box-sizing: content-box;" title="새창"><span class="npay_blind">찜하기</span></a></td>
-																								<td class="npay_btn_item btn_width"><a id="NPAY_TALK_LINK_IDNC_ID_1592981993858371" href="#" class="npay_btn_link npay_btn_talk " style="box-sizing: content-box;"
-																									title="새창"><span class="npay_blind">톡톡</span></a></td>
-																							</tr>
-																						</tbody>
-																					</table>
-																				</div>
-																				<div id="NPAY_EVENT_ID" class="npay_event">
-																					<a id="NPAY_PROMOTION_PREV_IDNC_ID_1592981993858371" href="#" class="npay_more npay_more_prev"><span class="npay_blind">이전</span></a>
-																					<p id="NPAY_PROMOTION_IDNC_ID_1592981993858371" class="npay_event_text">
-																						<strong class="event_title">네이버통장</strong><a class="event_link" href="https://campaign.naver.com/npay/naver-account-open/" target="_blank" title="새창">지금 바로 만들어보세요!</a>
-																					</p>
-																					<a id="NPAY_PROMOTION_NEXT_IDNC_ID_1592981993858371" href="#" class="npay_more npay_more_next"><span class="npay_blind">다음</span></a>
-																				</div>
-																			</div><!--end of class = npay_button_box -->
-																		</div><!--end of class = npay_storebtn_bx npay_type_B_2 -->
-																	</div>
-																</div>
-															</div>
-														</td>
-													</tr>
 												</tbody>
 											</table>
 										</div> <!-- .table-opt -->
-
 									</td>
 								</tr>
 							</tbody>
@@ -411,7 +200,7 @@
 										<tbody>
 											<tr>
 												<td><div class="thumb">
-														<a href="/shop/shopdetail.html?branduid=23321&amp;xcode=&amp;mcode=&amp;scode=&amp;GfDT=am93UA%3D%3D">
+														<a href="/shop/product?cmd=detail&id=${withItemDto.product.id}">
 														<!-- 관련상품 세로썸네일, 여기에 사진 뿌리면서 사이즈가 작아져야 할텐데.. 그리고 세로 사진 썸네일임... /shop/image/detail/thumbH(1).jpg-->
 														<img class="MS_prod_img_s" src="${withItemDto.product.thumbnailH}" alt="상품 섬네일" title="상품 섬네일"></a>
 													</div></td>
@@ -419,7 +208,7 @@
 											<tr>
 												<td><div class="prd-name">
 													<!-- 관련상품 이상품의 detail페이지로 이동///이 상품의 titleComment {product.titleComment} -->
-														<a href="/shop/">${withItemDto.product.name}  ${withItemDto.product.titleComment}
+														<a href="/shop/product?cmd=detail&id=${withItemDto.product.id}">${withItemDto.product.name}  ${withItemDto.product.titleComment}
 														</a>
 													</div></td>
 											</tr>
@@ -532,23 +321,79 @@
 			<div class="board-hd">
 				<h3 class="board-title">Q&amp;A</h3>
 			</div>
-			<div class="table-slide qna-list">
+				<div class="table-slide qna-list">
+				<!-- here -->
 				<table summary="번호, 제목, 작성자, 작성일, 조회">
-					<caption>QnA 리스트</caption>
-					<tbody>
-						<tr class="nbg ndata">
-							<td colspan="5"><div class="tb-center">등록된 문의가 없습니다.</div></td>
-						</tr>
-					</tbody>
-				</table>
+						<caption>QnA 리스트</caption>
+					
+						<colgroup>
+							<col width="80">
+							<col width="30">
+							<col width="*">
+							<col width="100">
+							<col width="100">
+							<col width="80">
+						</colgroup>
+					
+						<thead>
+							<tr>
+								<th scope="col"><div class="tb-center">NO</div></th>
+								<th scope="col"></th>
+								<th scope="col"><div class="tb-center">SUBJECT</div></th>
+								<th scope="col"><div class="tb-center">NAME</div></th>
+								<th scope="col"><div class="tb-center">DATE</div></th>
+								<th scope="col"><div class="tb-center">STATE</div></th>
+							</tr>
+						</thead>
+					
+						<tbody>
+							<c:forEach var="qnADto" items="${dtos.qnADtos}" varStatus="status">
+							
+							<tr>
+								<td><div class="tb-center">
+										<span class="reviewnum">${status.count}</span>
+									</div></td>
+								<td><div class="tb-center"></div></td>
+								<td><div class="tb-left reply_depth0">
+										<span><img src="/shop/image/detail/neo_lock.gif"></span>
+										<a>${qnADto.title}</a>
+									</div></td>
+								<td><div class="tb-center">${qnADto.userName}</div></td>
+								<td><div class="tb-center">${qnADto.qnAdate}</div></td>
+								<td><div class="tb-center"><span id="qna_board_showhits2">8</span></div></td>
+							</tr>
+							
+							
+							<tr class="MS_qna_content_box cnt" id="qna_board_block1">
+								<td colspan="5">
+									<div class="tb-left">
+										<div class="qna_board_content"></div>
+									</div>
+								</td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 
-				<ol class="paging">
+<ol class="paging">
+	<li class="first"><a
+		href="/shop/shopdetail.html?branduid=23321&amp;xcode=034&amp;mcode=001&amp;scode=001&amp;qnapage=1#brandqna_list"><img
+			src="/design/pighip/img/page_prev.gif" alt="[처음]"></a></li>
 
-					<li><a href="/shop/shopdetail.html?branduid=24348&amp;xcode=033&amp;mcode=001&amp;qnapage=1#brandqna_list">1</a></li>
+	<li><a
+		href="/shop/shopdetail.html?branduid=23321&amp;xcode=034&amp;mcode=001&amp;scode=001&amp;qnapage=1#brandqna_list">1</a></li>
+	<li><a
+		href="/shop/shopdetail.html?branduid=23321&amp;xcode=034&amp;mcode=001&amp;scode=001&amp;qnapage=2#brandqna_list">2</a></li>
+	<li class="now"><a
+		href="/shop/shopdetail.html?branduid=23321&amp;xcode=034&amp;mcode=001&amp;scode=001&amp;qnapage=3#brandqna_list">3</a></li>
+	<li><a
+		href="/shop/shopdetail.html?branduid=23321&amp;xcode=034&amp;mcode=001&amp;scode=001&amp;qnapage=4#brandqna_list">4</a></li>
 
-				</ol>
-			</div>
-			<!-- .qna-list -->
+	<li class="last"><a
+		href="/shop/shopdetail.html?branduid=23321&amp;xcode=034&amp;mcode=001&amp;scode=001&amp;qnapage=4#brandqna_list"><img
+			src="/design/pighip/img/page_next.gif" alt="[끝]"></a></li>
+</ol>
+</div>	
 
 			<div class="board-btns">
 				<a href="/board/board.html?code=pighip_board2&amp;page=1&amp;type=i&amp;branduid=24348&amp;returnurl=xcode=&amp;mcode=&amp;scode="><img src="/shop/image/detail/detail_write.gif" alt="상품문의"

@@ -211,4 +211,54 @@ public class ProductRepositroy {
 		}
 		return -1;
 	}
+	
+	//상품 등록 return product ID
+	public int saveReturnId(Product product) {
+		final String SQL = "INSERT INTO product(id,name,type, titleComment, price,thumbnailW,thumbnailH,contents,categoryId) " + 
+				"VALUES(product_SEQ.nextval,?,?,?,?,?,?,?,?)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL, new String[] {"id"});
+			pstmt.setString(1, product.getName());
+			pstmt.setString(2, product.getType());
+			pstmt.setString(3, product.getTitleComment());
+			pstmt.setInt(4, product.getPrice());
+			pstmt.setString(5, product.getThumbnailW());
+			pstmt.setString(6, product.getThumbnailH());
+			pstmt.setString(7, product.getContents());
+			pstmt.setInt(8, product.getCategoryId());
+			pstmt.executeUpdate();
+			rs=pstmt.getGeneratedKeys();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "saveReturnId : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	//상품 등록 후 실행되는 withItem insert
+	public int saveWithItem(int parentProductId, int withItemId) {
+		final String SQL = "INSERT INTO withItem (id, parentProductId, withitemId) " + 
+				"VALUES(withItem_SEQ.nextval, ?, ?)";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, parentProductId);
+			pstmt.setInt(2, withItemId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "saveWithItem : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
 }

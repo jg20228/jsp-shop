@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/startbootstrap/include/head.jsp"%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,10 +23,10 @@
 								<div class="form-group col-lg-12">
 									<p style="text-align: center;">
 										<img id="img__wrap" onerror="/shop/startbootstrap/img/plzW.png" src="/shop/startbootstrap/img/plzW.png"
-											width="850px" height="560px" align="middle"/>
+											width="850px" height="560px" align="middle" />
 									</p>
 								</div>
-								
+
 								<!-- form이 이 사이에 여백을 만들어줌 -->
 								<div class="col-lg-4"></div>
 								<div class="form-group bg-light col-lg-4">
@@ -36,7 +35,7 @@
 								</div>
 								<div class="col-lg-4"></div>
 							</div>
-							
+
 							<div>
 								<div class="row">
 									<!-- 가로 -->
@@ -59,41 +58,45 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="col-lg-12">
 							<div class="p-5">
 								<div class="text-center">
 									<h1 class="h4 text-gray-900 mb-4">Create an Product!</h1>
 								</div>
 								<div class="form-group row">
-								
+
 									<div class="col-sm-4 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user"
-											name="name" id="name" placeholder="상품 이름">
+										<input type="text" class="form-control form-control-user" name="name" id="name" placeholder="상품 이름">
 									</div>
-									
-									<div class="col-sm-4">
+
+									<!-- 카테고리 -->
+									<div class="col-sm-2">
 										<select name="type" id="type" class="form-control form-control-user">
-											<c:forEach var="opt" items="${categories}">
+											<c:forEach var="opt" items="${dto.categories}">
 												<option value="${opt.type},${opt.id}">${opt.type}</option>
 											</c:forEach>
 										</select>
 									</div>
-									
+
+									<!-- with 아이템 -->
+									<div class="col-sm-2">
+										<input type="hidden" name="with" value="" id="with">
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">With Item</button>
+									</div>
+
 									<div class="col-sm-4">
-										<input type="number" class="form-control form-control-user"
-											name="price" id="price" placeholder="price">
+										<input type="number" class="form-control form-control-user" name="price" id="price" placeholder="price">
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										name="titleComment" id="titleComment" placeholder="titleComment">
+									<input type="text" class="form-control form-control-user" name="titleComment" id="titleComment"
+										placeholder="titleComment">
 								</div>
 								<!-- 섬머노트 -->
 								<div class="form-group">
 									<label for="contents">Contents:</label>
-									<textarea id="summernote" class="form-control" rows="5"
-										id="contents" name="contents"></textarea>
+									<textarea id="summernote" class="form-control" rows="5" id="contents" name="contents"></textarea>
 								</div>
 								<div class="form-group">
 									<button class="btn btn-primary w-100">상품 등록</button>
@@ -105,10 +108,163 @@
 					</div>
 				</div>
 			</div>
+
+
+			<!-- The Modal -->
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">상품에 보여줄 아이템을 선택하세요.</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body" style="display: flex;">
+<!--  							<div id="input-form">
+       						    검색 : <input type="text" id="keyword"/>
+						    </div>-->
+												
+						
+							<table id="products" class="table table-hover">
+								<thead>
+									<tr>
+										<th>NAME</th>
+										<th>TYPE</th>
+										<th>PHOTO</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="product" items="${dto.products}" varStatus="status">
+										<tr id="withItems${status.count}">
+											<td>${product.name}</td>
+											<td>${product.type}</td>
+											<td>
+												<a href="javascript:addId(${product.id},${status.count});"> 
+													<img id="withItemsImg${status.count}" src="${product.thumbnailH}" height="200" alt="#">
+													<br><br>
+												</a>
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>NAME</th>
+										<th>TYPE</th>
+										<th>PHOTO</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="product" items="${dto.products}" varStatus="status">
+										<tr id="addWithItems${status.count}">
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>
 
 	<script>
+		//검색기능
+		
+        $(document).ready(function() {
+            $("#keyword").keyup(function() {
+                var k = $(this).val();
+                $("#products-table > tbody > tr").hide();
+                var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
+
+                $(temp).parent().show();
+            })
+        })
+
+
+
+	
+		function addId(id, num) {
+			var str = ""
+				var tdArr = new Array();	// 배열 선언
+				var checkBtn = $('#withItems'+num);
+				
+				// checkBtn.parent() : checkBtn의 부모는 <td>이다.
+				// checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+				var tr = checkBtn;
+				var td = tr.children();
+				
+				console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+				
+				var name = td.eq(0).text();
+				var type = td.eq(1).text();
+				var img = "src="+document.getElementById("withItemsImg"+num).src+" height=200 alt='#'> <br><br>"
+
+				tdArr.push(name);
+				tdArr.push(type);
+				tdArr.push(img);
+				
+				console.log("배열에 담긴 값 : "+tdArr);
+				
+				str +=	"<td>" + name + "</td> <td>" + type + "</td>";
+				str +=	"<td><a href='javascript:removeId("+id+","+num+");'> <img id=addWithItemsImg"+num+" "+ img + "</td>";
+				
+				$("#addWithItems" + num).append(str);	
+				var a = $('#with').val();
+				$('#with').val(a + id + ",");
+				
+				$("#withItems" + num).empty();
+		}
+
+		function removeId(id, num) {
+			var str = ""
+				var tdArr = new Array();	// 배열 선언
+				var checkBtn = $('#addWithItems'+num);
+				
+				// checkBtn.parent() : checkBtn의 부모는 <td>이다.
+				// checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+				var tr = checkBtn;
+				var td = tr.children();
+				
+				console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+				
+				var name = td.eq(0).text();
+				var type = td.eq(1).text();
+				var img = "src="+document.getElementById("addWithItemsImg"+num).src+" height=200 alt='#'> <br><br>"
+
+				tdArr.push(name);
+				tdArr.push(type);
+				tdArr.push(img);
+				
+				console.log("배열에 담긴 값 : "+tdArr);
+				
+				str +=	"<td>" + name + "</td> <td>" + type + "</td>";
+				str +=	"<td><a href='javascript:addId("+id+","+num+");'> <img id=withItemsImg"+num+" "+ img + "</td>";
+				
+				$("#withItems" + num).append(str);	
+				
+				var a = $('#with').val();
+				var b = a.split(",");
+				b.splice(b.indexOf(id+""),1);
+				$('#with').val(b);
+				console.log(b);
+				
+				$("#addWithItems" + num).empty();
+		}
+
+		//섬머노트
 		(function($) {
 			$(document).ready(function() {
 				$('#summernote').summernote({
@@ -179,12 +335,10 @@
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="/shop/startbootstrap/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="/shop/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/shop/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script
-		src="/shop/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/shop/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
 	<script src="/shop/startbootstrap/js/sb-admin-2.min.js"></script>

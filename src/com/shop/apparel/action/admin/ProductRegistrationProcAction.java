@@ -1,6 +1,9 @@
 package com.shop.apparel.action.admin;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +38,7 @@ public class ProductRegistrationProcAction implements Action {
 					(
 							request, 
 							realPath, 
-							1024 * 1024 * 2, 
+							1024 * 1024 * 10, 
 							"UTF-8",
 							new DefaultFileRenamePolicy()
 					);
@@ -55,16 +58,15 @@ public class ProductRegistrationProcAction implements Action {
 			System.out.println(titleComment);
 			System.out.println(contents);
 			
-			
 			System.out.println("fileNameW : " + fileNameW);
 			System.out.println("fileNameH : " + fileNameH);
 
 			thumbnailW = contextPath + "/shopimg/" + fileNameW;
 			thumbnailH = contextPath + "/shopimg/" + fileNameH;
-			
 			System.out.println(thumbnailW);
 			System.out.println(thumbnailH);
 			
+			//상품
 			Product product = Product.builder()
 					.name(name)
 					.type(type.split(",")[0])
@@ -77,9 +79,26 @@ public class ProductRegistrationProcAction implements Action {
  					.build();
 			
 			ProductRepositroy productRepositroy = ProductRepositroy.getInstance();
-			int result = productRepositroy.save(product);
+			int parentProductId = productRepositroy.saveReturnId(product);
+			//With Items
+			String[] temp = multi.getParameterValues("with");
+			String[] withsSplit = temp[0].split(",");
 			
-			if(result==1) {
+			HashSet<String> converter = new HashSet<String>();
+			
+			for (String with : withsSplit) {
+				converter.add(with);
+			}
+			
+			System.out.println(converter);
+			List<String> withs = new ArrayList<String>(converter);
+			for (String withItemId : withs) {
+				productRepositroy.saveWithItem(parentProductId, Integer.parseInt(withItemId));
+			}
+			
+			
+			
+			if(parentProductId>=1) {
 				Script.href("/shop/admin?cmd=index", response);
 			}else {
 				Script.back("물품 등록 실패", response);

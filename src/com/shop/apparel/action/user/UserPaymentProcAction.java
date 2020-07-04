@@ -20,24 +20,23 @@ public class UserPaymentProcAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//결제시스템에서 성공이 되었을 경우 실행되는 곳
 		int memberId = Integer.parseInt(request.getParameter("id"));
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 		
-		//결제 시스템~
-		System.out.println(memberId);
-		System.out.println(totalPrice);
-		//결제 시스템 끝~
-		
 		OrdersRepositroy ordersRepositroy = OrdersRepositroy.getInstance();
+		UserRepositroy userRepositroy = UserRepositroy.getInstance();
+		
 		int orderId = ordersRepositroy.ordersSave(memberId, totalPrice);
 		System.out.println(orderId);
 		
 		List<PaymentActionDto> dtos = ordersRepositroy.selectPaymentActionDto(memberId);
 		
+		//장바구니->order_detail 테이블에 입력
 		for (PaymentActionDto dto : dtos) {
 			ordersRepositroy.ordersDetailSave(orderId, dto.getProductId(), dto.getQuantity(), dto.getPrice());
 		}
-		
-		
+		//장바구니 비우기
+		userRepositroy.deleteALLCart(memberId);
 	}
 }

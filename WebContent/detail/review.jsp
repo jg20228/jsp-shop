@@ -140,10 +140,10 @@
 		<!-- ajax로 값퍼올리기 정렬하기 -->
 		<ul class="sort">
 			<li class="now" val="date">
-				<a href="javascript:now(${dtos.product.id});">최신 순</a>
+				<a href="javascript:now(${dtos.product.id},'date');">최신 순</a>
 			</li>
 			<li val="score">
-				<a href="javascript:score(${dtos.product.id});">평점 순</a>
+				<a href="javascript:score(${dtos.product.id},'score');">평점 순</a>
 			</li>
 			<!-- <li val="good">
 				<a href="javascript:power_review_sort('good');" onclick="추천순()">추천 순</a>

@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.shop.apparel.db.DBConn;
 import com.shop.apparel.dto.DetailResponseDto;
+import com.shop.apparel.dto.QnADto;
 import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.dto.StarDto;
 import com.shop.apparel.dto.WithItemDto;
@@ -34,174 +35,92 @@ public class ProductDetailRepository {
 		private PreparedStatement pstmt = null;
 		private ResultSet rs = null;
 		
-		//별점 5점의 갯수
-				public int five(int productId) {
-					final String SQL = "SELECT count(star) FROM review WHERE productId = ? AND star = 5";
-					
-					try {
-						conn = DBConn.getConnection();
-						pstmt = conn.prepareStatement(SQL);
-						pstmt.setInt(1, productId);
-						rs = pstmt.executeQuery();
-						
-						if(rs.next()) {
-							return rs.getInt(1);
-						}
-						
-					} catch (SQLException e) {
-						e.printStackTrace();
-						System.out.println(TAG+"five: "+e.getMessage());
-					} finally {
-						DBConn.close(conn, pstmt, rs);
-					}
-					
-					return -1;
-				}
-		
-		//별점 4점의 갯수
-		public int four(int productId) {
-			final String SQL = "SELECT count(star) FROM review WHERE productId = ? AND star = 4";
+		public List<QnADto> selectByIdForQnA(int productId){
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT q.title, q.content, q.qnadate, m. username, r.content, r.replydate, q.id ");
+			sb.append("FROM qna q INNER JOIN member m ");
+			sb.append("ON m.id = q.memberId ");
+			sb.append("INNER JOIN reply r ");
+			sb.append("ON q.id = r.qnaid ");
+			sb.append("WHERE q.productid = ? ");
+			sb.append("ORDER BY (q.id) ");
 			
+			final String SQL =sb.toString();
+			List<QnADto> qnADtos = new ArrayList<>();
 			try {
 				conn = DBConn.getConnection();
 				pstmt = conn.prepareStatement(SQL);
 				pstmt.setInt(1, productId);
 				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					return rs.getInt(1);
+				while(rs.next()) {
+					QnADto qnADto = QnADto.builder()
+							.title(rs.getString(1))
+							.content(rs.getString(2))
+							.qnAdate(rs.getTimestamp(3))
+							.userName(rs.getString(4))
+							.content(rs.getString(5))
+							.replyDate(rs.getTimestamp(6))
+							.build();
+					qnADtos.add(qnADto);
 				}
-				
+				return qnADtos;				
 			} catch (SQLException e) {
 				e.printStackTrace();
-				System.out.println(TAG+"four: "+e.getMessage());
+				System.out.println(TAG+"selectByIdForQnA: "+e.getMessage());
 			} finally {
 				DBConn.close(conn, pstmt, rs);
 			}
-			
-			return -1;
+			return null;
 		}
 		
-		//별점 3점의 갯수
-				public int three(int productId) {
-					final String SQL = "SELECT count(star) FROM review WHERE productId = ? AND star = 3";
-					
-					try {
-						conn = DBConn.getConnection();
-						pstmt = conn.prepareStatement(SQL);
-						pstmt.setInt(1, productId);
-						rs = pstmt.executeQuery();
-						
-						if(rs.next()) {
-							return rs.getInt(1);
-						}
-						
-					} catch (SQLException e) {
-						e.printStackTrace();
-						System.out.println(TAG+"three: "+e.getMessage());
-					} finally {
-						DBConn.close(conn, pstmt, rs);
-					}
-					
-					return -1;
-				}
-		
-		//별점 2점의 갯수
-		public int two(int productId) {
-			final String SQL = "SELECT count(star) FROM review WHERE productId = ? AND star = 2";
+		public StarDto findByIdStar(int productId) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT");
+			sb.append("(SELECT count(star) FROM review WHERE productId = ? AND star = 5), ");
+			sb.append("(SELECT count(star) FROM review WHERE productId = ? AND star = 4), ");
+			sb.append("(SELECT count(star) FROM review WHERE productId = ? AND star = 3), ");
+			sb.append("(SELECT count(star) FROM review WHERE productId = ? AND star = 2), ");
+			sb.append("(SELECT count(star) FROM review WHERE productId = ? AND star = 1), ");
+			sb.append("(SELECT sum(star) FROM review WHERE productId = ?), ");
+			sb.append("(SELECT count(*) FROM review WHERE productId = ?) ");
+			sb.append("FROM DUAL");
+			final String SQL = sb.toString();
+			StarDto starDto = null;
 			
 			try {
 				conn = DBConn.getConnection();
 				pstmt = conn.prepareStatement(SQL);
 				pstmt.setInt(1, productId);
+				pstmt.setInt(2, productId);
+				pstmt.setInt(3, productId);
+				pstmt.setInt(4, productId);
+				pstmt.setInt(5, productId);
+				pstmt.setInt(6, productId);
+				pstmt.setInt(7, productId);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					return rs.getInt(1);
+					starDto = StarDto.builder()
+							.five(rs.getInt(1))
+							.four(rs.getInt(2))
+							.three(rs.getInt(3))
+							.two(rs.getInt(4))
+							.one(rs.getInt(5))
+							.sum(rs.getInt(6))
+							.totalCount(rs.getInt(7))
+							.build();
 				}
-				
+				return starDto;
 			} catch (SQLException e) {
 				e.printStackTrace();
-				System.out.println(TAG+"two: "+e.getMessage());
+				System.out.println(TAG+"test: "+e.getMessage());
 			} finally {
 				DBConn.close(conn, pstmt, rs);
 			}
 			
-			return -1;
+			return null;
 		}
-		
-		//별점 1점의 갯수
-				public int one(int productId) {
-					final String SQL = "SELECT count(star) FROM review WHERE productId = ? AND star = 1";
-					
-					try {
-						conn = DBConn.getConnection();
-						pstmt = conn.prepareStatement(SQL);
-						pstmt.setInt(1, productId);
-						rs = pstmt.executeQuery();
-						
-						if(rs.next()) {
-							return rs.getInt(1);
-						}
-						
-					} catch (SQLException e) {
-						e.printStackTrace();
-						System.out.println(TAG+"one: "+e.getMessage());
-					} finally {
-						DBConn.close(conn, pstmt, rs);
-					}
-					
-					return -1;
-				}
-		
-		//별점 총합
-		public int sum(int productId) {
-			final String SQL = "SELECT sum(star) FROM review WHERE productId = ?";
-			
-			try {
-				conn = DBConn.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setInt(1, productId);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					return rs.getInt(1);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				System.out.println(TAG+"sum: "+e.getMessage());
-			} finally {
-				DBConn.close(conn, pstmt, rs);
-			}
-			
-			return -1;
-		}
-		
-		//총리뷰수
-		public int selecTotalCount(int productId) {
-			final String SQL = "SELECT count(*) FROM review WHERE productId = ?";
-			
-			try {
-				conn = DBConn.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setInt(1, productId);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					return rs.getInt(1);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				System.out.println(TAG+"selecTotalCount: "+e.getMessage());
-			} finally {
-				DBConn.close(conn, pstmt, rs);
-			}
-			
-			return -1;
-		}
-		
+
 		// detail.jsp의 review 부분에 필요한 것들 
 		public List<ReviewDto> selectByIdForReview(int productId) {
 			/*final String SQL = "SELECT p.id, p.name, p.type, p.titlecomment, p.price, p.thumbnailW, p.thumbnailH, p.contents, p.categoryId, r.id, r.star, r.content, r.reviewDate, r.photo, r.memberId, r.productId, m.username " + 

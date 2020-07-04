@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 public class QnADto {
 	private String title;
 	private String content;
-	private Timestamp qnaDate;
-	private int memberId;
+	private Timestamp qnAdate;
+	private String userName;
+	private String replyContent;
+	private Timestamp replyDate;
 }

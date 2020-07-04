@@ -33,6 +33,23 @@ public class UserRepositroy {
 	private ResultSet rs = null;
 	
 	
+	//deleteALLCart
+	public int deleteALLCart(int memberId) {
+		final String SQL = "DELETE FROM cart WHERE memberId = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteALLCart : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
 	
 	//updateCart
 	public int updateCartQuantityById(int memberId, int productId, int quantity) {

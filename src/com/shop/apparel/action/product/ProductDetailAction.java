@@ -12,6 +12,7 @@ import javax.xml.soap.Detail;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.dto.DetailResponseDto;
 import com.shop.apparel.dto.ProductDto;
+import com.shop.apparel.dto.QnADto;
 import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.dto.StarDto;
 import com.shop.apparel.dto.WithItemDto;
@@ -33,32 +34,19 @@ public class ProductDetailAction implements Action{
 		ProductRepositroy productRepositroy = ProductRepositroy.getInstance();
 		ProductDetailRepository productDetailRepository = ProductDetailRepository.getInstance();
 		
+		StarDto starDto = productDetailRepository.findByIdStar(productId);
+		
 		Product product = productRepositroy.selectById(productId);
 		List<WithItemDto> withItemDtos = productDetailRepository.selectByIdForWithItem(productId);
 		List<ReviewDto> reviewDtos = productDetailRepository.selectByIdForReview(productId);
-		int totalCount = productDetailRepository.selecTotalCount(productId);
-		int sum = productDetailRepository.sum(productId);
-		int one = productDetailRepository.one(productId);
-		int two = productDetailRepository.two(productId);
-		int three = productDetailRepository.three(productId);
-		int four = productDetailRepository.four(productId);	
-		int five = productDetailRepository.five(productId);		
-		
-		StarDto starDto = StarDto.builder()
-				.totalCount(totalCount)
-				.sum(sum)
-				.one(one)
-				.two(two)
-				.three(three)
-				.four(four)
-				.five(five)
-				.build();
+		List<QnADto> qnADtos = productDetailRepository.selectByIdForQnA(productId);
 		
 		DetailResponseDto detailResponseDtos = DetailResponseDto.builder()
 				.product(product)
 				.withItemDtos(withItemDtos)
 				.reviewDtos(reviewDtos)
 				.starDto(starDto)
+				.qnADtos(qnADtos)
 				.build();
 		
 		for (ReviewDto reviewDto : reviewDtos) {
@@ -71,5 +59,4 @@ public class ProductDetailAction implements Action{
 		RequestDispatcher dis = request.getRequestDispatcher("detail/detail.jsp");
 		dis.forward(request, response);
 	}
-
 }

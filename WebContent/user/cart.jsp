@@ -133,7 +133,7 @@
 
 
 			<div class="btn-order-ctrl rollover">
-				<a href="javascript:basket_clear();"> <img
+				<a href="javascript:cartClear(${principal.id});"> <img
 					src="/shop/image/cart/cart_empty.gif" alt="장바구니 비우기"
 					title="장바구니 비우기"></a> 
 					<a href="index.jsp"> <img
@@ -229,6 +229,7 @@
 	<%@ include file="/include/serviceArea.jsp"%>
 </div>
 <script>
+
 	$(document).ready(function(){
 	  $('[data-toggle="popover"]').popover();   
 	});
