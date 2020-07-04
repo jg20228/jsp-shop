@@ -15,10 +15,12 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Member</h1>
+					<h1 class="h3 mb-2 text-gray-800">Review</h1>
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
-						<div class="card-header py-3"></div>
+						<div class="card-header py-3">
+							
+						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="dataTable_wrapper"
@@ -34,40 +36,56 @@
 															aria-controls="dataTable" rowspan="1" colspan="1"
 															aria-sort="ascending"
 															aria-label="Name: activate to sort column descending"
-															style="width: 120px;">Id</th>
-
+															style="width: 120px;">ProductId</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Position: activate to sort column ascending"
 															style="width: 120px;">Name</th>
-
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Office: activate to sort column ascending"
-															style="width: 80px;">BirthDate</th>
-
+															style="width: 80px;">Type</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Age: activate to sort column ascending"
-															style="width: 20px;">Gender</th>
-
+															style="width: 20px;">Price</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Start date: activate to sort column ascending"
-															style="width: 200px;">Address</th>
-
+															style="width: 200px;">id</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 90px;">Phone</th>
+															style="width: 90px;">star</th>
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 90px;">Email</th>
+															style="width: 90px;">content</th>
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">수신</th>
+															style="width: 80px;">reviewDate</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">photo</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">memberId</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">productId</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">username</th>
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
@@ -75,30 +93,35 @@
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">탈퇴</th>
+															style="width: 80px;">삭제</th>
 													</tr>
 												</thead>
 												<tbody id="content__body">
-													<c:forEach var="member" items="${members}"
-														varStatus="status">
-														<tr role="row" class="odd">
-															<td class="sorting_${status.count}">${member.username}</td>
-															<td>${member.name}</td>
-															<td>${member.birthdate}</td>
-															<td>${member.gender}</td>
-															<td>${member.address}</td>
-															<td>${member.phone}</td>
-															<td>${member.email}</td>
-															<td>${member.agreement}</td>
-															<td><a href="#"
-																class="btn btn-warning btn-circle btn-sm"> <i
-																	class="fas fa-check"></i>
-															</a></td>
-															<td><a href="#"
-																class="btn btn-danger btn-circle btn-sm"> <i
-																	class="fas fa-trash"></i>
-															</a></td>
-														</tr>
+													<c:forEach var="reviewDto" items="${reviewDtos}" varStatus="status">
+													<tr role="row" class="odd">
+														<td class="sorting_${status.count}">${reviewDto.product.id}</td>
+														<td>${reviewDto.product.name}</td>
+														<td>${reviewDto.product.type}</td>
+														<td>${reviewDto.product.price}</td>
+														<td>${reviewDto.review.id}</td>
+														<td>${reviewDto.review.star}</td>
+														<td>${reviewDto.review.content}</td>
+														<td>${reviewDto.review.reviewDate}</td>
+														<td>${reviewDto.review.photo}</td>
+														<td>${reviewDto.review.memberId}</td>
+														<td>${reviewDto.review.productId}</td>
+														<td>${reviewDto.username}</td>
+														<td>
+															<a href="#" class="btn btn-warning btn-circle btn-sm">
+																<i class="fas fa-check"></i>
+															</a>
+														</td>
+														<td>
+															<a href="#" class="btn btn-danger btn-circle btn-sm">
+																<i class="fas fa-trash"></i>
+															</a>
+														</td>
+													</tr>
 													</c:forEach>
 												</tbody>
 											</table>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.apparel.action.Action;
 import com.shop.apparel.action.admin.AdminIndexAction;
 import com.shop.apparel.action.admin.AdminMemberListAction;
+import com.shop.apparel.action.admin.AdminProductAction;
+import com.shop.apparel.action.admin.AdminReviewAction;
 import com.shop.apparel.action.admin.AdminMemberAction;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
 import com.shop.apparel.action.admin.ProductRegistrationProcAction;
@@ -59,11 +61,12 @@ public class AdminController extends HttpServlet {
 		}else if(cmd.equals("index")) {
 			return new AdminIndexAction();
 		}else if(cmd.equals("product")) {
-			
+			return new AdminProductAction();
 		}else if(cmd.equals("orders")) {
 		}else if(cmd.equals("member")) {
 			return new AdminMemberAction();
 		}else if(cmd.equals("review")) {
+			return new AdminReviewAction();
 		}else if(cmd.equals("reply")) {
 		}else if(cmd.equals("qnA")) {
 		}

@@ -15,10 +15,12 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Member</h1>
+					<h1 class="h3 mb-2 text-gray-800">Product</h1>
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
-						<div class="card-header py-3"></div>
+						<div class="card-header py-3">
+							
+						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="dataTable_wrapper"
@@ -35,39 +37,43 @@
 															aria-sort="ascending"
 															aria-label="Name: activate to sort column descending"
 															style="width: 120px;">Id</th>
-
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Position: activate to sort column ascending"
 															style="width: 120px;">Name</th>
-
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Office: activate to sort column ascending"
-															style="width: 80px;">BirthDate</th>
-
+															style="width: 80px;">Type</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Age: activate to sort column ascending"
-															style="width: 20px;">Gender</th>
-
+															style="width: 20px;">Title Comment</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Start date: activate to sort column ascending"
-															style="width: 200px;">Address</th>
-
+															style="width: 200px;">Price</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 90px;">Phone</th>
+															style="width: 90px;">ThumbnailW</th>
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 90px;">Email</th>
+															style="width: 90px;">ThumbnailH</th>
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">수신</th>
+															style="width: 80px;">Contents</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">CategoryId</th>
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
@@ -75,30 +81,32 @@
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">탈퇴</th>
+															style="width: 80px;">삭제</th>
 													</tr>
 												</thead>
 												<tbody id="content__body">
-													<c:forEach var="member" items="${members}"
-														varStatus="status">
-														<tr role="row" class="odd">
-															<td class="sorting_${status.count}">${member.username}</td>
-															<td>${member.name}</td>
-															<td>${member.birthdate}</td>
-															<td>${member.gender}</td>
-															<td>${member.address}</td>
-															<td>${member.phone}</td>
-															<td>${member.email}</td>
-															<td>${member.agreement}</td>
-															<td><a href="#"
-																class="btn btn-warning btn-circle btn-sm"> <i
-																	class="fas fa-check"></i>
-															</a></td>
-															<td><a href="#"
-																class="btn btn-danger btn-circle btn-sm"> <i
-																	class="fas fa-trash"></i>
-															</a></td>
-														</tr>
+													<c:forEach var="product" items="${products}" varStatus="status">
+													<tr role="row" class="odd">
+														<td class="sorting_${status.count}">${product.id}</td>
+														<td>${product.name}</td>
+														<td>${product.type}</td>
+														<td>${product.titleComment}</td>
+														<td>${product.price}</td>
+														<td>${product.thumbnailW}</td>
+														<td>${product.thumbnailH}</td>
+														<td>${product.contents}</td>
+														<td>${product.categoryId}</td>
+														<td>
+															<a href="#" class="btn btn-warning btn-circle btn-sm">
+																<i class="fas fa-check"></i>
+															</a>
+														</td>
+														<td>
+															<a href="#" class="btn btn-danger btn-circle btn-sm">
+																<i class="fas fa-trash"></i>
+															</a>
+														</td>
+													</tr>
 													</c:forEach>
 												</tbody>
 											</table>
