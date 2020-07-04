@@ -234,10 +234,6 @@ INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,emai
 VALUES(0,'관리자','admin',1234,'2020-06-22','관','test/test2/test3','010-0000-0000','test@test.com','ADMIN','T');
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
 VALUES(member_SEQ.nextval,'테스트계정','sara',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
-INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(member_SEQ.nextval,'무지','muzi',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
-INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
-VALUES(member_SEQ.nextval,'라이언','lion',1234,'2020-06-29','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
 
 INSERT INTO MEMBER(id,name,username,password,birthdate,gender,address,phone,email,userrole,agreement)
 VALUES(member_SEQ.nextval,'단무지','muzi',1234,'2020-07-01','테','test/test2/test3','010-0000-0000','test@test.com','USER','T');
