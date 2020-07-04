@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shop.apparel.action.Action;
+import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.model.Member;
-import com.shop.apparel.model.Product;
 import com.shop.apparel.repository.AdminRepositroy;
 import com.shop.apparel.util.Script;
 
-public class AdminProductAction implements Action{
+public class AdminReviewAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,14 +30,12 @@ public class AdminProductAction implements Action{
 			return;
 		}
 		
-		//이부분~
 		AdminRepositroy adminRepositroy = AdminRepositroy.getInstance();
-		List<Product> products = adminRepositroy.adminAllProduct();
+		List<ReviewDto> reviewDtos = adminRepositroy.adminAllReview();
 		
-		request.setAttribute("products", products);
-		//
+		request.setAttribute("reviewDtos", reviewDtos);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("startbootstrap/product.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("startbootstrap/review.jsp");
 		dis.forward(request, response);
 	}
 }
