@@ -9,6 +9,12 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <body class="bg-gradient-primary">
+<input id="page-top" type="hidden">
+<div id="wrapper">
+		<%@ include file="/startbootstrap/include/sidebar.jsp"%>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 	<div class="container">
 		<form action="/shop/admin?cmd=productRegistrationProc" method="post" enctype="multipart/form-data">
 			<div class="card o-hidden border-0 shadow-lg my-5">
@@ -130,10 +136,12 @@
 							<div>
 							 	   <button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
+
 						</div>
 
 						<!-- Modal body -->
 						<div class="modal-body" style="display: flex;">
+
 						
 							<table id="products" class="table table-hover">
 								<thead>
@@ -186,6 +194,10 @@
 			</div>
 		</form>
 	</div>
+	</div>
+	</div>
+	<a class="scroll-to-top rounded" href="#page-top" style="display: inline;"> <i class="fas fa-angle-up"></i>
+	</a>
 
 	<script>
 		//검색기능

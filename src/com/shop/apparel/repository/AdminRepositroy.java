@@ -38,6 +38,75 @@ public class AdminRepositroy {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
+	public int deleteReply(int replyId) {
+		final String SQL ="DELETE FROM member WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, replyId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteReply : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	public int deleteQnA(int qnAId) {
+		final String SQL ="DELETE FROM member WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, qnAId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteQnA : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
+	public int deleteReview(int reviewId) {
+		final String SQL ="DELETE FROM review WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, reviewId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteReview : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
+	public int deleteMember(int memberId) {
+		final String SQL ="DELETE FROM member WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, memberId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteMember : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
+	
+	
+	
+	
 	public List<ReplyDto> adminAllReply(){
 		final String SQL = "SELECT r.id, r.memberId, r.content, r.qnaId, r.replyDate, m.username, q.productId " + 
 				"FROM reply r INNER JOIN member m " + 
@@ -68,7 +137,7 @@ public class AdminRepositroy {
 			return replyDtos;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(TAG + "adminAllQnA : " + e.getMessage());
+			System.out.println(TAG + "adminAllReply : " + e.getMessage());
 		} finally {
 			DBConn.close(conn, pstmt,rs);
 		}

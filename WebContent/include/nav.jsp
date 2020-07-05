@@ -4,7 +4,6 @@
 	<div class="container__box">
 		<div class="nav__box">
 			<ul>
-				<li><a class="menuLink" href="#">카테고리입니다</a></li>
 				<li><a class="menuLink" href="/shop/product?cmd=outer">OUTER</a></li>
 				<li><a class="menuLink" href="/shop/product?cmd=top">TOP</a></li>
 				<li><a class="menuLink" href="/shop/product?cmd=blouse">BLOUSE</a></li>

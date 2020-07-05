@@ -59,14 +59,14 @@ CREATE TABLE orders(
 	memberId number,
 	orderDate timestamp not null,
 	totalPrice number not null,
-	foreign key(memberId) references member(id)
+	foreign key(memberId) references member(id) on delete cascade
 );
 
 CREATE TABLE category(
 	id number primary key,
 	type varchar2(100) not null,
     parentTypeId number,
-	foreign key(parentTypeId) references category(id)
+	foreign key(parentTypeId) references category(id) on delete cascade
 );
 
 CREATE TABLE product(
@@ -79,7 +79,7 @@ CREATE TABLE product(
 	thumbnailH varchar2(100) not null,
 	contents CLOB not null,
 	categoryId number not null,
-    foreign key(categoryId) references category(id)
+    foreign key(categoryId) references category(id) on delete cascade
 );
 
 CREATE TABLE orders_detail(
@@ -88,8 +88,8 @@ CREATE TABLE orders_detail(
     productId number,
     quantity number default 1,
     price number not null,
-	foreign key(orderId) references orders(id),
-    foreign key(productId) references product(id)
+	foreign key(orderId) references orders(id) on delete cascade, 
+    foreign key(productId) references product(id) on delete cascade
 );
 
 CREATE TABLE qna(
@@ -100,8 +100,8 @@ CREATE TABLE qna(
     content varchar2(200) not null,
 	qnADate TIMESTAMP not null,
     memberId number,
-    foreign key(productId) references product(id),
-	foreign key(memberId) references member(id)
+    foreign key(productId) references product(id) on delete cascade,
+	foreign key(memberId) references member(id) on delete cascade
 );
     
 CREATE TABLE review(
@@ -112,8 +112,8 @@ CREATE TABLE review(
     photo CLOB,
     memberId number,
 	productId number,
-	foreign key(productId) references product(id),
-    foreign key(memberId) references member(id)
+	foreign key(productId) references product(id) on delete cascade,
+    foreign key(memberId) references member(id) on delete cascade
 	
 );    
 
@@ -125,7 +125,7 @@ CREATE TABLE notice(
 	content clob,
 	createDate timestamp not null,
 	readCount number not null,
-	foreign key (memberId) references member(id)
+	foreign key (memberId) references member(id) on delete cascade
 );
 
 CREATE TABLE reply(
@@ -134,7 +134,7 @@ CREATE TABLE reply(
 	content varchar2(100) not null,
     qnaId number,
 	replyDate timestamp not null,
-	foreign key (qnaId) references qna(id)
+	foreign key (qnaId) references qna(id) on delete cascade
 );
 
 CREATE TABLE cart(
@@ -142,23 +142,23 @@ CREATE TABLE cart(
 	memberId number,
 	productId number,
 	quantity number,
-    foreign key (memberId) references member(id)
+    foreign key (memberId) references member(id) on delete cascade
 );
 
 CREATE TABLE wishList(
 	id number primary key,
 	memberId number,
 	productId number,
-    foreign key (memberId) references member(id),
-    foreign key (productId) references product(id)
+    foreign key (memberId) references member(id) on delete cascade,
+    foreign key (productId) references product(id) on delete cascade
 );
 
 CREATE TABLE withItem(
 	id number primary key,
 	parentProductId number,
 	withItemId number,
-    foreign key (parentProductId) references product(id),
-	foreign key (withItemId) references product(id)
+    foreign key (parentProductId) references product(id) on delete cascade,
+	foreign key (withItemId) references product(id) on delete cascade
 );
 
 

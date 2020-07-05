@@ -15,6 +15,7 @@ import com.shop.apparel.action.admin.AdminQnAAction;
 import com.shop.apparel.action.admin.AdminReplyAction;
 import com.shop.apparel.action.admin.AdminReviewAction;
 import com.shop.apparel.action.admin.AdminMemberAction;
+import com.shop.apparel.action.admin.AdminMemberDeleteAction;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
 import com.shop.apparel.action.admin.ProductRegistrationProcAction;
 import com.shop.apparel.action.product.ProductDetailAction;
@@ -52,12 +53,6 @@ public class AdminController extends HttpServlet {
 			return new ProductRegistrationProcAction(); 
 		}else if(cmd.equals("productUpdate")) {
 			//return new ProductUpdateAction();
-		}else if(cmd.equals("productUpdateProc")) {
-			//return new ProductUpdateProcAction(); 
-		}else if(cmd.equals("productDelete")) {
-			//return new ProductDeleteAction(); 
-		}else if(cmd.equals("productDeleteProc")) {
-			//return new ProductDeleteProcAction(); 
 		}else if(cmd.equals("search")) {
 			//return new ProductSearchAction(); 
 		}else if(cmd.equals("index")) {
@@ -73,7 +68,16 @@ public class AdminController extends HttpServlet {
 			return new AdminReplyAction();
 		}else if(cmd.equals("qnA")) {
 			return new AdminQnAAction();
+		}else if(cmd.equals("memberDelete")) {
+			return new AdminMemberDeleteAction();
+		}else if(cmd.equals("reviewDelete")) {
+			return new AdminQnAAction();
+		}else if(cmd.equals("qnADelete")) {
+			return new AdminQnAAction();
+		}else if(cmd.equals("replyDelete")) {
+			return new AdminQnAAction();
 		}
+		
 		return null;
 	}
 }

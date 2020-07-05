@@ -94,7 +94,7 @@
 																class="btn btn-warning btn-circle btn-sm"> <i
 																	class="fas fa-check"></i>
 															</a></td>
-															<td><a href="#"
+															<td><a href="/shop/admin?cmd=memberDelete&id=${member.id}"
 																class="btn btn-danger btn-circle btn-sm"> <i
 																	class="fas fa-trash"></i>
 															</a></td>
