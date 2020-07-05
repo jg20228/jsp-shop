@@ -3,10 +3,9 @@
 		<div class="aside__box">
 			<aside>
 				<ul>
-					<li><a class="menuLink" href="#">aside입니다</a></li>
-					<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
+					<li><i class="ti-headphone-alt"></i> +000 (000) 000-0000</li>
 					<br />
-					<li><i class="ti-email"></i> support@shophub.com</li>
+					<li><i class="ti-email"></i> support@shop.com</li>
 					<li><a class="menuLink" href="#">Community</a></li>
 					<br />
 					<hr />

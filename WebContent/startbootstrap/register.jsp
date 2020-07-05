@@ -9,6 +9,12 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <body class="bg-gradient-primary">
+<input id="page-top" type="hidden">
+<div id="wrapper">
+		<%@ include file="/startbootstrap/include/sidebar.jsp"%>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 	<div class="container">
 		<form action="/shop/admin?cmd=productRegistrationProc" method="post" enctype="multipart/form-data">
 			<div class="card o-hidden border-0 shadow-lg my-5">
@@ -116,16 +122,17 @@
 					<div class="modal-content">
 
 						<!-- Modal Header -->
-						<div class="modal-header">
+						<div class="modal-header" style="justify-content : space-between">
 							<h4 class="modal-title">상품에 보여줄 아이템을 선택하세요.</h4>
+							<div id="input-form">
+       						    검색 : <input type="text" id="keyword"/>
+						    </div>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
 						<!-- Modal body -->
 						<div class="modal-body" style="display: flex;">
-  							<div id="input-form">
-       						    검색 : <input type="text" id="keyword"/>
-						    </div>
+  							
 												
 						
 							<table id="products" class="table table-hover">
@@ -179,6 +186,10 @@
 			</div>
 		</form>
 	</div>
+	</div>
+	</div>
+	<a class="scroll-to-top rounded" href="#page-top" style="display: inline;"> <i class="fas fa-angle-up"></i>
+	</a>
 
 	<script>
 		//검색기능

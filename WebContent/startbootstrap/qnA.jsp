@@ -90,13 +90,13 @@
 													<c:forEach var="qnADto" items="${qnADtos}"
 														varStatus="status">
 														<tr role="row" class="odd">
-															<td class="sorting_${status.count}">${qnADto.id}</td>
-															<td>${qnADto.productId}</td>
-															<td>${qnADto.replyState}</td>
-															<td>${qnADto.title}</td>
-															<td>${qnADto.content}</td>
-															<td>${qnADto.qnADate}</td>
-															<td>${qnADto.memberId}</td>
+															<td class="sorting_${status.count}">${qnADto.qna.id}</td>
+															<td>${qnADto.qna.productId}</td>
+															<td>${qnADto.qna.replyState}</td>
+															<td>${qnADto.qna.title}</td>
+															<td>${qnADto.qna.content}</td>
+															<td>${qnADto.qna.qnADate}</td>
+															<td>${qnADto.qna.memberId}</td>
 															<td>${qnADto.username}</td>
 															<td>${qnADto.name}</td>
 															<td><a href="#"

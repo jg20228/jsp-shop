@@ -68,7 +68,7 @@ public class AdminRepositroy {
 			return replyDtos;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(TAG + "adminAllQnA : " + e.getMessage());
+			System.out.println(TAG + "adminAllReply : " + e.getMessage());
 		} finally {
 			DBConn.close(conn, pstmt,rs);
 		}

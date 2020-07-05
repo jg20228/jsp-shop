@@ -685,7 +685,7 @@
 							<div class="single-bannerr">
 								<a href="#"> <img src="image/sale.jpg" alt="#">
 									<div class="content">
-										<h3>SALE</h3>
+									<!-- <h3>SALE</h3>  -->
 									</div>
 								</a>
 							</div>
@@ -701,7 +701,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="section-title">
-								<h2>BEST PRODUCT</h2>
+								<!-- <h2>BEST PRODUCT</h2>  -->
 							</div>
 						</div>
 					</div>

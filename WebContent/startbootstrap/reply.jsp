@@ -36,60 +36,43 @@
 															aria-controls="dataTable" rowspan="1" colspan="1"
 															aria-sort="ascending"
 															aria-label="Name: activate to sort column descending"
-															style="width: 120px;">ProductId</th>
+															style="width: 120px;">Id</th>
 															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Position: activate to sort column ascending"
-															style="width: 120px;">Name</th>
+															style="width: 120px;">MemberId</th>
 															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Office: activate to sort column ascending"
-															style="width: 80px;">Type</th>
+															style="width: 80px;">Content</th>
 															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Age: activate to sort column ascending"
-															style="width: 20px;">Price</th>
+															style="width: 20px;">QnAId</th>
 															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Start date: activate to sort column ascending"
-															style="width: 200px;">id</th>
+															style="width: 200px;">Reply Date</th>
 															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 90px;">star</th>
+															style="width: 90px;">Username</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 90px;">content</th>
-														<th class="sorting" tabindex="0" aria-controls="dataTable"
-															rowspan="1" colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">reviewDate</th>
-														<th class="sorting" tabindex="0" aria-controls="dataTable"
-															rowspan="1" colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">photo</th>
-														<th class="sorting" tabindex="0" aria-controls="dataTable"
-															rowspan="1" colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">memberId</th>
-														<th class="sorting" tabindex="0" aria-controls="dataTable"
-															rowspan="1" colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">productId</th>
-														<th class="sorting" tabindex="0" aria-controls="dataTable"
-															rowspan="1" colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">username</th>
+															style="width: 90px;">ProductId</th>
+															
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
 															style="width: 80px;">수정</th>
+														
 														<th class="sorting" tabindex="0" aria-controls="dataTable"
 															rowspan="1" colspan="1"
 															aria-label="Salary: activate to sort column ascending"
@@ -97,20 +80,15 @@
 													</tr>
 												</thead>
 												<tbody id="content__body">
-													<c:forEach var="reviewDto" items="${reviewDtos}" varStatus="status">
+													<c:forEach var="replyDto" items="${replyDtos}" varStatus="status">
 													<tr role="row" class="odd">
-														<td class="sorting_${status.count}">${reviewDto.product.id}</td>
-														<td>${reviewDto.product.name}</td>
-														<td>${reviewDto.product.type}</td>
-														<td>${reviewDto.product.price}</td>
-														<td>${reviewDto.review.id}</td>
-														<td>${reviewDto.review.star}</td>
-														<td>${reviewDto.review.content}</td>
-														<td>${reviewDto.review.reviewDate}</td>
-														<td>${reviewDto.review.photo}</td>
-														<td>${reviewDto.review.memberId}</td>
-														<td>${reviewDto.review.productId}</td>
-														<td>${reviewDto.username}</td>
+														<td class="sorting_${status.count}">${replyDto.reply.id}</td>
+														<td>${replyDto.reply.memberId}</td>
+														<td>${replyDto.reply.content}</td>
+														<td>${replyDto.reply.qnaId}</td>
+														<td>${replyDto.reply.replyDate}</td>
+														<td>${replyDto.username}</td>
+														<td>${replyDto.productId}</td>
 														<td>
 															<a href="#" class="btn btn-warning btn-circle btn-sm">
 																<i class="fas fa-check"></i>

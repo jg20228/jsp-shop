@@ -11,7 +11,7 @@
 					<div class="single-footer about">
 						<div class="logo">
 							<a href="index.html"><img
-								src="/shop/eshop-template/images/logo2.png" alt="#"></a>
+								src="/shop/image/apparelLogo.png" alt="#"></a>
 						</div>
 						<p class="text">Praesent dapibus, neque id cursus ucibus,
 							tortor neque egestas augue, magna eros eu erat. Aliquam erat
@@ -30,9 +30,9 @@
 						<h4>Notice</h4>
 						<ul>
 							<li><a href="/shop/board?cmd=noticeBoard">공지사항</a></li>
-							<li><a href="#">맴버쉽 혜택</a></li>
-							<li><a href="#">해외배송</a></li>
-							<li><a href="#">실측사이즈 측정법</a></li>
+							<li><a href="/shop/board?cmd=noticeMember">맴버쉽 혜택</a></li>
+							<li><a href="/shop/board?cmd=noticeOverseas">해외배송</a></li>
+							<li><a href="/shop/board?cmd=noticeSize">실측사이즈 측정법</a></li>
 						</ul>
 					</div>
 					<!-- End Single Widget -->
@@ -51,7 +51,7 @@
 									<li><a href="https://parcel.epost.go.kr/auth.EpostLogin.parcel">배송조회</a></li>
 									<li><a href="/shop/user?cmd=order&id=${principal.id}">주문내역</a></li>
 									<li><a href="/shop/user?cmd=update">MY PAGE</a></li>
-									<li><a href="shop/user/guide.jsp">GUIDE 이용안내</a></li>
+									<li><a href="/shop/user/guide.jsp">GUIDE 이용안내</a></li>
 								</c:otherwise>
 							</c:choose>
 						</ul>
