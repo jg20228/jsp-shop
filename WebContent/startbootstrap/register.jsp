@@ -123,9 +123,9 @@
 
 						<!-- Modal body -->
 						<div class="modal-body" style="display: flex;">
-<!--  							<div id="input-form">
+  							<div id="input-form">
        						    검색 : <input type="text" id="keyword"/>
-						    </div>-->
+						    </div>
 												
 						
 							<table id="products" class="table table-hover">
@@ -186,14 +186,18 @@
         $(document).ready(function() {
             $("#keyword").keyup(function() {
                 var k = $(this).val();
-                $("#products-table > tbody > tr").hide();
-                var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
+                $("#products > tbody > tr").hide();
+                var temp = $("#products > tbody > tr > td:nth-child(1):contains('" + k + "')");
 
                 $(temp).parent().show();
             })
         })
 
-
+		$('input[type="text"]').keydown(function() {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		});
 
 	
 		function addId(id, num) {
