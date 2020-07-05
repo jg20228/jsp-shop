@@ -102,7 +102,7 @@
 															</a>
 														</td>
 														<td>
-															<a href="#" class="btn btn-danger btn-circle btn-sm">
+															<a href="/shop/admin?cmd=productDelete&id=${product.id}" class="btn btn-danger btn-circle btn-sm">
 																<i class="fas fa-trash"></i>
 															</a>
 														</td>

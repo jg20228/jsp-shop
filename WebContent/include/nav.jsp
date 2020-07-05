@@ -4,12 +4,12 @@
 	<div class="container__box">
 		<div class="nav__box">
 			<ul>
-				<li><a class="menuLink" href="/shop/product?cmd=outer">OUTER</a></li>
-				<li><a class="menuLink" href="/shop/product?cmd=top">TOP</a></li>
-				<li><a class="menuLink" href="/shop/product?cmd=blouse">BLOUSE</a></li>
-				<li><a class="menuLink" href="/shop/product?cmd=onePiece">ONE PIECE</a></li>
-				<li><a class="menuLink" href="/shop/product?cmd=pant">PANT</a></li>
-				<li><a class="menuLink" href="/shop/product?cmd=skirt">SKIRT</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=productList&type=OUTER">OUTER</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=productList&type=TOP">TOP</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=productList&type=BLOUSE">BLOUSE</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=productList&type=ONEPIECE">ONE PIECE</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=productList&type=PANT">PANT</a></li>
+				<li><a class="menuLink" href="/shop/product?cmd=productList&type=SKIRT">SKIRT</a></li>
 				<br />
 				<li><a class="menuLink" href="/shop/product?cmd=sale">SALE</a></li>
 				<br />

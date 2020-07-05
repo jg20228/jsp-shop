@@ -11,17 +11,17 @@ import com.shop.apparel.action.Action;
 import com.shop.apparel.repository.AdminRepositroy;
 import com.shop.apparel.util.Script;
 
-public class AdminMemberDeleteAction implements Action{
+public class AdminReplyDeleteAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberId = Integer.parseInt(request.getParameter("id"));
-		if(memberId==0) {return;}
 		AdminRepositroy adminRepositroy = AdminRepositroy.getInstance();
 		int result = adminRepositroy.deleteMember(memberId);
 		
+		
 		if(result==1) {
-			Script.href("삭제 완료", "/shop/admin?cmd=member", response);
+			Script.href("삭제 완료", "/shop/admin?cmd=reply", response);
 		}
 	}
 }

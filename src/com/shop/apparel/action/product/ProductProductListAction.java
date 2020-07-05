@@ -12,19 +12,20 @@ import com.shop.apparel.action.Action;
 import com.shop.apparel.model.Product;
 import com.shop.apparel.repository.ProductRepositroy;
 
-public class ProductOuterAction implements Action{
+public class ProductProductListAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductRepositroy productRepositroy = ProductRepositroy.getInstance();
-		List<Product> products  = productRepositroy.selectAll();
+		String type = request.getParameter("type");
+		List<Product> products  = productRepositroy.selectAllByCatrgory(type);
 		
 		request.setAttribute("products", products);
 		for (Product product : products) {
 			System.out.println(product.getId());
 		}
 		
-		RequestDispatcher dis = request.getRequestDispatcher("product/outer.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("product/list.jsp");
 		dis.forward(request, response);
 	}
 

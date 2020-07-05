@@ -117,7 +117,7 @@
 															</a>
 														</td>
 														<td>
-															<a href="#" class="btn btn-danger btn-circle btn-sm">
+															<a href="/shop/admin?cmd=reviewDelete&id=${reviewDto.review.id}" class="btn btn-danger btn-circle btn-sm">
 																<i class="fas fa-trash"></i>
 															</a>
 														</td>

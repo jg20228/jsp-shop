@@ -33,7 +33,15 @@ public class AdminProductAction implements Action{
 		//이부분~
 		AdminRepositroy adminRepositroy = AdminRepositroy.getInstance();
 		List<Product> products = adminRepositroy.adminAllProduct();
-		
+		for (Product product : products) {
+			//20자 초과시 글자 자름
+			if(product.getTitleComment().length()>20) {
+				product.setTitleComment(product.getTitleComment().substring(0, 20)+"...");
+			}
+			if(product.getContents().length()>20) {
+				product.setContents(product.getContents().substring(0, 20)+"...");
+			}
+		}
 		request.setAttribute("products", products);
 		//
 		

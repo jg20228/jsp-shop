@@ -158,7 +158,39 @@ public class ProductRepositroy {
 		}
 		return null;
 	}
-	
+	//상품 뿌리기
+		public List<Product> selectAllByCatrgory(String category){
+			final String SQL = "SELECT * FROM product WHERE type LIKE ?";
+			List<Product> products = new ArrayList<>();
+			try {
+				conn = DBConn.getConnection();
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setString(1, category);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Product product = Product.builder()
+							.id(rs.getInt(1))
+							.name(rs.getString(2))
+							.type(rs.getString(3))
+							.titleComment(rs.getString(4))
+							.price(rs.getInt(5))
+							.thumbnailW(rs.getString(6))
+							.thumbnailH(rs.getString(7))
+							.contents(rs.getString(8))
+							.categoryId(rs.getInt(9))
+							.build();
+					products.add(product);
+				}
+				return products;
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(TAG + "selectAllByCatrgory : " + e.getMessage());
+			} finally {
+				DBConn.close(conn, pstmt, rs);
+			}
+			return null;
+		}
 	
 	//상품 뿌리기
 	public List<Product> selectAll(){

@@ -55,7 +55,7 @@ public class AdminRepositroy {
 	}
 	
 	public int deleteQnA(int qnAId) {
-		final String SQL ="DELETE FROM member WHERE id = ?";
+		final String SQL ="DELETE FROM qna WHERE id = ?";
 		try {
 			conn = DBConn.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -104,7 +104,21 @@ public class AdminRepositroy {
 		return -1;
 	}
 	
-	
+	public int deleteProduct(int productId) {
+		final String SQL ="DELETE FROM product WHERE id = ?";
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, productId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "deleteProduct : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt);
+		}
+		return -1;
+	}
 	
 	
 	public List<ReplyDto> adminAllReply(){

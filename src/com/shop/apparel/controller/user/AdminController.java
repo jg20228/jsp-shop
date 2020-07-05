@@ -11,9 +11,12 @@ import com.shop.apparel.action.Action;
 import com.shop.apparel.action.admin.AdminIndexAction;
 import com.shop.apparel.action.admin.AdminMemberListAction;
 import com.shop.apparel.action.admin.AdminProductAction;
+import com.shop.apparel.action.admin.AdminProductDeleteAction;
 import com.shop.apparel.action.admin.AdminQnAAction;
+import com.shop.apparel.action.admin.AdminQnADeleteAction;
 import com.shop.apparel.action.admin.AdminReplyAction;
 import com.shop.apparel.action.admin.AdminReviewAction;
+import com.shop.apparel.action.admin.AdminReviewDeleteAction;
 import com.shop.apparel.action.admin.AdminMemberAction;
 import com.shop.apparel.action.admin.AdminMemberDeleteAction;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
@@ -71,11 +74,13 @@ public class AdminController extends HttpServlet {
 		}else if(cmd.equals("memberDelete")) {
 			return new AdminMemberDeleteAction();
 		}else if(cmd.equals("reviewDelete")) {
-			return new AdminQnAAction();
+			return new AdminReviewDeleteAction();
 		}else if(cmd.equals("qnADelete")) {
-			return new AdminQnAAction();
+			return new AdminQnADeleteAction();
 		}else if(cmd.equals("replyDelete")) {
-			return new AdminQnAAction();
+			return new AdminReviewDeleteAction();
+		}else if(cmd.equals("productDelete")) {
+			return new AdminProductDeleteAction();
 		}
 		
 		return null;
