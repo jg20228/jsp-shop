@@ -1290,7 +1290,6 @@
 			</div>
 			<!-- End Product Area -->
 <%@ include file="/include/insta.jsp"%>
-<%@ include file="/include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>

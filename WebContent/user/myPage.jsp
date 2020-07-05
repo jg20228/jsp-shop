@@ -209,7 +209,6 @@
 		}
 	</script>
 
-	<%@ include file="/include/serviceArea.jsp"%>
 </div>
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>

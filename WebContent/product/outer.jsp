@@ -691,7 +691,6 @@
 			<!-- End Product Area -->
 	
 
-<%@ include file="/include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>
 <script src="/shop/js/cart.js"></script>

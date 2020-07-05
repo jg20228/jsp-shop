@@ -11,6 +11,8 @@ import com.shop.apparel.action.Action;
 import com.shop.apparel.action.admin.AdminIndexAction;
 import com.shop.apparel.action.admin.AdminMemberListAction;
 import com.shop.apparel.action.admin.AdminProductAction;
+import com.shop.apparel.action.admin.AdminQnAAction;
+import com.shop.apparel.action.admin.AdminReplyAction;
 import com.shop.apparel.action.admin.AdminReviewAction;
 import com.shop.apparel.action.admin.AdminMemberAction;
 import com.shop.apparel.action.admin.ProductRegistrationAction;
@@ -68,7 +70,9 @@ public class AdminController extends HttpServlet {
 		}else if(cmd.equals("review")) {
 			return new AdminReviewAction();
 		}else if(cmd.equals("reply")) {
+			return new AdminReplyAction();
 		}else if(cmd.equals("qnA")) {
+			return new AdminQnAAction();
 		}
 		return null;
 	}

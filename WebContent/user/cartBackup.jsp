@@ -230,7 +230,6 @@
 		</div>
 		<!-- .page-body -->
 	</div>
-	<%@ include file="/include/serviceArea.jsp"%>
 </div>
 
 <script src="/shop/js/cartView.js"></script>

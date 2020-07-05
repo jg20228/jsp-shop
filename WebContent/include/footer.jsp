@@ -27,13 +27,12 @@
 				<div class="col-lg-2 col-md-6 col-12">
 					<!-- Single Widget -->
 					<div class="single-footer links">
-						<h4>Information</h4>
+						<h4>Notice</h4>
 						<ul>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Faq</a></li>
-							<li><a href="#">Terms & Conditions</a></li>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Help</a></li>
+							<li><a href="/shop/board?cmd=noticeBoard">공지사항</a></li>
+							<li><a href="#">맴버쉽 혜택</a></li>
+							<li><a href="#">해외배송</a></li>
+							<li><a href="#">실측사이즈 측정법</a></li>
 						</ul>
 					</div>
 					<!-- End Single Widget -->
@@ -41,28 +40,34 @@
 				<div class="col-lg-2 col-md-6 col-12">
 					<!-- Single Widget -->
 					<div class="single-footer links">
-						<h4>Customer Service</h4>
+						<h4></h4>
 						<ul>
-							<li><a href="#">Payment Methods</a></li>
-							<li><a href="#">Money-back</a></li>
-							<li><a href="#">Returns</a></li>
-							<li><a href="#">Shipping</a></li>
-							<li><a href="#">Privacy Policy</a></li>
+
+							<c:choose>
+								<c:when test="${empty sessionScope.principal}">
+									<li><a href="shop/user/guide.jsp">GUIDE 이용안내</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="https://parcel.epost.go.kr/auth.EpostLogin.parcel">배송조회</a></li>
+									<li><a href="/shop/user?cmd=order&id=${principal.id}">주문내역</a></li>
+									<li><a href="/shop/user?cmd=update">MY PAGE</a></li>
+									<li><a href="shop/user/guide.jsp">GUIDE 이용안내</a></li>
+								</c:otherwise>
+							</c:choose>
 						</ul>
 					</div>
 					<!-- End Single Widget -->
 				</div>
 				<div class="col-lg-3 col-md-6 col-12">
 					<!-- Single Widget -->
-					<div class="single-footer social">
-						<h4>Get In Tuch</h4>
+					<div class="single-footer social" id="bank">
+						<h4>Banking Info.</h4>
 						<!-- Single Widget -->
 						<div class="contact">
 							<ul>
-								<li>NO. 342 - London Oxford Street.</li>
-								<li>012 United Kingdom.</li>
-								<li>info@eshop.com</li>
-								<li>+032 3456 7890</li>
+								<li>농협 301-0119-0000-81</li>
+								<li>국민 000000-04-002466</li>
+								<li>예금주: (주) apperal</li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -75,6 +80,7 @@
 					</div>
 					<!-- End Single Widget -->
 				</div>
+
 			</div>
 		</div>
 	</div>

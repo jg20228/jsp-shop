@@ -7,9 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shop.apparel.db.DBConn;
+import com.shop.apparel.dto.QnADto;
+import com.shop.apparel.dto.ReplyDto;
 import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.model.Member;
 import com.shop.apparel.model.Product;
+import com.shop.apparel.model.QnA;
+import com.shop.apparel.model.Reply;
 import com.shop.apparel.model.Review;
 import com.shop.apparel.model.RoleType;
 
@@ -33,6 +37,84 @@ public class AdminRepositroy {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
+	public List<ReplyDto> adminAllReply(){
+		final String SQL = "SELECT r.id, r.memberId, r.content, r.qnaId, r.replyDate, m.username, q.productId " + 
+				"FROM reply r INNER JOIN member m " + 
+				"ON r.memberId = m.id " + 
+				"INNER JOIN qna q " + 
+				"ON r.qnaId = q.id ";
+		try {
+			List<ReplyDto> replyDtos = new ArrayList<ReplyDto>();
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Reply reply = Reply.builder()
+						.id(rs.getInt(1))
+						.memberId(rs.getInt(2))
+						.content(rs.getString(3))
+						.qnaId(rs.getInt(4))
+						.replyDate(rs.getTimestamp(5))
+						.build();
+				ReplyDto replyDto = ReplyDto.builder()
+						.reply(reply)
+						.username(rs.getString(6))
+						.productId(rs.getInt(7))
+						.build();
+				replyDtos.add(replyDto);
+					
+			}
+			return replyDtos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "adminAllQnA : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt,rs);
+		}
+		return null;
+	}
+	
+	
+	public List<QnADto> adminAllQnA(){
+		final String SQL = "SELECT q.id, q.productId, q.replyState, q.title, q.content, q.qnADate, q.memberId, m.username, p.name " + 
+				"FROM qnA q INNER JOIN member m " + 
+				"ON q.memberId = m.id " + 
+				"INNER JOIN product p " + 
+				"ON q.productId = p.id ";
+		try {
+			List<QnADto> qnADtos = new ArrayList<QnADto>();
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnA qnA = QnA.builder()
+						.id(rs.getInt(1))
+						.productId(rs.getInt(2))
+						.replyState(rs.getString(3))
+						.title(rs.getString(4))
+						.content(rs.getString(5))
+						.qnADate(rs.getTimestamp(6))
+						.memberId(rs.getInt(7))
+						.build();
+				QnADto qnADto = QnADto.builder()
+						.qna(qnA)
+						.username(rs.getString(8))
+						.name(rs.getString(9))
+					    .build();
+			   
+				qnADtos.add(qnADto);
+					
+			}
+			return qnADtos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "adminAllQnA : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt,rs);
+		}
+		return null;
+	}
 	
 	public List<ReviewDto> adminAllReview(){
 		final String SQL = "SELECT p.id, p.name, p.type, p.price, r.id, r.star, r.content, r.reviewDate, r.photo, r.memberId, r.productId, m.username " + 
@@ -69,8 +151,6 @@ public class AdminRepositroy {
 			   
 			   reviewDtos.add(reviewDto);
 			   
-			   System.out.println("productId : " +reviewDtos.toString() );
-					
 			}
 			return reviewDtos;
 		} catch (Exception e) {

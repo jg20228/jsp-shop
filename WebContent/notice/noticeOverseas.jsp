@@ -46,7 +46,6 @@
 <img src="/shop/testImg/EXoverseas.png">
 
     
-<%@ include file="/include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>

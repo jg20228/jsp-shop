@@ -14,6 +14,8 @@ import com.shop.apparel.dto.ReviewDto;
 import com.shop.apparel.dto.StarDto;
 import com.shop.apparel.dto.WithItemDto;
 import com.shop.apparel.model.Product;
+import com.shop.apparel.model.QnA;
+import com.shop.apparel.model.Reply;
 import com.shop.apparel.model.Review;
 import com.shop.apparel.model.WithItem;
 
@@ -53,14 +55,19 @@ public class ProductDetailRepository {
 				pstmt.setInt(1, productId);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					QnADto qnADto = QnADto.builder()
+					QnA qnA = QnA.builder()
 							.title(rs.getString(1))
 							.content(rs.getString(2))
-							.qnAdate(rs.getTimestamp(3))
-							.userName(rs.getString(4))
-							.content(rs.getString(5))
-							.replyDate(rs.getTimestamp(6))
+							.qnADate(rs.getTimestamp(3))
+							.id(rs.getInt(7))
 							.build();
+					QnADto qnADto = QnADto.builder()
+							.qna(qnA)
+							.content(rs.getString(5))
+							.replydate(rs.getTimestamp(6))
+							.username(rs.getString(4))
+							.build();
+					
 					qnADtos.add(qnADto);
 				}
 				return qnADtos;				

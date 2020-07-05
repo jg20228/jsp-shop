@@ -14,7 +14,7 @@
 					<hr />
 					<li><a class="menuLink" href="/shop/board?cmd=noticeBoard">MEMBER</a></li>
 					<hr />
-					<li><a class="menuLink" href="#">BANK</a></li>
+					<li><a class="menuLink" href="#bank">BANK</a></li>
 					<hr />
 					<li><a class="menuLink" href="#">TODAY VIEW</a></li>
 					<hr />

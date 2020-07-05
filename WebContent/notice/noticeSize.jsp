@@ -46,7 +46,6 @@
 
 <img src="/shop/image/notice/washing-tip.jpg">
     
-<%@ include file="/include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>

@@ -133,7 +133,7 @@ CREATE TABLE reply(
 	memberId number,
 	content varchar2(100) not null,
     qnaId number,
-	orderDate timestamp not null,
+	replyDate timestamp not null,
 	foreign key (qnaId) references qna(id)
 );
 

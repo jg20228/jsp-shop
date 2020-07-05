@@ -16,5 +16,5 @@ public class Reply {
 	private int memberId;
 	private String content;
 	private int qnaId;
-	private Timestamp sysdate;
+	private Timestamp replyDate;
 }

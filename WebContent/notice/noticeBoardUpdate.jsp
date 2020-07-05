@@ -63,7 +63,6 @@ jQuery.noConflict();
 	</div>
 
 <!-- end of content__box -->
-	<%@ include file="/include/serviceArea.jsp"%>
 </div>
 <!-- end of content__box -->
 

@@ -45,9 +45,11 @@
 						<div class="col-lg-1.33 col-md-1.33 col-1.33">
 							<!-- Start Single Service -->
 							<div class="single-service">
+							<a href="https://parcel.epost.go.kr/auth.EpostLogin.parcel">
 								<!--<i class="ti-tag"></i>-->
 								<h4>DELIVERY</h4>
 								<p>배송조회</p>
+							</a>
 							</div>
 							<!-- End Single Service -->
 						</div>

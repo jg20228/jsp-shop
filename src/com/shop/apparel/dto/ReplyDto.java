@@ -1,8 +1,6 @@
 package com.shop.apparel.dto;
 
-import java.sql.Timestamp;
-
-import com.shop.apparel.model.QnA;
+import com.shop.apparel.model.Reply;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,10 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class QnADto {
-	private QnA qna;
+public class ReplyDto {
+	private Reply reply;
 	private String username;
-	private String name;
-	private String content;
-	private Timestamp replydate;
+	private int productId;
 }
