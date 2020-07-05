@@ -32,6 +32,42 @@ public class ProductRepositroy {
 	private ResultSet rs = null;
 	
 	// detail.jsp에 쓰기 위해 product중에 필요한 것들만!
+	public Product selectByKeyword(String keyword){
+		final String SQL = "SELECT id, name, type, titlecomment, price, thumbnailw, thumbnailh, contents, categoryid " + 
+				"FROM product " + 
+				"WHERE name like ?";
+		Product product = null;
+		try {
+			conn = DBConn.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,  "%" + keyword + "%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				product = Product.builder()
+						.id(rs.getInt(1))
+						.name(rs.getString(2))
+						.type(rs.getString(3))
+						.titleComment(rs.getString(4))
+						.price(rs.getInt(5))
+						.thumbnailW(rs.getString(6))
+						.thumbnailW(rs.getString(7))
+						.contents(rs.getString(8))
+						.categoryId(rs.getInt(9))
+						.build();
+			}
+			return product;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(TAG + "selectByKeyword : " + e.getMessage());
+		} finally {
+			DBConn.close(conn, pstmt, rs);
+		}
+		return null;
+	}
+	
+	
+	// detail.jsp에 쓰기 위해 product중에 필요한 것들만!
 	public ProductDto selectByIdForDto(int productId){
 		final String SQL = "SELECT id, name, titleComment, price, thumbnailW, contents FROM product WHERE id = ?";
 		ProductDto productDto = null;

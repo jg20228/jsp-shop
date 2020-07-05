@@ -23,9 +23,11 @@
 						<form>
 							<input name="search" placeholder="Search Products Here....."
 								type="search">
-							<button style="visibility:hidden" class="btnn">
-								<i class="ti-search"></i>
-							</button>
+							<a href="/shop/product?cmd=search">
+								<button type="button" class="btnn">
+									<i class="ti-search"></i>
+								</button>
+							</a>	
 						</form>
 					</div>
 				</li>

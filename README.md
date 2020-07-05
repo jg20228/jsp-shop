@@ -209,6 +209,11 @@ INSERT INTO category (id, type, parentTypeId) VALUES (203, 'KNIT', 200);
 INSERT INTO category (id, type, parentTypeId) VALUES (204, 'BASIC', 200);
 INSERT INTO category (id, type, parentTypeId) VALUES (205, 'MTM', 200);
 
+INSERT INTO category (id, type, parentTypeId) VALUES (300, 'BLOUSE', 300);
+INSERT INTO category (id, type, parentTypeId) VALUES (400, 'ONEPIECE', 400);
+INSERT INTO category (id, type, parentTypeId) VALUES (500, 'PANT', 500);
+INSERT INTO category (id, type, parentTypeId) VALUES (600, 'SKIRT', 600);
+
 ```
 
 ## Test data for product

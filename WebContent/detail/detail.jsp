@@ -356,10 +356,10 @@
 								<td><div class="tb-center"></div></td>
 								<td><div class="tb-left reply_depth0">
 										<span><img src="/shop/image/detail/neo_lock.gif"></span>
-										<a>${qnADto.title}</a>
+										<a>${qnADto.qna.title}</a>
 									</div></td>
-								<td><div class="tb-center">${qnADto.userName}</div></td>
-								<td><div class="tb-center">${qnADto.qnAdate}</div></td>
+								<td><div class="tb-center">${qnADto.username}</div></td>
+								<td><div class="tb-center">${qnADto.qna.qnADate}</div></td>
 								<td><div class="tb-center"><span id="qna_board_showhits2">8</span></div></td>
 							</tr>
 							

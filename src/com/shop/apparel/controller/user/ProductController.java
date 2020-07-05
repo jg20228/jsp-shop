@@ -15,6 +15,7 @@ import com.shop.apparel.action.product.ProductAddWishListAction;
 import com.shop.apparel.action.product.ProductDetailAction;
 import com.shop.apparel.action.product.ProductHomeAction;
 import com.shop.apparel.action.product.ProductOuterAction;
+import com.shop.apparel.action.product.ProductSearchAction;
 import com.shop.apparel.action.product.ProductTopAction;
 import com.shop.apparel.action.user.UserJoinAction;
 import com.shop.apparel.action.user.UserJoinProcAction;
@@ -67,11 +68,13 @@ public class ProductController extends HttpServlet {
 		}else if(cmd.equals("top")) {
 			return new ProductTopAction(); 
 		}else if(cmd.equals("search")) {
-		//	return new ProductSearchAction();
+			return new ProductSearchAction();
 		}else if(cmd.equals("addCart")) {
 			return new ProductAddCartAction();
 		}else if(cmd.equals("addWishList")) {
 			return new ProductAddWishListAction();
+		}else if(cmd.equals("searchProc")) {
+			return new ProductSearchAction();
 		}
 		return null;
 	}

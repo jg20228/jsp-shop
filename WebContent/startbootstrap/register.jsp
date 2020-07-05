@@ -117,16 +117,23 @@
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">상품에 보여줄 아이템을 선택하세요.</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<div style="justify-content : space-between;">
+								<div>
+									<h4 class="modal-title">상품에 보여줄 아이템을 선택하세요.</h4>
+								</div>
+								
+								<div id="input-form">
+	       						    검색 : <input type="text" id="keyword"/>
+							    </div>
+							</div>
+							
+							<div>
+							 	   <button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
 						</div>
 
 						<!-- Modal body -->
 						<div class="modal-body" style="display: flex;">
-  							<div id="input-form">
-       						    검색 : <input type="text" id="keyword"/>
-						    </div>
-												
 						
 							<table id="products" class="table table-hover">
 								<thead>
