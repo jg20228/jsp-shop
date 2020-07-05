@@ -36,7 +36,7 @@
 
 	<li class="nav-item"><a class="nav-link"
 		href="/shop/admin?cmd=productRegistration"> <i
-			class="fas fa-fw fa-table"></i> <span>물품 등록 테스트</span></a></li>
+			class="fas fa-fw fa-table"></i> <span>물품 등록</span></a></li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider">
