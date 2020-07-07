@@ -43,8 +43,12 @@
 		</a></li>
 </ul>
 
-<img src="/shop/testImg/EXoverseas.png">
-
+<div style="justify-content : center;">
+	<p style="text-align: center;">
+		<img src="/shop/testImg/EXoverseas.png">
+	</p>
+</div>
+<%@ include file="../include/serviceArea.jsp"%>
     
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>

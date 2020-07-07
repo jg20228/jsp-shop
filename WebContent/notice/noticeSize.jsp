@@ -44,8 +44,12 @@
     
 </ul>
 
-<img src="/shop/image/notice/washing-tip.jpg">
-    
+<div style="justify-content : center;">
+	<p style="text-align: center;">
+		<img src="/shop/image/notice/washing-tip.jpg">
+	</p>
+</div>
+<%@ include file="../include/serviceArea.jsp"%>
 		</div><!-- end of content__box -->
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>
