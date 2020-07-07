@@ -54,6 +54,7 @@
 			<li>배송현황의 조회 버튼을 클릭하시면, 해당 주문의 배송 현황을 한눈에 확인하실 수 있습니다.</li>
 		</ul>
 	</div>
+	<%@ include file="../include/serviceArea.jsp"%>
 </div>
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>
