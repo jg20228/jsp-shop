@@ -234,10 +234,10 @@ Version:1.0
 /* Logo */
 .header .logo {
 	float: left;
-	margin-top: 35px;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
+	margin-top: 45px;
+	-webkit-transition: all 0.6s ease;
+	-moz-transition: all 0.6s ease;
+	transition: all 0.6s ease;
 }
 .header .navbar {
 	padding: 0;
@@ -4878,6 +4878,7 @@ Version:1.0
 .footer .links ul{}
 .footer .links ul li {
 	display: block;
+	font-size: 14px;
 	margin-bottom: 8px;
 }
 .footer .links ul li:last-child{
@@ -4885,6 +4886,7 @@ Version:1.0
 }
 .footer .links ul li a{
 	color:#fff;
+	font-size: 14px;
 	font-weight: 400;
 }
 .footer .links ul li a:hover{

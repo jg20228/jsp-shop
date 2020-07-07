@@ -4,6 +4,7 @@
 <%@ include file="/include/preloader.jsp"%>
 <%@ include file="/include/header.jsp"%>
 <%@ include file="/include/nav.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="content__box">
 	<div class="page-body">
 		<p class="t-box-msg">
@@ -39,7 +40,7 @@
 						<td><div class="tb-center">${dto.orders.orderDate}</div></td>
 						<td><div class="tb-center"><img src="${dto.productThumbnailh}" alt="#"></div></td>
 						<td><div class="tb-center">${dto.productName}</div></td>
-						<td><div class="tb-center">${dto.orders.totalPrice}</div></td>
+						<td><div class="tb-center"><fmt:formatNumber value="${dto.orders.totalPrice}" pattern="#,###"/>원</div></td>
 						<td><div class="tb-center"><a href="/shop/user?cmd=orderDetail&id=${dto.orders.id}">주문상세</a></div></td>
 						<td><div class="tb-center">준비중</div></td>
 					</tr>

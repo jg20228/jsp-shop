@@ -4,7 +4,7 @@
 <%@ include file="/include/preloader.jsp"%>
 <%@ include file="/include/header.jsp"%>
 <%@ include file="/include/nav.jsp"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 		<div class="content__box">
 					<!-- Start Product Area -->
 			<div class="product-area section">
@@ -60,7 +60,7 @@
 																<a href="product-details.html">${product.name}</a>
 															</h3>
 															<div class="product-price">
-																<span>${product.price}</span>
+																<span><fmt:formatNumber value="${product.price}" pattern="#,###"/></span>원
 															</div>
 														</div>
 													</div>

@@ -3,7 +3,7 @@
 <%@ include file="../include/preloader.jsp"%>
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/nav.jsp"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="content__box">
 	<div id="productDetail">
 		<h2 class="tit-page">top</h2>
@@ -51,7 +51,7 @@
 													<tr>
 														<th scope="row"><div class="tb-left">PRICE</div></th>
 														<td class="price">
-															<div class="tb-left">${dtos.product.price}</div>
+															<div class="tb-left"><fmt:formatNumber value="${dtos.product.price}" pattern="#,###"/>원</div>
 														</td>
 													</tr>
 													<!-- 상품 색상 옵션 -->
@@ -218,9 +218,9 @@
 
 														<ul>
 														<!-- 이 관련상품의 가격 {product.price} -->
-															<li class="prd-price">${withItemDto.product.price}원</li>
-														</ul>
-
+															<li class="prd-price">
+																<fmt:formatNumber value="${withItemDto.product.price}" pattern="#,###"/>원
+															</li>
 													</div>
 												</td>
 											</tr>

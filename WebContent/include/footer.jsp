@@ -11,7 +11,7 @@
 					<div class="single-footer about">
 						<div class="logo">
 							<a href="index.html"><img
-								src="/shop/image/apparelLogo.png" alt="#"></a>
+								src="/shop/image/apparelLogoWhite.png" alt="#"></a>
 						</div>
 						<p class="text">Praesent dapibus, neque id cursus ucibus,
 							tortor neque egestas augue, magna eros eu erat. Aliquam erat
@@ -40,9 +40,8 @@
 				<div class="col-lg-2 col-md-6 col-12">
 					<!-- Single Widget -->
 					<div class="single-footer links">
-						<h4></h4>
+						<h4>　　　</h4>
 						<ul>
-
 							<c:choose>
 								<c:when test="${empty sessionScope.principal}">
 									<li><a href="shop/user/guide.jsp">GUIDE 이용안내</a></li>

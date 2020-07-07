@@ -54,7 +54,7 @@
 					<div class="logo">
 
 						<a href="/shop/index.jsp">
-							<img src="/shop/image/apparelLogo.png"alt="logo">
+							<img src="/shop/image/apparelLogo100.png"alt="logo">
 
 						</a>
 					</div>
