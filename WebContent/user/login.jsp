@@ -60,18 +60,6 @@
 					</div>
 				</div>
 
-				<div class="rollover benefit">
-					<a href="/shop/page.html?id=2"><img src="/shop/image/login/benefit_btn.gif" alt="피그힙 멤버쉽 혜택 확인"></a>
-				</div>
-
-				<div class="rollover btn_join">
-					<a href="/shop/idinfo.html?type=new&amp;first="><img src="/design/pighip/img/btn_join.gif" alt="회원가입하기"></a>
-				</div>
-
-				<!-- 				<div style="margin-top: 110px;"> -->
-				<!-- 					<img src="/design/pighip/img/login_img4.gif" alt="회원혜택"> -->
-				<!-- 				</div> -->
-
 			</div>
 			<!-- .mlog-sign -->
 		</div>
@@ -79,7 +67,7 @@
 	</div>
 
 
-
+<%@ include file="../include/serviceArea.jsp"%>
 
 
 </div>

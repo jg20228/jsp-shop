@@ -49,12 +49,12 @@
 	<div class="middle-inner">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-2 col-md-2 col-12">
+				<div class="col-lg-3 col-md-4.5 col-4.5">
 					<!-- Logo -->
 					<div class="logo">
 
 						<a href="/shop/index.jsp">
-							<img src="/shop/image/apparelLogo100.png"alt="logo">
+							<img src="/shop/image/apparelLogo.png"alt="logo" style="height: 150%; width: 150%;">
 
 						</a>
 					</div>
