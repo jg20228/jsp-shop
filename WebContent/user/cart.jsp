@@ -226,7 +226,7 @@
 		</div>
 		<!-- .page-body -->
 	</div>
-	<%@ include file="/include/serviceArea.jsp"%>
+
 </div>
 <script>
 

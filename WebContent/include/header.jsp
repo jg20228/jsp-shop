@@ -22,12 +22,12 @@
 					<c:when test="${empty sessionScope.principal}">
 						<li><i class="ti-power-off"></i><a href="/shop/user?cmd=login">Login</a></li>
 							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=join">JOIN</a></li>
-							<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">CART</a></li>
+						<!-- 	<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">CART</a></li>  -->
 					</c:when>
 					<c:otherwise>
 						<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=logout">LOGOUT</a></li>
 						<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart&id=${principal.id}">CART</a></li>
-						<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">WISH LIST</a></li>
+					<!-- 	<li><i class="ti-location-pin"></i><a href="/shop/user?cmd=cart">WISH LIST</a></li>--> 
 						<li><i class="ti-user"></i> <a href="/shop/user?cmd=update">MYPAGE</a></li>
 						<li><i class="ti-alarm-clock"></i> <a href="/shop/user?cmd=order&id=${principal.id}">ORDER</a></li>
 						<c:if test="${principal.userRole.toString().equals('ADMIN')}">
