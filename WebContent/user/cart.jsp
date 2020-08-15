@@ -205,7 +205,7 @@
 											class="MS_input_txt txt-right" value="1" size="2">개
 									</div></td>
 								<td style="color: #7d7d7d;"><div class="tb-center">0</div></td>
-								<td><div class="tb-center tb-bold"><fmt:formatNumber value="${wish.productPrice}" pattern="#,###"/></div></td>
+								<td><div class="tb-center tb-bold"><fmt:formatNumber value="${wish.productPrice}" pattern="#,###"/>원</div></td>
 								<td><div class="tb-center">있음</div></td>
 								<td>
 									<div class="tb-center">

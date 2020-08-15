@@ -8,18 +8,23 @@
 	top: 30%;
 	left: 13%;
 	z-index: 2;
+	font-size: 14px;
+	margin-right: 50px
 }
 
 .aside__box {
 	position: fixed;
 	top: 30%;
-	right: 9%;
+	right: 13%;
 	z-index: 2;
+	font-size: 14px;
+	margin-left: 50px
 }
 
 @media ( max-width :1800px) {
 	.nav__box {
 		position: static;
+
 	}
 	.aside__box {
 		position: static;

@@ -4,6 +4,8 @@
 <%@ include file="/include/preloader.jsp"%>
 <%@ include file="/include/header.jsp"%>
 <%@ include file="/include/nav.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <div class="content__box">
 	<div class="page-body">
 		<p class="t-box-msg">
@@ -39,7 +41,7 @@
 						<td><div class="tb-center">${dto.product.name}</div></td>
 						<td><div class="tb-center">${dto.orders_detail.price}</div></td>
 						<td><div class="tb-center">${dto.orders_detail.quantity}</div></td>
-						<td><div class="tb-center">${dto.orders_detail.price*dto.orders_detail.quantity}</div></td>
+						<td><div class="tb-center"><fmt:formatNumber value="${dto.orders_detail.price*dto.orders_detail.quantity}" pattern="#,###"/>$원</div></td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -52,6 +54,7 @@
 			<li>배송현황의 조회 버튼을 클릭하시면, 해당 주문의 배송 현황을 한눈에 확인하실 수 있습니다.</li>
 		</ul>
 	</div>
+	<%@ include file="../include/serviceArea.jsp"%>
 </div>
 <%@ include file="/include/aside.jsp"%>
 <%@ include file="/include/footer.jsp"%>

@@ -44,9 +44,14 @@
 				onmouseout="this.src='/shop/image/notice/noticemenu4.gif'">
 		</a></li>
 </ul>
+<div style="justify-content : center;">
+	<p style="text-align: center;">
+		<img src="/shop/testImg/EXmember.png">
+	</p>
+</div>
+<%@ include file="../include/serviceArea.jsp"%>
 
 
-<img src="/shop/testImg/EXmember.png">
 
 </div>
 <!-- end of content__box -->

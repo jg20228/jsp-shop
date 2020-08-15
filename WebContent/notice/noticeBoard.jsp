@@ -119,7 +119,7 @@
 			</tr>
 		</table>
 	</c:if>
-
+<%@ include file="../include/serviceArea.jsp"%>
 </div>
 <!-- end of content__box -->
 
